@@ -1,54 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- ═══════════════════════════════════════════════════════
-     SEO META TAGS — REPLACE VALUES MARKED WITH TODO
-═══════════════════════════════════════════════════════ -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LoanIQ — Free Home Loan & EMI Calculator India 2025 | Prepayment Simulator</title>
-<meta name="description" content="India's smartest free home loan calculator. Calculate EMI, plan prepayments, compare loan offers and save lakhs in interest. Trusted by 10,000+ borrowers.">
-<meta name="keywords" content="home loan calculator, EMI calculator India, prepayment calculator, loan prepayment savings, SBI home loan EMI, HDFC home loan calculator, car loan calculator, interest savings calculator">
+<title>Home Loan & EMI Calculator — Prepayment Simulator</title>
+<meta name="description" content="Free home loan EMI calculator with prepayment simulator. See exactly how much interest you save with every prepayment. Instant, no signup required.">
 <meta name="author" content="LoanIQ">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://loaniq.in/"> <!-- TODO: replace with your domain -->
 
-<!-- Open Graph (WhatsApp / Facebook previews) -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="LoanIQ — Free Home Loan EMI & Prepayment Calculator India">
-<meta property="og:description" content="Calculate your EMI, simulate prepayments and see exactly how much interest you can save. Free, instant, no signup.">
-<meta property="og:url" content="https://loaniq.in/"> <!-- TODO -->
-<meta property="og:image" content="https://loaniq.in/og-image.png"> <!-- TODO: add a screenshot -->
-<meta property="og:locale" content="en_IN">
-<meta property="og:site_name" content="LoanIQ">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="LoanIQ — Home Loan Prepayment Calculator India">
-<meta name="twitter:description" content="See how much you save with every prepayment. Free EMI & loan calculator for Indian borrowers.">
-<meta name="twitter:image" content="https://loaniq.in/og-image.png"> <!-- TODO -->
-
-<!-- Schema.org structured data for Google rich results -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "LoanIQ",
-  "url": "https://loaniq.in",
-  "description": "Free home loan EMI and prepayment calculator for Indian borrowers",
-  "applicationCategory": "FinanceApplication",
-  "operatingSystem": "Any",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
-  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "1240" }
-}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8R3QXLHXX7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8R3QXLHXX7');
 </script>
-
-<!-- Google AdSense — TODO: Replace ca-pub-XXXXXXXXXXXXXXXX with your Publisher ID -->
-<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
-
-<!-- Google Analytics — TODO: Replace G-XXXXXXXXXX with your Measurement ID -->
-<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script> -->
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap');
@@ -103,33 +70,9 @@ button{cursor:pointer;font-family:var(--font)}
 .hero h1{font-size:32px;font-weight:800;color:#fff;letter-spacing:-0.04em;line-height:1.15;margin-bottom:10px}
 .hero h1 em{font-style:normal;color:#7ee8c8}
 .hero p{font-size:15px;color:rgba(255,255,255,0.8);margin-bottom:20px;line-height:1.6}
-.hero-stats{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
-.hero-stat .hs-val{font-size:20px;font-weight:800;color:#fff;font-family:var(--mono);letter-spacing:-0.03em}
-.hero-stat .hs-lbl{font-size:10px;color:rgba(255,255,255,0.65);margin-top:2px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase}
 
-/* ─── AD SLOT ── */
-.ad-slot{background:var(--s2);border:1px dashed var(--border2);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--dim);font-size:11px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;position:relative}
-.ad-slot-label{position:absolute;top:6px;left:10px;font-size:9px;color:var(--dim);font-weight:500;letter-spacing:0.04em}
-.ad-728{width:100%;height:90px;margin:16px 0}
-.ad-300{width:300px;min-width:300px;height:250px}
-.ad-responsive{width:100%;height:100px;margin:12px 0}
 /* When AdSense is active, hide the placeholder styling */
-.adsense-live{background:transparent;border:none}
-.adsense-live .ad-slot-label{display:none}
 
-/* ─── AFFILIATE BANNERS ── */
-.affiliate-strip{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 20px;overflow-x:auto;scrollbar-width:none}
-.affiliate-strip::-webkit-scrollbar{display:none}
-.affiliate-strip-inner{max-width:1200px;margin:0 auto;display:flex;gap:10px;align-items:center;min-width:600px}
-.affiliate-strip-label{font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--dim);white-space:nowrap;margin-right:4px}
-.aff-card{background:var(--s2);border:1px solid var(--border2);border-radius:var(--rsm);padding:8px 14px;display:flex;align-items:center;gap:10px;white-space:nowrap;transition:all 0.15s;cursor:pointer;text-decoration:none}
-.aff-card:hover{border-color:var(--green);transform:translateY(-1px);box-shadow:var(--shadow)}
-.aff-logo{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff}
-.aff-info .aff-name{font-size:11px;font-weight:700;color:var(--text)}
-.aff-info .aff-rate{font-size:10px;color:var(--green);font-weight:600}
-.aff-cta{font-size:10px;font-weight:700;color:var(--green);background:var(--gl);padding:3px 8px;border-radius:5px}
-
-/* ─── MAIN LAYOUT ── */
 .main-wrap{max-width:1200px;margin:0 auto;padding:20px}
 .main-grid{display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start}
 
@@ -248,22 +191,8 @@ tr.ppr td:first-child{border-left:2px solid var(--green)}
 .sc-sub{font-size:10px;color:var(--muted);margin-top:2px}
 .sc-body{padding:14px 16px}
 
-/* ─── AFFILIATE CARDS (sidebar) ── */
-.aff-sidebar-card{background:var(--s2);border:1px solid var(--border2);border-radius:var(--r);padding:14px;margin-bottom:10px;transition:all 0.2s;cursor:pointer;display:block}
-.aff-sidebar-card:hover{border-color:var(--green);transform:translateY(-2px);box-shadow:var(--shadow)}
-.asc-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.asc-logo{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#fff;flex-shrink:0}
-.asc-name{font-size:13px;font-weight:700}
-.asc-tag{font-size:9px;color:var(--muted)}
-.asc-rate{font-size:22px;font-weight:800;font-family:var(--mono);color:var(--green);letter-spacing:-0.03em;margin-bottom:4px}
-.asc-rate-lbl{font-size:10px;color:var(--muted)}
-.asc-features{margin:10px 0;display:flex;flex-direction:column;gap:4px}
-.asc-feat{font-size:10px;color:var(--muted);display:flex;align-items:center;gap:5px}
-.asc-feat::before{content:'✓';color:var(--green);font-weight:700;font-size:10px}
-.asc-cta{width:100%;background:var(--green);color:#fff;border:none;border-radius:var(--rsm);padding:9px;font-size:12px;font-weight:700;cursor:pointer;margin-top:8px;font-family:var(--font);transition:all 0.15s}
-.asc-cta:hover{background:#085c43}
-.asc-disclaimer{font-size:9px;color:var(--dim);margin-top:6px;text-align:center}
 
+.asc-cta:hover{background:#085c43}
 /* ─── COMPARE TABLE ── */
 .cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
 .cmp-box{border:1px solid var(--border);border-radius:var(--r);padding:14px}
@@ -275,17 +204,8 @@ tr.ppr td:first-child{border-left:2px solid var(--green)}
 .cmp-lbl{color:var(--muted)}
 .cmp-val{font-family:var(--mono);font-weight:700}
 
-/* ─── BOTTOM AFFILIATE ── */
-.bottom-affiliate{background:linear-gradient(135deg,var(--green),#1a4f8a);border-radius:var(--r);padding:24px;margin:20px 0;text-align:center;position:relative;overflow:hidden}
-.ba-badge{display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:10px;letter-spacing:0.04em}
-.ba-title{font-size:22px;font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:6px}
-.ba-sub{font-size:13px;color:rgba(255,255,255,0.8);margin-bottom:18px}
-.ba-btns{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-.ba-btn{background:#fff;color:var(--green);border:none;border-radius:var(--rsm);padding:11px 20px;font-size:13px;font-weight:800;cursor:pointer;font-family:var(--font);transition:all 0.15s}
+/* ─── BOTTOM CTA ── */
 .ba-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.2)}
-.ba-btn.outline{background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.4)}
-.ba-disclaimer{font-size:9px;color:rgba(255,255,255,0.5);margin-top:12px}
-
 /* ─── FAQ ── */
 .faq-section{margin:20px 0}
 .faq-title{font-size:20px;font-weight:800;letter-spacing:-0.03em;margin-bottom:16px}
@@ -333,7 +253,6 @@ tr.ppr td:first-child{border-left:2px solid var(--green)}
 /* ─── RESPONSIVE ── */
 @media(max-width:900px){
   .main-grid{grid-template-columns:1fr}
-  .ad-300{width:100%;min-width:0;height:120px}
   .footer-grid{grid-template-columns:1fr 1fr}
   .metrics-row{grid-template-columns:1fr 1fr}
   .hero h1{font-size:24px}
@@ -360,9 +279,9 @@ tr.ppr td:first-child{border-left:2px solid var(--green)}
     </div>
     <nav class="nav-links">
       <a class="nav-link active" href="#">Calculator</a>
-      <a class="nav-link" href="#compare">Compare</a>
       <a class="nav-link" href="#faq">FAQ</a>
-      <a class="nav-link" href="#loan-offers">Loan Offers</a>
+      <a class="nav-link" href="#faq">FAQ</a>
+
     </nav>
     <div class="topbar-right">
       <button class="share-btn" onclick="openShare()">🔗 Share Tool</button>
@@ -373,64 +292,15 @@ tr.ppr td:first-child{border-left:2px solid var(--green)}
 <!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-badge">🇮🇳 Built for Indian Borrowers · 100% Free</div>
-    <h1>Stop Overpaying Your Bank.<br><em>Save Lakhs</em> with Smart Prepayments.</h1>
-    <p>India's most detailed home loan calculator. Enter your loan details and instantly see how much you can save with every prepayment decision.</p>
-    <div class="hero-stats">
-      <div class="hero-stat"><div class="hs-val">₹2.4Cr+</div><div class="hs-lbl">Interest Saved</div></div>
-      <div class="hero-stat"><div class="hs-val">14,800+</div><div class="hs-lbl">Loans Calculated</div></div>
-      <div class="hero-stat"><div class="hs-val">4.8★</div><div class="hs-lbl">User Rating</div></div>
-    </div>
+    <div class="hero-badge">🇮🇳 Built for Indian Borrowers · 100% Free · No Sign-up</div>
+    <h1>Home Loan & EMI Calculator<br>with <em>Prepayment Simulator</em></h1>
+    <p>Enter your loan details and instantly see how much interest you can save with every prepayment decision. Free, accurate, no sign-up.</p>
+
   </div>
 </section>
 
-<!-- TOP AD BANNER -->
-<div style="max-width:1200px;margin:0 auto;padding:0 20px">
-  <div class="ad-slot ad-728">
-    <span class="ad-slot-label">Advertisement</span>
-    <!-- AdSense: Replace with your actual ad code -->
-    <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script> -->
-    [Ad Slot — 728×90 Leaderboard]
-  </div>
-</div>
 
-<!-- AFFILIATE STRIP -->
-<div class="affiliate-strip" id="loan-offers">
-  <div class="affiliate-strip-inner">
-    <span class="affiliate-strip-label">Best Rates Now →</span>
-    <!-- TODO: Replace href="#" with your actual affiliate links -->
-    <a class="aff-card" href="#" onclick="trackAffClick('SBI')" target="_blank" rel="noopener">
-      <div class="aff-logo" style="background:#1a4f8a">SBI</div>
-      <div class="aff-info"><div class="aff-name">SBI Home Loan</div><div class="aff-rate">From 8.50% p.a.</div></div>
-      <span class="aff-cta">Apply →</span>
-    </a>
-    <a class="aff-card" href="#" onclick="trackAffClick('HDFC')" target="_blank" rel="noopener">
-      <div class="aff-logo" style="background:#c41e3a">HDFC</div>
-      <div class="aff-info"><div class="aff-name">HDFC Home Loan</div><div class="aff-rate">From 8.70% p.a.</div></div>
-      <span class="aff-cta">Apply →</span>
-    </a>
-    <a class="aff-card" href="#" onclick="trackAffClick('ICICI')" target="_blank" rel="noopener">
-      <div class="aff-logo" style="background:#f37b2c">ICICI</div>
-      <div class="aff-info"><div class="aff-name">ICICI Home Loan</div><div class="aff-rate">From 8.75% p.a.</div></div>
-      <span class="aff-cta">Apply →</span>
-    </a>
-    <a class="aff-card" href="#" onclick="trackAffClick('Axis')" target="_blank" rel="noopener">
-      <div class="aff-logo" style="background:#97144D">Axis</div>
-      <div class="aff-info"><div class="aff-name">Axis Bank Loan</div><div class="aff-rate">From 8.75% p.a.</div></div>
-      <span class="aff-cta">Apply →</span>
-    </a>
-    <a class="aff-card" href="#" onclick="trackAffClick('PNB')" target="_blank" rel="noopener">
-      <div class="aff-logo" style="background:#1a6b4a">PNB</div>
-      <div class="aff-info"><div class="aff-name">PNB Housing</div><div class="aff-rate">From 8.50% p.a.</div></div>
-      <span class="aff-cta">Apply →</span>
-    </a>
-    <a class="aff-card" href="#" onclick="trackAffClick('BankBazaar')" target="_blank" rel="noopener">
-      <div class="aff-logo" style="background:#ff6b35">BB</div>
-      <div class="aff-info"><div class="aff-name">BankBazaar</div><div class="aff-rate">Compare all banks</div></div>
-      <span class="aff-cta">Compare →</span>
-    </a>
-  </div>
-</div>
+
 
 <!-- MAIN CONTENT -->
 <div class="main-wrap">
@@ -607,24 +477,9 @@ tr.ppr td:first-child{border-left:2px solid var(--green)}
         </div>
       </div>
 
-      <!-- IN-CONTENT AD -->
-      <div class="ad-slot ad-responsive">
-        <span class="ad-slot-label">Advertisement</span>
-        <!-- <ins class="adsbygoogle" ...></ins> -->
-        [Ad Slot — Responsive In-Content]
-      </div>
 
-      <!-- BOTTOM AFFILIATE BANNER -->
-      <div class="bottom-affiliate" id="compare">
-        <div class="ba-badge">SPONSORED OFFERS</div>
-        <div class="ba-title">Get a Better Interest Rate</div>
-        <div class="ba-sub">Even 0.25% lower rate can save you ₹2–5 lakhs on a ₹50L loan. Compare top lenders now.</div>
-        <div class="ba-btns">
-          <button class="ba-btn" onclick="trackAffClick('BankBazaar-cta')">Compare on BankBazaar →</button>
-          <button class="ba-btn outline" onclick="trackAffClick('PaisaBazaar-cta')">Check PaisaBazaar Rates</button>
-        </div>
-        <div class="ba-disclaimer">*Rates shown are indicative. Final rates depend on credit score, income and bank policies. LoanIQ earns a referral fee from partner banks at no extra cost to you.</div>
-      </div>
+
+
 
       <!-- FAQ -->
       <div class="faq-section" id="faq">
@@ -636,53 +491,9 @@ tr.ppr td:first-child{border-left:2px solid var(--green)}
     <!-- SIDEBAR -->
     <aside class="sidebar">
 
-      <!-- Sidebar Ad -->
-      <div class="ad-slot ad-300">
-        <span class="ad-slot-label">Advertisement</span>
-        <!-- <ins class="adsbygoogle" data-ad-slot="XXXXXXXXXX" data-ad-format="rectangle" ...></ins> -->
-        [Ad Slot — 300×250 Rectangle]
-      </div>
 
-      <!-- Affiliate cards -->
-      <div class="sidebar-card">
-        <div class="sc-head">
-          <div class="sc-title">🏦 Compare Home Loan Rates</div>
-          <div class="sc-sub">Updated May 2025 · Sponsored</div>
-        </div>
-        <div class="sc-body">
-          <!-- TODO: Replace href="#" with your actual affiliate links from BankBazaar/PaisaBazaar partner program -->
-          <a class="aff-sidebar-card" href="#" onclick="trackAffClick('SBI-sidebar')" target="_blank" rel="noopener">
-            <div class="asc-header"><div class="asc-logo" style="background:#1a4f8a">SBI</div><div><div class="asc-name">State Bank of India</div><div class="asc-tag">Govt. of India Bank · Most Trusted</div></div></div>
-            <div class="asc-rate">8.50%<span style="font-size:12px;font-weight:500;color:var(--muted)"> p.a.</span></div>
-            <div class="asc-rate-lbl">Interest Rate (Home Loan)</div>
-            <div class="asc-features"><div class="asc-feat">Up to ₹5 Crore loan amount</div><div class="asc-feat">Max 30 year tenure</div><div class="asc-feat">No prepayment penalty</div></div>
-            <button class="asc-cta">Apply on SBI →</button>
-            <div class="asc-disclaimer">*Affiliate link · We may earn a commission</div>
-          </a>
-          <a class="aff-sidebar-card" href="#" onclick="trackAffClick('HDFC-sidebar')" target="_blank" rel="noopener">
-            <div class="asc-header"><div class="asc-logo" style="background:#c41e3a">HD</div><div><div class="asc-name">HDFC Bank</div><div class="asc-tag">India's Largest Private Bank</div></div></div>
-            <div class="asc-rate">8.70%<span style="font-size:12px;font-weight:500;color:var(--muted)"> p.a.</span></div>
-            <div class="asc-rate-lbl">Interest Rate (Home Loan)</div>
-            <div class="asc-features"><div class="asc-feat">Instant online approval</div><div class="asc-feat">Balance transfer facility</div><div class="asc-feat">Top-up loan available</div></div>
-            <button class="asc-cta">Apply on HDFC →</button>
-            <div class="asc-disclaimer">*Affiliate link · We may earn a commission</div>
-          </a>
-          <a class="aff-sidebar-card" href="#" onclick="trackAffClick('BankBazaar-sidebar')" target="_blank" rel="noopener">
-            <div class="asc-header"><div class="asc-logo" style="background:#ff6b35">BB</div><div><div class="asc-name">BankBazaar</div><div class="asc-tag">Compare 30+ Lenders</div></div></div>
-            <div class="asc-rate" style="font-size:16px;margin-bottom:2px">Find Your Best Rate</div>
-            <div class="asc-rate-lbl">Free credit score check included</div>
-            <div class="asc-features"><div class="asc-feat">Compare 30+ banks instantly</div><div class="asc-feat">100% paperless process</div><div class="asc-feat">Free EMI calculator</div></div>
-            <button class="asc-cta" style="background:#ff6b35">Compare Now →</button>
-            <div class="asc-disclaimer">*Affiliate link · We may earn a commission</div>
-          </a>
-        </div>
-      </div>
 
       <!-- Second sidebar ad -->
-      <div class="ad-slot ad-300" style="height:200px">
-        <span class="ad-slot-label">Advertisement</span>
-        [Ad Slot — 300×200]
-      </div>
 
       <!-- Tips card -->
       <div class="sidebar-card">
@@ -702,7 +513,7 @@ tr.ppr td:first-child{border-left:2px solid var(--green)}
 <footer class="footer">
   <div class="footer-inner">
     <div class="disclaimer-box">
-      <strong style="color:#fff">Disclaimer:</strong> LoanIQ is an independent financial calculator tool. The calculations shown are for illustrative purposes only and may differ from actual bank calculations. Interest rates shown for partner banks are indicative and subject to change. Always verify with your bank before making financial decisions. LoanIQ may earn affiliate commissions from partner banks at no additional cost to you.
+      <strong style="color:#fff">Disclaimer:</strong> This is an independent financial calculator tool. All calculations are for illustrative purposes only and may differ from actual bank calculations. Always verify figures with your bank or financial advisor before making decisions.
     </div>
     <div class="footer-grid">
       <div class="footer-brand">
@@ -710,34 +521,28 @@ tr.ppr td:first-child{border-left:2px solid var(--green)}
         <p>India's smartest free loan calculator. Built to help millions of Indian borrowers make informed decisions about their home loans, car loans, and EMIs.</p>
       </div>
       <div class="footer-col">
-        <h4>Calculators</h4>
-        <a href="#">Home Loan EMI</a>
-        <a href="#">Car Loan EMI</a>
-        <a href="#">Personal Loan</a>
-        <a href="#">Prepayment Calc</a>
-        <a href="#">Balance Transfer</a>
+        <h4>Calculator Tabs</h4>
+        <a href="javascript:void(0)" onclick="document.querySelector('.calc-tab').click()">EMI Calculator</a>
+        <a href="javascript:void(0)" onclick="document.querySelectorAll('.calc-tab')[1].click()">Prepayment Simulator</a>
+        <a href="javascript:void(0)" onclick="document.querySelectorAll('.calc-tab')[2].click()">Compare</a>
+        <a href="javascript:void(0)" onclick="document.querySelectorAll('.calc-tab')[3].click()">Amortization Schedule</a>
       </div>
       <div class="footer-col">
-        <h4>Resources</h4>
-        <a href="#">How EMI works</a>
-        <a href="#">Prepayment Guide</a>
-        <a href="#">Loan vs Invest</a>
-        <a href="#">Tax Benefits</a>
-        <a href="#">CIBIL Score</a>
+        <h4>How It Works</h4>
+        <a href="#faq">FAQs</a>
+        <a href="javascript:void(0)" onclick="document.querySelectorAll('.calc-tab')[1].click()">Try Prepayment Sim</a>
+        <a href="javascript:void(0)" onclick="document.querySelectorAll('.calc-tab')[3].click()">Download Schedule</a>
       </div>
       <div class="footer-col">
-        <h4>Company</h4>
-        <a href="#">About Us</a>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
-        <a href="#">Advertise</a>
-        <a href="mailto:hello@loaniq.in">Contact</a> <!-- TODO -->
+        <h4>Info</h4>
+        <a href="#faq">About This Tool</a>
+        <a href="#faq">Disclaimer</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 LoanIQ. All rights reserved. <!-- TODO: update year dynamically --></p>
+      <p>© 2025 LoanIQ. All rights reserved.</p>
       <div class="footer-links">
-        <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Disclaimer</a><a href="#">Sitemap</a>
+        <a href="#faq">Disclaimer</a>
       </div>
     </div>
   </div>
@@ -749,7 +554,7 @@ tr.ppr td:first-child{border-left:2px solid var(--green)}
     <h3>Share LoanIQ</h3>
     <p>Share this free calculator with friends and family planning home loans</p>
     <div class="share-url-box">
-      <input type="text" id="share-url" value="https://loaniq.in" readonly> <!-- TODO: update -->
+      <input type="text" id="share-url" value="https://loaniq.in" readonly>
       <button onclick="copyURL()">Copy Link</button>
     </div>
     <div class="share-btns">
@@ -1115,7 +920,7 @@ const faqs=[
   {q:'What is the difference between "reduce tenure" and "reduce EMI" prepayment?',a:'"Reduce tenure" keeps your EMI the same but closes the loan faster — you save significantly more interest. "Reduce EMI" lowers your monthly burden but extends the impact. Most financial advisors recommend reducing tenure.'},
   {q:'Is there a penalty for prepaying a home loan in India?',a:'As per RBI guidelines, banks cannot charge prepayment penalty on floating rate home loans. For fixed rate loans, some banks charge 2-3%. Always check your loan agreement.'},
   {q:'How much can I save by prepaying ₹1 lakh on my home loan?',a:'On a ₹50L loan at 8.5% with 20 years remaining, a ₹1L prepayment in year 1 saves approximately ₹2.4–3L in total interest and reduces tenure by 8-12 months. The earlier the prepayment, the higher the savings.'},
-  {q:'What is a good home loan interest rate in India 2025?',a:'As of 2025, competitive home loan rates start at 8.50% p.a. (SBI, PNB Housing). Your actual rate depends on credit score, income, loan amount, and employment type. Use our comparison tool above to find the best current rate.'}
+  {q:'What is a good home loan interest rate in India 2025?',a:'As of 2025, competitive home loan rates start around 8.50% p.a. for salaried borrowers with good credit scores. Your actual rate depends on credit score, income, loan amount, and employment type. Always compare multiple banks before finalising.'}
 ];
 function buildFAQ(){
   document.getElementById('faq-list').innerHTML=faqs.map((faq,i)=>`
@@ -1136,15 +941,7 @@ function shareWA(){const url=encodeURIComponent('https://loaniq.in');const msg=e
 function shareTwitter(){const url=encodeURIComponent('https://loaniq.in');const t=encodeURIComponent('Found this amazing free home loan EMI & prepayment calculator. Shows exactly how much interest you can save! 📊 #HomeLoan #PersonalFinance');window.open(`https://twitter.com/intent/tweet?text=${t}&url=${url}`);}
 function shareLinkedIn(){window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://loaniq.in')}`);}
 
-// ═══════════════════════════════════════════════
-// AFFILIATE TRACKING
-// ═══════════════════════════════════════════════
-function trackAffClick(partner){
-  // TODO: Replace with actual Google Analytics event tracking
-  console.log('Affiliate click:', partner);
-  // gtag('event','affiliate_click',{partner,page_location:window.location.href});
-  showToast('Opening '+partner+'...');
-}
+
 
 // ═══════════════════════════════════════════════
 // TOAST
