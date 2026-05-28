@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- ═══════════════════════════════════════════════════════
+     SEO META TAGS — REPLACE VALUES MARKED WITH TODO
+═══════════════════════════════════════════════════════ -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LoanIQ — Free Home Loan & EMI Calculator India 2025 | Prepayment Simulator</title>
+<meta name="description" content="India's smartest free home loan calculator. Calculate EMI, plan prepayments, compare loan offers and save lakhs in interest. Trusted by 10,000+ borrowers.">
+<meta name="keywords" content="home loan calculator, EMI calculator India, prepayment calculator, loan prepayment savings, SBI home loan EMI, HDFC home loan calculator, car loan calculator, interest savings calculator">
+<meta name="author" content="LoanIQ">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://loaniq.in/"> <!-- TODO: replace with your domain -->
+
+<!-- Open Graph (WhatsApp / Facebook previews) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="LoanIQ — Free Home Loan EMI & Prepayment Calculator India">
+<meta property="og:description" content="Calculate your EMI, simulate prepayments and see exactly how much interest you can save. Free, instant, no signup.">
+<meta property="og:url" content="https://loaniq.in/"> <!-- TODO -->
+<meta property="og:image" content="https://loaniq.in/og-image.png"> <!-- TODO: add a screenshot -->
+<meta property="og:locale" content="en_IN">
+<meta property="og:site_name" content="LoanIQ">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="LoanIQ — Home Loan Prepayment Calculator India">
+<meta name="twitter:description" content="See how much you save with every prepayment. Free EMI & loan calculator for Indian borrowers.">
+<meta name="twitter:image" content="https://loaniq.in/og-image.png"> <!-- TODO -->
+
+<!-- Schema.org structured data for Google rich results -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "LoanIQ",
+  "url": "https://loaniq.in",
+  "description": "Free home loan EMI and prepayment calculator for Indian borrowers",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "1240" }
+}
+</script>
+
+<!-- Google AdSense — TODO: Replace ca-pub-XXXXXXXXXXXXXXXX with your Publisher ID -->
+<!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+
+<!-- Google Analytics — TODO: Replace G-XXXXXXXXXX with your Measurement ID -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script> -->
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;400;500;600;700;800&family=DM+Mono:wght@300;400;500&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#fafaf7;--white:#ffffff;--s2:#f4f3ee;--s3:#eceae2;--s4:#e2dfd4;
+  --border:#dedad0;--border2:#ccc9bc;
+  --text:#1a1916;--muted:#6b6860;--dim:#b0ada2;
+  --green:#0a6e50;--gl:#e6f4ef;--gg:rgba(10,110,80,0.1);
+  --red:#b83232;--rl:#fdf1f1;
+  --amber:#9a6200;--al:#fef8ed;
+  --blue:#1a4f8a;--bl:#edf3fd;
+  --font:'Bricolage Grotesque',sans-serif;
+  --mono:'DM Mono',monospace;
+  --shadow:0 1px 4px rgba(0,0,0,0.06),0 4px 16px rgba(0,0,0,0.04);
+  --shadow-lg:0 8px 40px rgba(0,0,0,0.1);
+  --r:14px;--rsm:8px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:14px;line-height:1.5}
+a{color:inherit;text-decoration:none}
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-thumb{background:var(--s4);border-radius:3px}
+input,select{background:var(--white);border:1.5px solid var(--border2);border-radius:var(--rsm);padding:9px 11px;font-family:var(--font);font-size:13px;color:var(--text);outline:none;transition:all 0.15s;width:100%}
+input:focus,select:focus{border-color:var(--green);box-shadow:0 0 0 3px var(--gg)}
+select option{background:var(--white)}
+button{cursor:pointer;font-family:var(--font)}
+.btn{border:none;border-radius:var(--rsm);padding:10px 18px;font-size:13px;font-weight:700;transition:all 0.15s;letter-spacing:-0.01em}
+.btn-green{background:var(--green);color:#fff}.btn-green:hover{background:#085c43;box-shadow:0 4px 16px var(--gg);transform:translateY(-1px)}
+.btn-ghost{background:transparent;border:1.5px solid var(--border2);color:var(--muted)}.btn-ghost:hover{border-color:var(--green);color:var(--green)}
+.btn-outline-green{background:transparent;border:1.5px solid var(--green);color:var(--green)}.btn-outline-green:hover{background:var(--green);color:#fff}
+
+/* ─── TOPBAR ── */
+.topbar{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:200;box-shadow:0 1px 8px rgba(0,0,0,0.04)}
+.topbar-inner{max-width:1200px;margin:0 auto;padding:0 20px;height:58px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-logo{width:34px;height:34px;background:var(--green);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.brand-name{font-size:17px;font-weight:800;letter-spacing:-0.04em;color:var(--text)}
+.brand-name span{color:var(--green)}
+.nav-links{display:flex;gap:4px}
+.nav-link{padding:6px 12px;border-radius:var(--rsm);font-size:12px;font-weight:600;color:var(--muted);transition:all 0.15s}
+.nav-link:hover,.nav-link.active{background:var(--s2);color:var(--text)}
+.topbar-right{display:flex;align-items:center;gap:10px}
+.share-btn{background:var(--s2);border:1px solid var(--border2);border-radius:var(--rsm);padding:7px 14px;font-size:12px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:6px;transition:all 0.15s}
+.share-btn:hover{border-color:var(--green);color:var(--green)}
+
+/* ─── HERO BANNER ── */
+.hero{background:linear-gradient(135deg,#0a6e50 0%,#0d5c45 40%,#1a4f8a 100%);padding:36px 20px 28px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero-inner{max-width:700px;margin:0 auto;position:relative}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);border-radius:20px;padding:4px 12px;font-size:11px;font-weight:600;color:rgba(255,255,255,0.9);margin-bottom:14px;letter-spacing:0.03em}
+.hero h1{font-size:32px;font-weight:800;color:#fff;letter-spacing:-0.04em;line-height:1.15;margin-bottom:10px}
+.hero h1 em{font-style:normal;color:#7ee8c8}
+.hero p{font-size:15px;color:rgba(255,255,255,0.8);margin-bottom:20px;line-height:1.6}
+.hero-stats{display:flex;justify-content:center;gap:28px;flex-wrap:wrap}
+.hero-stat .hs-val{font-size:20px;font-weight:800;color:#fff;font-family:var(--mono);letter-spacing:-0.03em}
+.hero-stat .hs-lbl{font-size:10px;color:rgba(255,255,255,0.65);margin-top:2px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase}
+
+/* ─── AD SLOT ── */
+.ad-slot{background:var(--s2);border:1px dashed var(--border2);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--dim);font-size:11px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;position:relative}
+.ad-slot-label{position:absolute;top:6px;left:10px;font-size:9px;color:var(--dim);font-weight:500;letter-spacing:0.04em}
+.ad-728{width:100%;height:90px;margin:16px 0}
+.ad-300{width:300px;min-width:300px;height:250px}
+.ad-responsive{width:100%;height:100px;margin:12px 0}
+/* When AdSense is active, hide the placeholder styling */
+.adsense-live{background:transparent;border:none}
+.adsense-live .ad-slot-label{display:none}
+
+/* ─── AFFILIATE BANNERS ── */
+.affiliate-strip{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 20px;overflow-x:auto;scrollbar-width:none}
+.affiliate-strip::-webkit-scrollbar{display:none}
+.affiliate-strip-inner{max-width:1200px;margin:0 auto;display:flex;gap:10px;align-items:center;min-width:600px}
+.affiliate-strip-label{font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--dim);white-space:nowrap;margin-right:4px}
+.aff-card{background:var(--s2);border:1px solid var(--border2);border-radius:var(--rsm);padding:8px 14px;display:flex;align-items:center;gap:10px;white-space:nowrap;transition:all 0.15s;cursor:pointer;text-decoration:none}
+.aff-card:hover{border-color:var(--green);transform:translateY(-1px);box-shadow:var(--shadow)}
+.aff-logo{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff}
+.aff-info .aff-name{font-size:11px;font-weight:700;color:var(--text)}
+.aff-info .aff-rate{font-size:10px;color:var(--green);font-weight:600}
+.aff-cta{font-size:10px;font-weight:700;color:var(--green);background:var(--gl);padding:3px 8px;border-radius:5px}
+
+/* ─── MAIN LAYOUT ── */
+.main-wrap{max-width:1200px;margin:0 auto;padding:20px}
+.main-grid{display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start}
+
+/* ─── CALCULATOR CARD ── */
+.calc-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.calc-tabs{display:flex;border-bottom:1px solid var(--border)}
+.calc-tab{flex:1;padding:13px 8px;border:none;background:none;font-family:var(--font);font-size:12px;font-weight:600;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.15s;letter-spacing:0.01em}
+.calc-tab.active{color:var(--green);border-bottom-color:var(--green);background:var(--gl)}
+.calc-body{padding:20px}
+
+/* ─── LOAN SELECTOR ── */
+.loan-pills{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+.loan-pill{padding:5px 12px;border-radius:20px;border:1.5px solid var(--border2);background:transparent;color:var(--muted);font-size:11px;font-weight:700;cursor:pointer;transition:all 0.15s;font-family:var(--font)}
+.loan-pill.active{border-color:var(--green);color:var(--green);background:var(--gl)}
+
+/* ─── METRIC STRIP ── */
+.metrics-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.mcard{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:14px;position:relative;overflow:hidden;transition:all 0.2s}
+.mcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--mc,var(--green));border-radius:var(--r) var(--r) 0 0}
+.mcard:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.mc-lbl{font-size:9px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.mc-val{font-size:20px;font-weight:800;font-family:var(--mono);letter-spacing:-0.04em;line-height:1}
+.mc-sub{font-size:10px;color:var(--muted);margin-top:3px}
+
+/* ─── SLIDER INPUTS ── */
+.field{margin-bottom:16px}
+.field-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.field-label{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:0.02em}
+.field-val{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--green);background:var(--gl);padding:3px 8px;border-radius:5px}
+input[type=range]{-webkit-appearance:none;height:4px;background:linear-gradient(to right,var(--green) 0%,var(--green) var(--pct,50%),var(--s4) var(--pct,50%));border-radius:2px;border:none;padding:0;box-shadow:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--green);border:2.5px solid #fff;box-shadow:0 1px 6px rgba(10,110,80,0.3);cursor:pointer;transition:transform 0.1s}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.15)}
+
+/* ─── RESULTS SECTION ── */
+.results-section{margin-top:16px}
+.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.result-box{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:14px;text-align:center}
+.rb-lbl{font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.rb-val{font-size:18px;font-weight:800;font-family:var(--mono);letter-spacing:-0.03em}
+.rb-sub{font-size:10px;color:var(--muted);margin-top:3px}
+
+/* ─── PREPAYMENT SECTION ── */
+.pp-section{border-top:1px solid var(--border);padding-top:16px;margin-top:16px}
+.pp-type-row{display:flex;gap:6px;margin-bottom:12px}
+.pp-type-btn{flex:1;padding:7px 6px;border-radius:var(--rsm);border:1.5px solid var(--border2);background:transparent;color:var(--muted);font-size:11px;font-weight:700;cursor:pointer;text-align:center;transition:all 0.15s;font-family:var(--font)}
+.pp-type-btn.on{border-color:var(--green);color:var(--green);background:var(--gl)}
+.amt-input-wrap{background:var(--s2);border:2px solid var(--border2);border-radius:var(--r);padding:12px 14px;margin-bottom:10px;transition:all 0.2s}
+.amt-input-wrap:focus-within{border-color:var(--green);background:var(--gl)}
+.ai-lbl{font-size:9px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.ai-row{display:flex;align-items:center;gap:8px}
+.ai-pfx{font-size:20px;font-weight:800;color:var(--muted)}
+.ai-inp{flex:1;background:none;border:none;outline:none;font-size:22px;font-weight:800;font-family:var(--mono);color:var(--text);letter-spacing:-0.03em;min-width:0}
+.ai-inp::placeholder{color:var(--dim)}
+.ai-hint{font-size:10px;color:var(--muted);margin-top:4px}
+.quick-btns{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}
+.qb{background:var(--s2);border:1px solid var(--border);border-radius:5px;padding:4px 9px;font-size:10px;font-weight:600;color:var(--muted);cursor:pointer;font-family:var(--mono);transition:all 0.15s}
+.qb:hover,.qb.on{border-color:var(--green);color:var(--green);background:var(--gl)}
+.pp-row-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.impact-preview{background:linear-gradient(135deg,var(--gl),var(--bl));border:1px solid rgba(10,110,80,0.2);border-radius:var(--r);padding:12px;margin-bottom:12px;display:none}
+.ip-head{font-size:9px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--green);margin-bottom:8px}
+.ip-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ip-lbl{font-size:9px;color:var(--muted);margin-bottom:2px}
+.ip-val{font-size:14px;font-weight:800;font-family:var(--mono);letter-spacing:-0.02em}
+.add-pp-btn{width:100%;background:var(--green);color:#fff;border:none;border-radius:var(--r);padding:12px;font-size:14px;font-weight:800;cursor:pointer;transition:all 0.2s;margin-bottom:12px;letter-spacing:-0.01em}
+.add-pp-btn:hover{background:#085c43;box-shadow:0 6px 20px var(--gg);transform:translateY(-1px)}
+.add-pp-btn:disabled{background:var(--dim);cursor:not-allowed;transform:none;box-shadow:none}
+.pp-list-item{background:var(--s2);border:1px solid var(--border);border-radius:var(--rsm);padding:9px 12px;display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;transition:border-color 0.15s}
+.pp-list-item:hover{border-color:var(--green)}
+.pli-amt{font-size:13px;font-weight:700;font-family:var(--mono);color:var(--green)}
+.pli-meta{font-size:9px;color:var(--muted);margin-top:2px}
+.pli-save{font-size:9px;font-weight:700;color:var(--green);background:var(--gl);padding:2px 6px;border-radius:4px;font-family:var(--mono)}
+.pli-del{background:none;border:none;color:var(--dim);cursor:pointer;font-size:14px;padding:2px 5px;transition:all 0.15s}
+.pli-del:hover{color:var(--red)}
+
+/* ─── SAVINGS HERO ── */
+.savings-hero{background:linear-gradient(135deg,var(--green),#085c43);border-radius:var(--r);padding:16px 18px;margin-bottom:14px;display:none;align-items:center;justify-content:space-between;box-shadow:0 4px 20px var(--gg)}
+.sh-lbl{font-size:9px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:rgba(255,255,255,0.7);margin-bottom:3px}
+.sh-val{font-size:24px;font-weight:800;font-family:var(--mono);letter-spacing:-0.04em;color:#fff;line-height:1}
+.sh-sub{font-size:11px;color:rgba(255,255,255,0.75);margin-top:3px}
+.sh-pill{background:rgba(255,255,255,0.2);color:#fff;font-size:11px;font-weight:700;padding:5px 12px;border-radius:14px;display:inline-block;margin-bottom:3px;font-family:var(--mono)}
+.sh-note{font-size:9px;color:rgba(255,255,255,0.65)}
+
+/* ─── CHARTS ── */
+canvas.pure{width:100%;display:block}
+.chart-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:12px;box-shadow:var(--shadow)}
+.chart-title{font-size:12px;font-weight:700;margin-bottom:4px}
+.chart-sub{font-size:10px;color:var(--muted);margin-bottom:12px}
+.leg-row{display:flex;gap:14px;margin-top:8px}
+.leg{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--muted)}
+.leg-dot{width:7px;height:7px;border-radius:50%}
+
+/* ─── TABLE ── */
+.tbl-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.tbl-toolbar{padding:12px 14px;border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tbl-toolbar input{width:160px;font-size:12px}
+.tbl-toolbar select{width:140px;font-size:12px}
+.tbl-wrap{overflow:auto;max-height:340px}
+.tbl-wrap::-webkit-scrollbar{width:5px;height:5px}
+.tbl-wrap::-webkit-scrollbar-thumb{background:var(--s4);border-radius:3px}
+table{width:100%;border-collapse:collapse;font-size:11px}
+th{position:sticky;top:0;background:var(--s2);padding:9px 10px;text-align:left;font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);font-family:var(--mono)}
+tr:hover td{background:var(--s2)}
+tr.ppr td{background:rgba(10,110,80,0.03)}
+tr.ppr td:first-child{border-left:2px solid var(--green)}
+.badge{display:inline-block;font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px}
+.bg{background:var(--gl);color:var(--green)}
+.br{background:var(--rl);color:var(--red)}
+.ba{background:var(--al);color:var(--amber)}
+
+/* ─── SIDEBAR ── */
+.sidebar{display:flex;flex-direction:column;gap:14px}
+.sidebar-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.sc-head{padding:14px 16px;border-bottom:1px solid var(--border)}
+.sc-title{font-size:13px;font-weight:700}
+.sc-sub{font-size:10px;color:var(--muted);margin-top:2px}
+.sc-body{padding:14px 16px}
+
+/* ─── AFFILIATE CARDS (sidebar) ── */
+.aff-sidebar-card{background:var(--s2);border:1px solid var(--border2);border-radius:var(--r);padding:14px;margin-bottom:10px;transition:all 0.2s;cursor:pointer;display:block}
+.aff-sidebar-card:hover{border-color:var(--green);transform:translateY(-2px);box-shadow:var(--shadow)}
+.asc-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.asc-logo{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:#fff;flex-shrink:0}
+.asc-name{font-size:13px;font-weight:700}
+.asc-tag{font-size:9px;color:var(--muted)}
+.asc-rate{font-size:22px;font-weight:800;font-family:var(--mono);color:var(--green);letter-spacing:-0.03em;margin-bottom:4px}
+.asc-rate-lbl{font-size:10px;color:var(--muted)}
+.asc-features{margin:10px 0;display:flex;flex-direction:column;gap:4px}
+.asc-feat{font-size:10px;color:var(--muted);display:flex;align-items:center;gap:5px}
+.asc-feat::before{content:'✓';color:var(--green);font-weight:700;font-size:10px}
+.asc-cta{width:100%;background:var(--green);color:#fff;border:none;border-radius:var(--rsm);padding:9px;font-size:12px;font-weight:700;cursor:pointer;margin-top:8px;font-family:var(--font);transition:all 0.15s}
+.asc-cta:hover{background:#085c43}
+.asc-disclaimer{font-size:9px;color:var(--dim);margin-top:6px;text-align:center}
+
+/* ─── COMPARE TABLE ── */
+.cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.cmp-box{border:1px solid var(--border);border-radius:var(--r);padding:14px}
+.cmp-bad{border-color:rgba(184,50,50,0.2);background:var(--rl)}
+.cmp-good{border-color:rgba(10,110,80,0.2);background:var(--gl)}
+.cmp-title{font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:10px}
+.cmp-line{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(0,0,0,0.06);font-size:11px}
+.cmp-line:last-child{border-bottom:none}
+.cmp-lbl{color:var(--muted)}
+.cmp-val{font-family:var(--mono);font-weight:700}
+
+/* ─── BOTTOM AFFILIATE ── */
+.bottom-affiliate{background:linear-gradient(135deg,var(--green),#1a4f8a);border-radius:var(--r);padding:24px;margin:20px 0;text-align:center;position:relative;overflow:hidden}
+.ba-badge{display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;margin-bottom:10px;letter-spacing:0.04em}
+.ba-title{font-size:22px;font-weight:800;color:#fff;letter-spacing:-0.03em;margin-bottom:6px}
+.ba-sub{font-size:13px;color:rgba(255,255,255,0.8);margin-bottom:18px}
+.ba-btns{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.ba-btn{background:#fff;color:var(--green);border:none;border-radius:var(--rsm);padding:11px 20px;font-size:13px;font-weight:800;cursor:pointer;font-family:var(--font);transition:all 0.15s}
+.ba-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.2)}
+.ba-btn.outline{background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.4)}
+.ba-disclaimer{font-size:9px;color:rgba(255,255,255,0.5);margin-top:12px}
+
+/* ─── FAQ ── */
+.faq-section{margin:20px 0}
+.faq-title{font-size:20px;font-weight:800;letter-spacing:-0.03em;margin-bottom:16px}
+.faq-item{background:var(--white);border:1px solid var(--border);border-radius:var(--r);margin-bottom:8px;overflow:hidden}
+.faq-q{padding:14px 16px;font-size:13px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background 0.15s}
+.faq-q:hover{background:var(--s2)}
+.faq-q .faq-icon{color:var(--green);font-size:16px;transition:transform 0.2s;flex-shrink:0}
+.faq-a{padding:0 16px;font-size:13px;color:var(--muted);line-height:1.7;max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s}
+.faq-item.open .faq-a{max-height:200px;padding:0 16px 14px}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+
+/* ─── FOOTER ── */
+.footer{background:var(--text);color:rgba(255,255,255,0.6);padding:32px 20px 20px;margin-top:40px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px;margin-bottom:24px}
+.footer-brand .fb-name{font-size:16px;font-weight:800;color:#fff;margin-bottom:6px}
+.footer-brand p{font-size:12px;line-height:1.6}
+.footer-col h4{font-size:11px;font-weight:700;color:#fff;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:10px}
+.footer-col a{display:block;font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:6px;transition:color 0.15s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.footer-bottom p{font-size:11px}
+.footer-links{display:flex;gap:14px}
+.footer-links a{font-size:11px;color:rgba(255,255,255,0.5);transition:color 0.15s}
+.footer-links a:hover{color:#fff}
+.disclaimer-box{background:rgba(255,255,255,0.05);border-radius:var(--rsm);padding:12px 16px;margin-bottom:16px;font-size:11px;line-height:1.6}
+
+/* ─── SHARE MODAL ── */
+.share-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center;z-index:1000;backdrop-filter:blur(4px)}
+.share-overlay.open{display:flex}
+.share-modal{background:var(--white);border-radius:16px;padding:24px;width:420px;max-width:95vw}
+.share-modal h3{font-size:18px;font-weight:800;letter-spacing:-0.03em;margin-bottom:4px}
+.share-modal p{font-size:12px;color:var(--muted);margin-bottom:18px}
+.share-url-box{background:var(--s2);border:1px solid var(--border2);border-radius:var(--rsm);padding:10px 12px;display:flex;gap:8px;align-items:center;margin-bottom:14px}
+.share-url-box input{background:none;border:none;font-size:12px;flex:1;padding:0;font-family:var(--mono)}
+.share-url-box button{background:var(--green);color:#fff;border:none;border-radius:5px;padding:5px 10px;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:var(--font)}
+.share-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.share-social-btn{padding:10px;border-radius:var(--rsm);border:1.5px solid var(--border2);background:transparent;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;font-family:var(--font);transition:all 0.15s}
+.share-social-btn:hover{border-color:var(--green);color:var(--green)}
+
+/* ─── TOAST ── */
+.toast{position:fixed;bottom:20px;right:20px;background:var(--text);color:#fff;padding:10px 16px;border-radius:var(--rsm);font-size:12px;font-weight:600;display:none;z-index:2000;animation:slideUp 0.3s ease}
+@keyframes slideUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* ─── RESPONSIVE ── */
+@media(max-width:900px){
+  .main-grid{grid-template-columns:1fr}
+  .ad-300{width:100%;min-width:0;height:120px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .metrics-row{grid-template-columns:1fr 1fr}
+  .hero h1{font-size:24px}
+  .nav-links{display:none}
+}
+@media(max-width:600px){
+  .hero{padding:24px 16px 20px}
+  .hero h1{font-size:20px}
+  .metrics-row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .cmp-grid{grid-template-columns:1fr}
+  .results-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="brand-logo">📊</div>
+      <span class="brand-name">Loan<span>IQ</span></span>
+    </div>
+    <nav class="nav-links">
+      <a class="nav-link active" href="#">Calculator</a>
+      <a class="nav-link" href="#compare">Compare</a>
+      <a class="nav-link" href="#faq">FAQ</a>
+      <a class="nav-link" href="#loan-offers">Loan Offers</a>
+    </nav>
+    <div class="topbar-right">
+      <button class="share-btn" onclick="openShare()">🔗 Share Tool</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🇮🇳 Built for Indian Borrowers · 100% Free</div>
+    <h1>Stop Overpaying Your Bank.<br><em>Save Lakhs</em> with Smart Prepayments.</h1>
+    <p>India's most detailed home loan calculator. Enter your loan details and instantly see how much you can save with every prepayment decision.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hs-val">₹2.4Cr+</div><div class="hs-lbl">Interest Saved</div></div>
+      <div class="hero-stat"><div class="hs-val">14,800+</div><div class="hs-lbl">Loans Calculated</div></div>
+      <div class="hero-stat"><div class="hs-val">4.8★</div><div class="hs-lbl">User Rating</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TOP AD BANNER -->
+<div style="max-width:1200px;margin:0 auto;padding:0 20px">
+  <div class="ad-slot ad-728">
+    <span class="ad-slot-label">Advertisement</span>
+    <!-- AdSense: Replace with your actual ad code -->
+    <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script> -->
+    [Ad Slot — 728×90 Leaderboard]
+  </div>
+</div>
+
+<!-- AFFILIATE STRIP -->
+<div class="affiliate-strip" id="loan-offers">
+  <div class="affiliate-strip-inner">
+    <span class="affiliate-strip-label">Best Rates Now →</span>
+    <!-- TODO: Replace href="#" with your actual affiliate links -->
+    <a class="aff-card" href="#" onclick="trackAffClick('SBI')" target="_blank" rel="noopener">
+      <div class="aff-logo" style="background:#1a4f8a">SBI</div>
+      <div class="aff-info"><div class="aff-name">SBI Home Loan</div><div class="aff-rate">From 8.50% p.a.</div></div>
+      <span class="aff-cta">Apply →</span>
+    </a>
+    <a class="aff-card" href="#" onclick="trackAffClick('HDFC')" target="_blank" rel="noopener">
+      <div class="aff-logo" style="background:#c41e3a">HDFC</div>
+      <div class="aff-info"><div class="aff-name">HDFC Home Loan</div><div class="aff-rate">From 8.70% p.a.</div></div>
+      <span class="aff-cta">Apply →</span>
+    </a>
+    <a class="aff-card" href="#" onclick="trackAffClick('ICICI')" target="_blank" rel="noopener">
+      <div class="aff-logo" style="background:#f37b2c">ICICI</div>
+      <div class="aff-info"><div class="aff-name">ICICI Home Loan</div><div class="aff-rate">From 8.75% p.a.</div></div>
+      <span class="aff-cta">Apply →</span>
+    </a>
+    <a class="aff-card" href="#" onclick="trackAffClick('Axis')" target="_blank" rel="noopener">
+      <div class="aff-logo" style="background:#97144D">Axis</div>
+      <div class="aff-info"><div class="aff-name">Axis Bank Loan</div><div class="aff-rate">From 8.75% p.a.</div></div>
+      <span class="aff-cta">Apply →</span>
+    </a>
+    <a class="aff-card" href="#" onclick="trackAffClick('PNB')" target="_blank" rel="noopener">
+      <div class="aff-logo" style="background:#1a6b4a">PNB</div>
+      <div class="aff-info"><div class="aff-name">PNB Housing</div><div class="aff-rate">From 8.50% p.a.</div></div>
+      <span class="aff-cta">Apply →</span>
+    </a>
+    <a class="aff-card" href="#" onclick="trackAffClick('BankBazaar')" target="_blank" rel="noopener">
+      <div class="aff-logo" style="background:#ff6b35">BB</div>
+      <div class="aff-info"><div class="aff-name">BankBazaar</div><div class="aff-rate">Compare all banks</div></div>
+      <span class="aff-cta">Compare →</span>
+    </a>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-wrap">
+  <div class="main-grid">
+
+    <!-- CALCULATOR -->
+    <div>
+      <!-- Savings hero -->
+      <div class="savings-hero" id="savings-hero">
+        <div>
+          <div class="sh-lbl">Total Interest Saved</div>
+          <div class="sh-val" id="sh-val">—</div>
+          <div class="sh-sub" id="sh-sub">—</div>
+        </div>
+        <div style="text-align:right">
+          <div class="sh-pill" id="sh-pill">—</div>
+          <div class="sh-note" id="sh-note">—</div>
+        </div>
+      </div>
+
+      <div class="calc-card">
+        <div class="calc-tabs">
+          <button class="calc-tab active" onclick="switchTab('emi',this)">EMI Calculator</button>
+          <button class="calc-tab" onclick="switchTab('prepayment',this)">Prepayment Simulator</button>
+          <button class="calc-tab" onclick="switchTab('compare',this)" id="tab-compare-btn">Compare</button>
+          <button class="calc-tab" onclick="switchTab('schedule',this)">Schedule</button>
+        </div>
+
+        <!-- EMI TAB -->
+        <div class="calc-body" id="ctab-emi">
+          <div class="loan-pills">
+            <button class="loan-pill active" onclick="setLoanType('home',this)">🏠 Home Loan</button>
+            <button class="loan-pill" onclick="setLoanType('car',this)">🚗 Car Loan</button>
+            <button class="loan-pill" onclick="setLoanType('personal',this)">💼 Personal Loan</button>
+          </div>
+
+          <div class="field">
+            <div class="field-header"><span class="field-label">Loan Amount</span><span class="field-val" id="fv-amount">₹50,00,000</span></div>
+            <input type="range" id="sl-amount" min="100000" max="100000000" step="100000" value="5000000" oninput="syncR('amount','sl-amount',true);compute()">
+            <input type="number" id="amount" value="5000000" oninput="syncS('amount','sl-amount',true);compute()" style="margin-top:8px">
+            <div style="display:flex;justify-content:space-between;margin-top:3px"><span style="font-size:9px;color:var(--dim)">₹1L</span><span style="font-size:9px;color:var(--dim)">₹10Cr</span></div>
+          </div>
+          <div class="field">
+            <div class="field-header"><span class="field-label">Interest Rate (% p.a.)</span><span class="field-val" id="fv-rate">8.50%</span></div>
+            <input type="range" id="sl-rate" min="5" max="20" step="0.05" value="8.5" oninput="syncR('rate','sl-rate',false);compute()">
+            <input type="number" id="rate" value="8.5" step="0.05" oninput="syncS('rate','sl-rate',false);compute()" style="margin-top:8px">
+            <div style="display:flex;justify-content:space-between;margin-top:3px"><span style="font-size:9px;color:var(--dim)">5%</span><span style="font-size:9px;color:var(--dim)">20%</span></div>
+          </div>
+          <div class="field">
+            <div class="field-header"><span class="field-label">Loan Tenure</span><span class="field-val" id="fv-tenure">20 Years</span></div>
+            <input type="range" id="sl-tenure" min="1" max="30" step="1" value="20" oninput="syncR('tenure','sl-tenure',false);compute()">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px">
+              <input type="number" id="tenure" value="20" oninput="syncS('tenure','sl-tenure',false);compute()">
+              <select id="tenure-unit" onchange="compute()"><option value="years">Years</option><option value="months">Months</option></select>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div class="field"><div class="field-label" style="margin-bottom:6px">Processing Fee (₹)</div><input type="number" id="proc-fee" value="0" oninput="compute()"></div>
+            <div class="field"><div class="field-label" style="margin-bottom:6px">Insurance (₹)</div><input type="number" id="insurance" value="0" oninput="compute()"></div>
+          </div>
+
+          <div class="metrics-row">
+            <div class="mcard" style="--mc:var(--blue)"><div class="mc-lbl">Monthly EMI</div><div class="mc-val" id="m-emi" style="color:var(--blue)">—</div><div class="mc-sub">per month</div></div>
+            <div class="mcard" style="--mc:var(--red)"><div class="mc-lbl">Total Interest</div><div class="mc-val" id="m-int" style="color:var(--red)">—</div><div class="mc-sub" id="m-int-pct">—</div></div>
+            <div class="mcard" style="--mc:var(--green)"><div class="mc-lbl">Total Payable</div><div class="mc-val" id="m-total" style="color:var(--green)">—</div><div class="mc-sub">principal + interest + fees</div></div>
+          </div>
+          <div class="results-grid">
+            <div class="result-box"><div class="rb-lbl">Loan Payoff Date</div><div class="rb-val" id="rb-payoff" style="color:var(--green)">—</div><div class="rb-sub" id="rb-months">—</div></div>
+            <div class="result-box"><div class="rb-lbl">Interest : Principal</div><div class="rb-val" id="rb-ratio" style="color:var(--amber)">—</div><div class="rb-sub">interest as % of loan</div></div>
+          </div>
+
+          <div style="position:relative;height:180px;margin:10px 0"><canvas id="donut-c" class="pure"></canvas></div>
+          <div class="leg-row" style="justify-content:center">
+            <div class="leg"><div class="leg-dot" style="background:var(--green)"></div>Principal</div>
+            <div class="leg"><div class="leg-dot" style="background:var(--red)"></div>Total Interest</div>
+            <div class="leg"><div class="leg-dot" style="background:var(--amber)"></div>Fees</div>
+          </div>
+        </div>
+
+        <!-- PREPAYMENT TAB -->
+        <div class="calc-body" id="ctab-prepayment" style="display:none">
+          <div class="pp-section" style="border-top:none;padding-top:0;margin-top:0">
+            <div class="pp-type-row">
+              <button class="pp-type-btn on" onclick="setPPType('onetime',this)">One-time</button>
+              <button class="pp-type-btn" onclick="setPPType('yearly',this)">Yearly</button>
+              <button class="pp-type-btn" onclick="setPPType('monthly',this)">Monthly Extra</button>
+            </div>
+            <div class="amt-input-wrap">
+              <div class="ai-lbl">Prepayment Amount</div>
+              <div class="ai-row"><span class="ai-pfx">₹</span><input class="ai-inp" type="number" id="pp-amt" placeholder="0" oninput="onPPChange()"></div>
+              <div class="ai-hint" id="pp-hint">Type any amount to preview your savings instantly</div>
+            </div>
+            <div class="quick-btns">
+              <button class="qb" onclick="setQ(50000,this)">50K</button>
+              <button class="qb" onclick="setQ(100000,this)">1L</button>
+              <button class="qb" onclick="setQ(200000,this)">2L</button>
+              <button class="qb" onclick="setQ(300000,this)">3L</button>
+              <button class="qb" onclick="setQ(500000,this)">5L</button>
+              <button class="qb" onclick="setQ(1000000,this)">10L</button>
+              <button class="qb" onclick="setQ(2000000,this)">20L</button>
+            </div>
+            <div class="pp-row-grid">
+              <div><div class="field-label" style="margin-bottom:5px">From EMI #</div><input type="number" id="pp-from" value="1" min="1" oninput="onPPChange()"></div>
+              <div><div class="field-label" style="margin-bottom:5px">Effect</div><select id="pp-strat" onchange="onPPChange()"><option value="reduce_tenure">Reduce Tenure</option><option value="reduce_emi">Reduce EMI</option></select></div>
+            </div>
+            <div class="impact-preview" id="impact-preview">
+              <div class="ip-head">⚡ Live Impact Preview</div>
+              <div class="ip-grid">
+                <div><div class="ip-lbl">Interest Saved</div><div class="ip-val" id="ip-saved" style="color:var(--green)">—</div></div>
+                <div><div class="ip-lbl">Months Saved</div><div class="ip-val" id="ip-mo" style="color:var(--amber)">—</div></div>
+                <div><div class="ip-lbl">New Payoff Date</div><div class="ip-val" id="ip-payoff" style="color:var(--blue);font-size:11px">—</div></div>
+                <div><div class="ip-lbl">Return per ₹1</div><div class="ip-val" id="ip-roi" style="color:var(--green)">—</div></div>
+              </div>
+            </div>
+            <button class="add-pp-btn" id="add-pp-btn" onclick="addPP()" disabled>＋ Add This Prepayment</button>
+            <div id="pp-list-section" style="display:none">
+              <div style="font-size:9px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Your Prepayments</div>
+              <div id="pp-list"></div>
+              <button onclick="clearPP()" style="width:100%;margin-top:4px;padding:7px;background:transparent;border:1px solid rgba(184,50,50,0.2);border-radius:var(--rsm);color:var(--red);font-size:11px;font-weight:600;cursor:pointer;font-family:var(--font)">✕ Clear all</button>
+            </div>
+          </div>
+          <div style="margin-top:14px">
+            <div class="chart-title">Balance: With vs Without Prepayments</div>
+            <div style="position:relative;height:200px;margin:8px 0"><canvas id="bal-c" class="pure"></canvas></div>
+            <div class="leg-row">
+              <div class="leg"><span style="width:14px;height:0;border-top:2px dashed var(--red);display:inline-block"></span>No prepayments</div>
+              <div class="leg"><div class="leg-dot" style="background:var(--green)"></div>With prepayments</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- COMPARE TAB -->
+        <div class="calc-body" id="ctab-compare" style="display:none">
+          <div class="cmp-grid">
+            <div class="cmp-box cmp-bad">
+              <div class="cmp-title" style="color:var(--red)">Without Prepayments</div>
+              <div class="cmp-line"><span class="cmp-lbl">Loan Amount</span><span class="cmp-val" id="c-prin">—</span></div>
+              <div class="cmp-line"><span class="cmp-lbl">Total Interest</span><span class="cmp-val" id="c-oi" style="color:var(--red)">—</span></div>
+              <div class="cmp-line"><span class="cmp-lbl">Total Payable</span><span class="cmp-val" id="c-ot">—</span></div>
+              <div class="cmp-line"><span class="cmp-lbl">Months</span><span class="cmp-val" id="c-om">—</span></div>
+              <div class="cmp-line"><span class="cmp-lbl">Payoff</span><span class="cmp-val" id="c-od">—</span></div>
+            </div>
+            <div class="cmp-box cmp-good">
+              <div class="cmp-title" style="color:var(--green)">With Prepayments</div>
+              <div class="cmp-line"><span class="cmp-lbl">Loan Amount</span><span class="cmp-val" id="c-prin2">—</span></div>
+              <div class="cmp-line"><span class="cmp-lbl">Total Interest</span><span class="cmp-val" id="c-ni" style="color:var(--green)">—</span></div>
+              <div class="cmp-line"><span class="cmp-lbl">Total Payable</span><span class="cmp-val" id="c-nt">—</span></div>
+              <div class="cmp-line"><span class="cmp-lbl">Months</span><span class="cmp-val" id="c-nm">—</span></div>
+              <div class="cmp-line"><span class="cmp-lbl">Payoff</span><span class="cmp-val" id="c-nd">—</span></div>
+            </div>
+          </div>
+          <div style="background:var(--gl);border:1px solid rgba(10,110,80,0.2);border-radius:var(--r);padding:14px;margin-bottom:14px">
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;text-align:center">
+              <div><div style="font-size:9px;color:var(--muted);font-weight:700;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:4px">Interest Saved</div><div style="font-size:20px;font-weight:800;font-family:var(--mono);color:var(--green)" id="c-saved">—</div></div>
+              <div><div style="font-size:9px;color:var(--muted);font-weight:700;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:4px">Time Saved</div><div style="font-size:20px;font-weight:800;font-family:var(--mono);color:var(--amber)" id="c-time">—</div></div>
+              <div><div style="font-size:9px;color:var(--muted);font-weight:700;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:4px">ROI on Prepayment</div><div style="font-size:20px;font-weight:800;font-family:var(--mono);color:var(--blue)" id="c-roi">—</div></div>
+            </div>
+          </div>
+          <div style="position:relative;height:200px"><canvas id="cmp-c" class="pure"></canvas></div>
+        </div>
+
+        <!-- SCHEDULE TAB -->
+        <div id="ctab-schedule" style="display:none">
+          <div class="tbl-toolbar">
+            <input type="number" id="jump-inp" placeholder="Jump to EMI #" style="width:150px" oninput="jumpTo(this.value)">
+            <select id="tbl-flt" onchange="renderSched()"><option value="all">All rows</option><option value="pp">Prepayment rows</option><option value="yr">Year-end rows</option></select>
+            <button class="btn btn-ghost" style="padding:7px 12px;font-size:11px" onclick="exportCSV()">⬇ CSV</button>
+            <span style="font-size:10px;color:var(--muted)" id="tbl-cnt"></span>
+          </div>
+          <div class="tbl-wrap" style="max-height:400px">
+            <table><thead><tr><th>#</th><th>Date</th><th>EMI</th><th>Principal</th><th>Interest</th><th>Prepayment</th><th>Balance</th><th></th></tr></thead>
+            <tbody id="sched-body"></tbody></table>
+          </div>
+        </div>
+      </div>
+
+      <!-- IN-CONTENT AD -->
+      <div class="ad-slot ad-responsive">
+        <span class="ad-slot-label">Advertisement</span>
+        <!-- <ins class="adsbygoogle" ...></ins> -->
+        [Ad Slot — Responsive In-Content]
+      </div>
+
+      <!-- BOTTOM AFFILIATE BANNER -->
+      <div class="bottom-affiliate" id="compare">
+        <div class="ba-badge">SPONSORED OFFERS</div>
+        <div class="ba-title">Get a Better Interest Rate</div>
+        <div class="ba-sub">Even 0.25% lower rate can save you ₹2–5 lakhs on a ₹50L loan. Compare top lenders now.</div>
+        <div class="ba-btns">
+          <button class="ba-btn" onclick="trackAffClick('BankBazaar-cta')">Compare on BankBazaar →</button>
+          <button class="ba-btn outline" onclick="trackAffClick('PaisaBazaar-cta')">Check PaisaBazaar Rates</button>
+        </div>
+        <div class="ba-disclaimer">*Rates shown are indicative. Final rates depend on credit score, income and bank policies. LoanIQ earns a referral fee from partner banks at no extra cost to you.</div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="faq-section" id="faq">
+        <h2 class="faq-title">Frequently Asked Questions</h2>
+        <div id="faq-list"></div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <!-- Sidebar Ad -->
+      <div class="ad-slot ad-300">
+        <span class="ad-slot-label">Advertisement</span>
+        <!-- <ins class="adsbygoogle" data-ad-slot="XXXXXXXXXX" data-ad-format="rectangle" ...></ins> -->
+        [Ad Slot — 300×250 Rectangle]
+      </div>
+
+      <!-- Affiliate cards -->
+      <div class="sidebar-card">
+        <div class="sc-head">
+          <div class="sc-title">🏦 Compare Home Loan Rates</div>
+          <div class="sc-sub">Updated May 2025 · Sponsored</div>
+        </div>
+        <div class="sc-body">
+          <!-- TODO: Replace href="#" with your actual affiliate links from BankBazaar/PaisaBazaar partner program -->
+          <a class="aff-sidebar-card" href="#" onclick="trackAffClick('SBI-sidebar')" target="_blank" rel="noopener">
+            <div class="asc-header"><div class="asc-logo" style="background:#1a4f8a">SBI</div><div><div class="asc-name">State Bank of India</div><div class="asc-tag">Govt. of India Bank · Most Trusted</div></div></div>
+            <div class="asc-rate">8.50%<span style="font-size:12px;font-weight:500;color:var(--muted)"> p.a.</span></div>
+            <div class="asc-rate-lbl">Interest Rate (Home Loan)</div>
+            <div class="asc-features"><div class="asc-feat">Up to ₹5 Crore loan amount</div><div class="asc-feat">Max 30 year tenure</div><div class="asc-feat">No prepayment penalty</div></div>
+            <button class="asc-cta">Apply on SBI →</button>
+            <div class="asc-disclaimer">*Affiliate link · We may earn a commission</div>
+          </a>
+          <a class="aff-sidebar-card" href="#" onclick="trackAffClick('HDFC-sidebar')" target="_blank" rel="noopener">
+            <div class="asc-header"><div class="asc-logo" style="background:#c41e3a">HD</div><div><div class="asc-name">HDFC Bank</div><div class="asc-tag">India's Largest Private Bank</div></div></div>
+            <div class="asc-rate">8.70%<span style="font-size:12px;font-weight:500;color:var(--muted)"> p.a.</span></div>
+            <div class="asc-rate-lbl">Interest Rate (Home Loan)</div>
+            <div class="asc-features"><div class="asc-feat">Instant online approval</div><div class="asc-feat">Balance transfer facility</div><div class="asc-feat">Top-up loan available</div></div>
+            <button class="asc-cta">Apply on HDFC →</button>
+            <div class="asc-disclaimer">*Affiliate link · We may earn a commission</div>
+          </a>
+          <a class="aff-sidebar-card" href="#" onclick="trackAffClick('BankBazaar-sidebar')" target="_blank" rel="noopener">
+            <div class="asc-header"><div class="asc-logo" style="background:#ff6b35">BB</div><div><div class="asc-name">BankBazaar</div><div class="asc-tag">Compare 30+ Lenders</div></div></div>
+            <div class="asc-rate" style="font-size:16px;margin-bottom:2px">Find Your Best Rate</div>
+            <div class="asc-rate-lbl">Free credit score check included</div>
+            <div class="asc-features"><div class="asc-feat">Compare 30+ banks instantly</div><div class="asc-feat">100% paperless process</div><div class="asc-feat">Free EMI calculator</div></div>
+            <button class="asc-cta" style="background:#ff6b35">Compare Now →</button>
+            <div class="asc-disclaimer">*Affiliate link · We may earn a commission</div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Second sidebar ad -->
+      <div class="ad-slot ad-300" style="height:200px">
+        <span class="ad-slot-label">Advertisement</span>
+        [Ad Slot — 300×200]
+      </div>
+
+      <!-- Tips card -->
+      <div class="sidebar-card">
+        <div class="sc-head"><div class="sc-title">💡 Prepayment Tips</div></div>
+        <div class="sc-body" style="font-size:12px;color:var(--muted);line-height:1.7;display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;gap:8px"><span style="color:var(--green);font-weight:700;flex-shrink:0">01.</span><span>Early prepayments save more — the first 5 years have the highest interest component.</span></div>
+          <div style="display:flex;gap:8px"><span style="color:var(--green);font-weight:700;flex-shrink:0">02.</span><span>Even ₹50,000 per year can reduce your tenure by 3–5 years on a ₹50L loan.</span></div>
+          <div style="display:flex;gap:8px"><span style="color:var(--green);font-weight:700;flex-shrink:0">03.</span><span>Choose "reduce tenure" over "reduce EMI" — you save significantly more interest.</span></div>
+          <div style="display:flex;gap:8px"><span style="color:var(--green);font-weight:700;flex-shrink:0">04.</span><span>No tax benefit on principal repayment beyond Section 80C's ₹1.5L limit.</span></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="disclaimer-box">
+      <strong style="color:#fff">Disclaimer:</strong> LoanIQ is an independent financial calculator tool. The calculations shown are for illustrative purposes only and may differ from actual bank calculations. Interest rates shown for partner banks are indicative and subject to change. Always verify with your bank before making financial decisions. LoanIQ may earn affiliate commissions from partner banks at no additional cost to you.
+    </div>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="fb-name">📊 LoanIQ</div>
+        <p>India's smartest free loan calculator. Built to help millions of Indian borrowers make informed decisions about their home loans, car loans, and EMIs.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Calculators</h4>
+        <a href="#">Home Loan EMI</a>
+        <a href="#">Car Loan EMI</a>
+        <a href="#">Personal Loan</a>
+        <a href="#">Prepayment Calc</a>
+        <a href="#">Balance Transfer</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="#">How EMI works</a>
+        <a href="#">Prepayment Guide</a>
+        <a href="#">Loan vs Invest</a>
+        <a href="#">Tax Benefits</a>
+        <a href="#">CIBIL Score</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#">About Us</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Advertise</a>
+        <a href="mailto:hello@loaniq.in">Contact</a> <!-- TODO -->
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 LoanIQ. All rights reserved. <!-- TODO: update year dynamically --></p>
+      <div class="footer-links">
+        <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Disclaimer</a><a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- SHARE MODAL -->
+<div class="share-overlay" id="share-overlay">
+  <div class="share-modal">
+    <h3>Share LoanIQ</h3>
+    <p>Share this free calculator with friends and family planning home loans</p>
+    <div class="share-url-box">
+      <input type="text" id="share-url" value="https://loaniq.in" readonly> <!-- TODO: update -->
+      <button onclick="copyURL()">Copy Link</button>
+    </div>
+    <div class="share-btns">
+      <button class="share-social-btn" onclick="shareWA()">💬 WhatsApp</button>
+      <button class="share-social-btn" onclick="shareTwitter()">🐦 Twitter/X</button>
+      <button class="share-social-btn" onclick="shareLinkedIn()">💼 LinkedIn</button>
+      <button class="share-social-btn" onclick="closeShare()">✕ Close</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════
+let prepayments=[];
+let ppType='onetime';
+let origCache=null;
+let fullSched=[];
+const BASE=new Date(2025,5,1);
+
+// ═══════════════════════════════════════════════
+// FORMAT HELPERS
+// ═══════════════════════════════════════════════
+const f=n=>{if(n==null||isNaN(n))return'—';if(n>=10000000)return'₹'+(n/10000000).toFixed(2)+'Cr';if(n>=100000)return'₹'+(n/100000).toFixed(2)+'L';return'₹'+Math.round(n).toLocaleString('en-IN')};
+const fs=n=>{if(n==null||isNaN(n))return'—';if(n>=10000000)return'₹'+(n/10000000).toFixed(2)+'Cr';if(n>=100000)return'₹'+(n/100000).toFixed(1)+'L';return'₹'+Math.round(n).toLocaleString('en-IN')};
+const fd=mo=>{const d=new Date(BASE.getFullYear(),BASE.getMonth()+mo);return d.toLocaleString('en-IN',{month:'short',year:'numeric'})};
+const fmo=mo=>{const y=Math.floor(mo/12),m=mo%12;return(y>0?y+'y ':'')+m+'m'};
+
+// ═══════════════════════════════════════════════
+// SLIDER SYNC
+// ═══════════════════════════════════════════════
+function syncR(inputId,sliderId,isAmt){
+  const v=parseFloat(document.getElementById(inputId).value);
+  if(!isNaN(v))document.getElementById(sliderId).value=v;
+  updateLabel(inputId,v,isAmt);
+  updateSliderFill(sliderId);
+}
+function syncS(inputId,sliderId,isAmt){
+  const v=parseFloat(document.getElementById(inputId).value);
+  if(!isNaN(v))document.getElementById(sliderId).value=v;
+  updateLabel(inputId,v,isAmt);
+  updateSliderFill(sliderId);
+}
+function updateLabel(id,v,isAmt){
+  const lbl=document.getElementById('fv-'+id);if(!lbl)return;
+  if(isAmt)lbl.textContent=f(v);
+  else if(id==='rate')lbl.textContent=parseFloat(v).toFixed(2)+'%';
+  else if(id==='tenure')lbl.textContent=v+' '+(document.getElementById('tenure-unit').value==='months'?'Months':'Years');
+}
+function updateSliderFill(id){
+  const sl=document.getElementById(id);if(!sl)return;
+  const pct=(sl.value-sl.min)/(sl.max-sl.min)*100;
+  sl.style.setProperty('--pct',pct+'%');
+}
+function initSliders(){['sl-amount','sl-rate','sl-tenure'].forEach(id=>updateSliderFill(id));}
+
+// ═══════════════════════════════════════════════
+// LOAN TYPE PRESETS
+// ═══════════════════════════════════════════════
+const presets={
+  home:{amount:5000000,rate:8.5,tenure:20,proc:10000},
+  car:{amount:800000,rate:8.8,tenure:5,proc:5000},
+  personal:{amount:500000,rate:12.5,tenure:5,proc:2000}
+};
+function setLoanType(type,btn){
+  document.querySelectorAll('.loan-pill').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const p=presets[type];
+  document.getElementById('amount').value=p.amount;
+  document.getElementById('rate').value=p.rate;
+  document.getElementById('tenure').value=p.tenure;
+  document.getElementById('tenure-unit').value='years';
+  document.getElementById('proc-fee').value=p.proc;
+  syncR('amount','sl-amount',true);syncR('rate','sl-rate',false);syncR('tenure','sl-tenure',false);
+  origCache=null;prepayments=[];renderPPList();compute();
+}
+
+// ═══════════════════════════════════════════════
+// CORE CALC
+// ═══════════════════════════════════════════════
+function getParams(){
+  const P=parseFloat(document.getElementById('amount').value)||5000000;
+  const R=(parseFloat(document.getElementById('rate').value)||8.5)/100/12;
+  const tenureRaw=parseFloat(document.getElementById('tenure').value)||20;
+  const unit=document.getElementById('tenure-unit').value;
+  const N=unit==='months'?tenureRaw:tenureRaw*12;
+  const fee=parseFloat(document.getElementById('proc-fee').value)||0;
+  const ins=parseFloat(document.getElementById('insurance').value)||0;
+  return{P,R,N,fee,ins};
+}
+function calcEMI(P,R,N){return R===0?P/N:P*R*Math.pow(1+R,N)/(Math.pow(1+R,N)-1);}
+function calcSched(P,emi,R,N,ppList,strat){
+  let bal=P,rows=[],tInt=0,tPP=0,curEMI=emi;
+  for(let i=1;i<=N+200&&bal>0.5;i++){
+    const interest=bal*R;
+    let prin=curEMI-interest;
+    if(prin<0)prin=0;if(prin>bal)prin=bal;
+    let pp=0;
+    for(const x of ppList){
+      if(x.type==='onetime'&&x.month===i)pp+=x.amount;
+      else if(x.type==='yearly'&&i>=x.month&&(i-x.month)%12===0)pp+=x.amount;
+      else if(x.type==='monthly'&&i>=x.month)pp+=x.amount;
+    }
+    bal=bal-prin-pp;if(bal<0){pp+=bal;bal=0;}
+    tInt+=interest;tPP+=pp;
+    rows.push({month:i,emi:curEMI,principal:prin,interest,prepay:pp,balance:bal});
+    if(bal<=0.5)break;
+    if(strat==='reduce_emi'&&pp>0&&bal>0){const rem=N-i;if(rem>0)curEMI=R===0?bal/rem:bal*R*Math.pow(1+R,rem)/(Math.pow(1+R,rem)-1);}
+  }
+  return{rows,tInt,tPP};
+}
+function getOrig(){
+  const{P,R,N}=getParams();
+  const emi=calcEMI(P,R,N);
+  if(!origCache||origCache.P!==P||origCache.R!==R||origCache.N!==N){origCache={P,R,N,...calcSched(P,emi,R,N,[],  'reduce_tenure')};}
+  return origCache;
+}
+
+// ═══════════════════════════════════════════════
+// COMPUTE & UPDATE UI
+// ═══════════════════════════════════════════════
+function compute(){
+  const{P,R,N,fee,ins}=getParams();
+  const emi=calcEMI(P,R,N);
+  origCache=null;
+  const orig=getOrig();
+  const strat=document.getElementById('pp-strat').value;
+  const prep=calcSched(P,emi,R,N,prepayments,strat);
+  fullSched=prep.rows;
+  const saved=orig.tInt-prep.tInt;
+  const moSaved=orig.rows.length-prep.rows.length;
+
+  // EMI tab
+  document.getElementById('m-emi').textContent=f(emi);
+  document.getElementById('m-int').textContent=f(prep.tInt);
+  document.getElementById('m-int-pct').textContent=Math.round(prep.tInt/P*100)+'% of principal';
+  document.getElementById('m-total').textContent=f(P+prep.tInt+fee+ins);
+  document.getElementById('rb-payoff').textContent=fd(prep.rows.length);
+  document.getElementById('rb-months').textContent=prep.rows.length+' monthly payments';
+  document.getElementById('rb-ratio').textContent=Math.round(prep.tInt/P*100)+'%';
+  drawDonut(P,prep.tInt,fee+ins);
+
+  // Savings hero
+  const hero=document.getElementById('savings-hero');
+  if(saved>500){
+    hero.style.display='flex';
+    document.getElementById('sh-val').textContent=f(saved);
+    document.getElementById('sh-sub').textContent='Interest reduces from '+f(orig.tInt)+' to '+f(prep.tInt);
+    document.getElementById('sh-pill').textContent=moSaved>0?moSaved+' months saved':'Active';
+    document.getElementById('sh-note').textContent='New payoff: '+fd(prep.rows.length);
+  }else hero.style.display='none';
+
+  // Compare tab
+  document.getElementById('c-prin').textContent=f(P);
+  document.getElementById('c-oi').textContent=f(orig.tInt);
+  document.getElementById('c-ot').textContent=f(P+orig.tInt+fee+ins);
+  document.getElementById('c-om').textContent=orig.rows.length+' months';
+  document.getElementById('c-od').textContent=fd(orig.rows.length);
+  document.getElementById('c-prin2').textContent=f(P);
+  document.getElementById('c-ni').textContent=f(prep.tInt);
+  document.getElementById('c-nt').textContent=f(P+prep.tInt+prep.tPP+fee+ins);
+  document.getElementById('c-nm').textContent=prep.rows.length+' months';
+  document.getElementById('c-nd').textContent=fd(prep.rows.length);
+  document.getElementById('c-saved').textContent=f(saved);
+  const y=Math.floor(moSaved/12),m=moSaved%12;
+  document.getElementById('c-time').textContent=moSaved>0?fmo(moSaved):'—';
+  document.getElementById('c-roi').textContent=prep.tPP>0?((saved/prep.tPP)*100).toFixed(1)+'%':'—';
+
+  requestAnimationFrame(()=>{
+    drawBalChart(prep.rows,orig.rows);
+    drawCmpChart(P,orig.tInt,prep.tInt);
+  });
+  renderSched();
+}
+
+// ═══════════════════════════════════════════════
+// PREPAYMENT
+// ═══════════════════════════════════════════════
+function setPPType(t,btn){ppType=t;document.querySelectorAll('.pp-type-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');onPPChange();}
+function setQ(v,btn){document.getElementById('pp-amt').value=v;document.querySelectorAll('.qb').forEach(b=>b.classList.remove('on'));btn.classList.add('on');onPPChange();}
+function onPPChange(){
+  const amt=parseFloat(document.getElementById('pp-amt').value)||0;
+  const mo=parseInt(document.getElementById('pp-from').value)||1;
+  const strat=document.getElementById('pp-strat').value;
+  const btn=document.getElementById('add-pp-btn');
+  if(amt<=0){document.getElementById('impact-preview').style.display='none';btn.disabled=true;return;}
+  btn.disabled=false;
+  const{P,R,N}=getParams();const emi=calcEMI(P,R,N);
+  const prev=calcSched(P,emi,R,N,[...prepayments,{type:ppType,amount:amt,month:mo,id:-1}],strat);
+  const orig=getOrig();
+  const saved=orig.tInt-prev.tInt;const moSaved=orig.rows.length-prev.rows.length;
+  document.getElementById('ip-saved').textContent=f(saved);
+  document.getElementById('ip-mo').textContent=moSaved>0?fmo(moSaved):'—';
+  document.getElementById('ip-payoff').textContent=fd(prev.rows.length);
+  document.getElementById('ip-roi').textContent=amt>0?'₹'+(saved/amt).toFixed(2):'—';
+  document.getElementById('impact-preview').style.display='';
+  const ts=ppType==='onetime'?'one-time':ppType==='yearly'?'every year':'every month';
+  document.getElementById('pp-hint').textContent=`${fs(amt)} ${ts} from EMI #${mo} → saves ${f(saved)}`;
+}
+function addPP(){
+  const amt=parseFloat(document.getElementById('pp-amt').value)||0;if(amt<=0)return;
+  const mo=parseInt(document.getElementById('pp-from').value)||1;
+  prepayments.push({type:ppType,amount:amt,month:mo,id:Date.now()});
+  document.getElementById('pp-amt').value='';
+  document.querySelectorAll('.qb').forEach(b=>b.classList.remove('on'));
+  document.getElementById('impact-preview').style.display='none';
+  document.getElementById('add-pp-btn').disabled=true;
+  document.getElementById('pp-hint').textContent='Type any amount to preview your savings instantly';
+  renderPPList();compute();
+}
+function removePP(id){prepayments=prepayments.filter(x=>x.id!==id);renderPPList();compute();}
+function clearPP(){prepayments=[];renderPPList();compute();}
+function renderPPList(){
+  const sec=document.getElementById('pp-list-section');
+  if(!prepayments.length){sec.style.display='none';return;}
+  sec.style.display='';
+  const strat=document.getElementById('pp-strat').value;
+  const{P,R,N}=getParams();const emi=calcEMI(P,R,N);
+  const withAll=calcSched(P,emi,R,N,prepayments,strat);
+  document.getElementById('pp-list').innerHTML=prepayments.map(pp=>{
+    const wo=calcSched(P,emi,R,N,prepayments.filter(x=>x.id!==pp.id),strat);
+    const sv=wo.tInt-withAll.tInt;
+    const tl={onetime:'One-time',yearly:'Yearly',monthly:'Monthly'}[pp.type];
+    return`<div class="pp-list-item"><div><div class="pli-amt">${f(pp.amount)}</div><div class="pli-meta">${tl} · EMI #${pp.month}</div></div>
+    <div style="display:flex;align-items:center;gap:6px">${sv>0?`<span class="pli-save">${f(sv)}</span>`:''}<button class="pli-del" onclick="removePP(${pp.id})">✕</button></div></div>`;
+  }).join('');
+}
+
+// ═══════════════════════════════════════════════
+// SCHEDULE TABLE
+// ═══════════════════════════════════════════════
+function renderSched(){
+  const flt=document.getElementById('tbl-flt').value;
+  let rows=fullSched;
+  if(flt==='pp')rows=rows.filter(r=>r.prepay>0);
+  else if(flt==='yr')rows=rows.filter(r=>r.month%12===0||r.balance<=0.5);
+  document.getElementById('tbl-cnt').textContent=rows.length+' rows';
+  let h='';
+  for(const r of rows){
+    const d=new Date(BASE.getFullYear(),BASE.getMonth()+r.month);
+    const ds=d.toLocaleString('en-IN',{month:'short',year:'2-digit'});
+    const pp=r.prepay>0;
+    h+=`<tr class="${pp?'ppr':''}" id="sr-${r.month}">
+      <td style="color:var(--muted)">${r.month}</td><td>${ds}</td>
+      <td style="font-weight:600">${f(r.emi)}</td>
+      <td style="color:var(--green)">${f(r.principal)}</td>
+      <td style="color:var(--red)">${f(r.interest)}</td>
+      <td>${pp?`<span class="badge bg">${f(r.prepay)}</span>`:'-'}</td>
+      <td style="font-weight:600">${f(r.balance)}</td>
+      <td>${pp?'<span class="badge bg">✓</span>':r.balance<=0.5?'<span class="badge br">Closed</span>':''}</td>
+    </tr>`;
+  }
+  document.getElementById('sched-body').innerHTML=h;
+}
+function jumpTo(v){const el=document.getElementById('sr-'+v);if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.style.outline='2px solid var(--green)';setTimeout(()=>el.style.outline='',2000);}}
+
+// ═══════════════════════════════════════════════
+// CANVAS CHARTS
+// ═══════════════════════════════════════════════
+function setupC(id){
+  const c=document.getElementById(id);if(!c)return null;
+  const p=c.parentElement;const w=p.clientWidth||500;const h=p.clientHeight||200;
+  c.width=w*2;c.height=h*2;c.style.width=w+'px';c.style.height=h+'px';
+  const ctx=c.getContext('2d');ctx.scale(2,2);return{ctx,w,h};
+}
+function drawLine(id,datasets,xL){
+  const c=setupC(id);if(!c)return;const{ctx,w,h}=c;
+  const P2={t:8,r:8,b:24,l:42};const PW=w-P2.l-P2.r;const PH=h-P2.t-P2.b;
+  ctx.clearRect(0,0,w,h);
+  const allY=datasets.flatMap(d=>d.data).filter(v=>v!=null);
+  if(!allY.length)return;
+  const maxY=Math.max(...allY)*1.05||1;const nX=datasets[0].data.length;
+  const xp=i=>P2.l+i/(nX-1||1)*PW;const yp=v=>P2.t+PH*(1-v/maxY);
+  ctx.strokeStyle='rgba(0,0,0,0.06)';ctx.lineWidth=1;
+  for(let i=0;i<=4;i++){const y=P2.t+PH*(1-i/4);ctx.beginPath();ctx.moveTo(P2.l,y);ctx.lineTo(P2.l+PW,y);ctx.stroke();const val=maxY*i/4;ctx.fillStyle='#b0ada2';ctx.font='9px DM Mono,monospace';ctx.textAlign='right';ctx.fillText(val>=100000?(val/100000).toFixed(0)+'L':val>=1000?(val/1000).toFixed(0)+'K':Math.round(val),P2.l-4,y+3);}
+  const step=Math.ceil(nX/8);
+  for(let i=0;i<nX;i+=step){if(xL&&xL[i]){ctx.fillStyle='#b0ada2';ctx.font='9px DM Mono,monospace';ctx.textAlign='center';ctx.fillText(xL[i],xp(i),P2.t+PH+18);}}
+  for(const ds of datasets){
+    ctx.save();ctx.strokeStyle=ds.color;ctx.lineWidth=ds.w||2;
+    if(ds.dash)ctx.setLineDash([5,3]);else ctx.setLineDash([]);
+    ctx.lineJoin='round';ctx.beginPath();let st=false;
+    for(let i=0;i<ds.data.length;i++){const v=ds.data[i];if(v==null)continue;const x=xp(i),y=yp(v);st?ctx.lineTo(x,y):ctx.moveTo(x,y);st=true;}
+    ctx.stroke();
+    if(ds.fill){ctx.lineTo(xp(ds.data.length-1),yp(0));ctx.lineTo(xp(0),yp(0));ctx.closePath();ctx.fillStyle=ds.fill;ctx.fill();}
+    ctx.restore();
+  }
+}
+function drawBars2(id,labels,groups,colors){
+  const c=setupC(id);if(!c)return;const{ctx,w,h}=c;
+  const P2={t:8,r:8,b:24,l:46};const PW=w-P2.l-P2.r;const PH=h-P2.t-P2.b;
+  ctx.clearRect(0,0,w,h);
+  const totals=labels.map((_,i)=>groups.reduce((s,g)=>s+(g[i]||0),0));
+  const maxY=Math.max(...totals)*1.1||1;
+  const gap=PW/labels.length;const bw=gap*0.55;
+  ctx.strokeStyle='rgba(0,0,0,0.05)';ctx.lineWidth=1;
+  for(let i=0;i<=4;i++){const y=P2.t+PH*(1-i/4);ctx.beginPath();ctx.moveTo(P2.l,y);ctx.lineTo(P2.l+PW,y);ctx.stroke();const val=maxY*i/4;ctx.fillStyle='#b0ada2';ctx.font='9px DM Mono,monospace';ctx.textAlign='right';ctx.fillText(val>=100000?(val/100000).toFixed(0)+'L':val>=1000?(val/1000).toFixed(0)+'K':Math.round(val),P2.l-4,y+3);}
+  for(let i=0;i<labels.length;i++){
+    const cx=P2.l+gap*i+gap/2;let baseY=P2.t+PH;
+    for(let g=0;g<groups.length;g++){const val=groups[g][i]||0;const bh=val/maxY*PH;const x=cx-bw/2;const y=baseY-bh;ctx.fillStyle=colors[g];ctx.beginPath();const r=5;if(g===groups.length-1){ctx.moveTo(x+r,y);ctx.lineTo(x+bw-r,y);ctx.arcTo(x+bw,y,x+bw,y+r,r);ctx.lineTo(x+bw,y+bh);ctx.lineTo(x,y+bh);ctx.lineTo(x,y+r);ctx.arcTo(x,y,x+r,y,r);}else ctx.rect(x,y,bw,bh);ctx.fill();baseY-=bh;}
+    ctx.fillStyle='#b0ada2';ctx.font='9px DM Mono,monospace';ctx.textAlign='center';
+    ctx.fillText(labels[i].length>16?labels[i].slice(0,16)+'…':labels[i],cx,P2.t+PH+18);
+  }
+}
+function drawDonut(prin,interest,fees){
+  const c=document.getElementById('donut-c');if(!c)return;
+  const ctx=c.getContext('2d');
+  const p=c.parentElement;const sz=Math.min(p.clientWidth,p.clientHeight,200);
+  c.width=sz*2;c.height=sz*2;c.style.width=sz+'px';c.style.height=sz+'px';
+  ctx.scale(2,2);
+  const total=prin+interest+(fees||0);
+  const cx=sz/2,cy=sz/2,r=sz*0.38,sw=sz*0.13,gap=0.04;
+  ctx.clearRect(0,0,sz,sz);
+  const parts=[[prin,'#0a6e50'],[interest,'#b83232'],[fees||0,'#9a6200']];
+  let angle=-Math.PI/2;
+  for(const[v,col]of parts){if(v<=0)continue;const a=v/total*2*Math.PI;ctx.beginPath();ctx.arc(cx,cy,r,angle,angle+a-gap);ctx.strokeStyle=col;ctx.lineWidth=sw;ctx.lineCap='butt';ctx.stroke();angle+=a;}
+  ctx.fillStyle='#1a1916';ctx.font=`bold ${Math.floor(sz*0.07)}px DM Mono,monospace`;ctx.textAlign='center';ctx.textBaseline='middle';
+  ctx.fillText(fs(total),cx,cy-sz*0.04);
+  ctx.font=`${Math.floor(sz*0.055)}px DM Mono,monospace`;ctx.fillStyle='#6b6860';
+  ctx.fillText('total payable',cx,cy+sz*0.06);
+}
+function drawBalChart(prepRows,origRows){
+  const maxL=Math.max(prepRows.length,origRows.length);
+  const step=Math.max(1,Math.floor(maxL/30));
+  const od=[],pd=[],xl=[];
+  for(let i=0;i<maxL;i+=step){od.push(Math.round(origRows[Math.min(i,origRows.length-1)]?.balance||0));pd.push(Math.round(prepRows[Math.min(i,prepRows.length-1)]?.balance||0));xl.push('M'+(i+1));}
+  od.push(0);pd.push(0);xl.push('');
+  drawLine('bal-c',[{data:od,color:'#b83232',dash:true,w:1.5},{data:pd,color:'#0a6e50',w:2.5,fill:'rgba(10,110,80,0.06)'}],xl);
+}
+function drawCmpChart(P,origInt,prepInt){
+  drawBars2('cmp-c',['Without Prepayments','With Prepayments'],[[P,P],[origInt,prepInt]],['rgba(10,110,80,0.6)','rgba(184,50,50,0.5)']);
+}
+
+// ═══════════════════════════════════════════════
+// EXPORT
+// ═══════════════════════════════════════════════
+function exportCSV(){
+  if(!fullSched.length)return;
+  const hdr='Month,Date,EMI,Principal,Interest,Prepayment,Balance\n';
+  const body=fullSched.map(r=>{const d=new Date(BASE.getFullYear(),BASE.getMonth()+r.month);return`${r.month},${d.toLocaleString('en-IN',{month:'short',year:'numeric'})},${Math.round(r.emi)},${Math.round(r.principal)},${Math.round(r.interest)},${Math.round(r.prepay)},${Math.round(r.balance)}`;}).join('\n');
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([hdr+body],{type:'text/csv'}));a.download='loan_schedule.csv';a.click();
+  showToast('Schedule exported!');
+}
+
+// ═══════════════════════════════════════════════
+// TAB SWITCH
+// ═══════════════════════════════════════════════
+function switchTab(name,btn){
+  ['emi','prepayment','compare','schedule'].forEach(t=>{const el=document.getElementById('ctab-'+t);if(el)el.style.display=t===name?'':'none';});
+  document.querySelectorAll('.calc-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  if(name==='compare'||name==='prepayment')requestAnimationFrame(()=>{const orig=getOrig();const{P,R,N}=getParams();const emi=calcEMI(P,R,N);const prep=calcSched(P,emi,R,N,prepayments,document.getElementById('pp-strat').value);drawBalChart(prep.rows,orig.rows);drawCmpChart(P,orig.tInt,prep.tInt);});
+}
+
+// ═══════════════════════════════════════════════
+// FAQ
+// ═══════════════════════════════════════════════
+const faqs=[
+  {q:'How is EMI calculated?',a:'EMI = [P × R × (1+R)^N] / [(1+R)^N − 1], where P is principal, R is monthly interest rate, and N is total months. This is the standard reducing balance formula used by all banks in India.'},
+  {q:'Should I prepay my home loan or invest the money?',a:'If your home loan rate is 8.5%+ and you\'re considering FD/debt funds (typically 6-7%), prepaying saves more. If you can invest in equity with 12%+ long-term returns, investing may be better. Also consider Section 80C limits and your tax bracket.'},
+  {q:'What is the difference between "reduce tenure" and "reduce EMI" prepayment?',a:'"Reduce tenure" keeps your EMI the same but closes the loan faster — you save significantly more interest. "Reduce EMI" lowers your monthly burden but extends the impact. Most financial advisors recommend reducing tenure.'},
+  {q:'Is there a penalty for prepaying a home loan in India?',a:'As per RBI guidelines, banks cannot charge prepayment penalty on floating rate home loans. For fixed rate loans, some banks charge 2-3%. Always check your loan agreement.'},
+  {q:'How much can I save by prepaying ₹1 lakh on my home loan?',a:'On a ₹50L loan at 8.5% with 20 years remaining, a ₹1L prepayment in year 1 saves approximately ₹2.4–3L in total interest and reduces tenure by 8-12 months. The earlier the prepayment, the higher the savings.'},
+  {q:'What is a good home loan interest rate in India 2025?',a:'As of 2025, competitive home loan rates start at 8.50% p.a. (SBI, PNB Housing). Your actual rate depends on credit score, income, loan amount, and employment type. Use our comparison tool above to find the best current rate.'}
+];
+function buildFAQ(){
+  document.getElementById('faq-list').innerHTML=faqs.map((faq,i)=>`
+    <div class="faq-item" id="faq-${i}">
+      <div class="faq-q" onclick="toggleFAQ(${i})"><span>${faq.q}</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">${faq.a}</div>
+    </div>`).join('');
+}
+function toggleFAQ(i){document.getElementById('faq-'+i).classList.toggle('open');}
+
+// ═══════════════════════════════════════════════
+// SHARE
+// ═══════════════════════════════════════════════
+function openShare(){document.getElementById('share-overlay').classList.add('open');}
+function closeShare(){document.getElementById('share-overlay').classList.remove('open');}
+function copyURL(){navigator.clipboard.writeText(document.getElementById('share-url').value).then(()=>showToast('Link copied! Share it with friends 🎉'));}
+function shareWA(){const url=encodeURIComponent('https://loaniq.in');const msg=encodeURIComponent('Check out this free home loan calculator — shows exactly how much you save with prepayments! 🏠');window.open(`https://wa.me/?text=${msg}%20${url}`);}
+function shareTwitter(){const url=encodeURIComponent('https://loaniq.in');const t=encodeURIComponent('Found this amazing free home loan EMI & prepayment calculator. Shows exactly how much interest you can save! 📊 #HomeLoan #PersonalFinance');window.open(`https://twitter.com/intent/tweet?text=${t}&url=${url}`);}
+function shareLinkedIn(){window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://loaniq.in')}`);}
+
+// ═══════════════════════════════════════════════
+// AFFILIATE TRACKING
+// ═══════════════════════════════════════════════
+function trackAffClick(partner){
+  // TODO: Replace with actual Google Analytics event tracking
+  console.log('Affiliate click:', partner);
+  // gtag('event','affiliate_click',{partner,page_location:window.location.href});
+  showToast('Opening '+partner+'...');
+}
+
+// ═══════════════════════════════════════════════
+// TOAST
+// ═══════════════════════════════════════════════
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',2800);}
+
+// ═══════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════
+window.addEventListener('resize',()=>requestAnimationFrame(()=>compute()));
+document.querySelector('.share-overlay').addEventListener('click',e=>{if(e.target===e.currentTarget)closeShare();});
+initSliders();
+buildFAQ();
+compute();
+</script>
+</body>
+</html>
