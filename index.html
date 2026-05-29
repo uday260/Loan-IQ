@@ -342,6 +342,20 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
     <div class="field"><div class="field-row"><span class="field-label">Loan Amount</span><span class="field-badge" id="badge-amount">₹50,00,000</span></div><input type="range" id="sl-amount" min="100000" max="100000000" step="100000" value="5000000"><div class="slider-bounds"><span>₹1L</span><span>₹10Cr</span></div><input type="number" id="in-amount" value="5000000" style="margin-top:6px"></div>
     <div class="field"><div class="field-row"><span class="field-label">Interest Rate (% p.a.)</span><span class="field-badge" id="badge-rate">8.50%</span></div><input type="range" id="sl-rate" min="5" max="20" step="0.05" value="8.5"><div class="slider-bounds"><span>5%</span><span>20%</span></div><input type="number" id="in-rate" value="8.5" step="0.05" style="margin-top:6px"></div>
     <div class="field"><div class="field-row"><span class="field-label">Loan Tenure</span><span class="field-badge" id="badge-tenure">20 Years</span></div><input type="range" id="sl-tenure" min="1" max="30" step="1" value="20"><div class="slider-bounds"><span>1Y</span><span>30Y</span></div><div class="field-input-row"><input type="number" id="in-tenure" value="20"><select id="in-tenure-unit"><option value="years" selected>Years</option><option value="months">Months</option></select></div></div>
+
+    <!-- Actual Bank EMI override -->
+    <div style="background:var(--s2);border:1px solid var(--gold-border);border-radius:var(--rsm);padding:10px 13px;margin-bottom:12px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <span style="font-size:9px;font-weight:700;color:var(--gold);letter-spacing:.05em;text-transform:uppercase">Actual Bank EMI</span>
+        <span style="font-size:9px;background:var(--gold-l);color:var(--gold);border:1px solid var(--gold-border);padding:1px 6px;border-radius:10px;font-weight:600">Optional override</span>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:4px">
+        <input type="number" id="in-actual-emi" placeholder="e.g. 46384" style="flex:1">
+        <div style="font-size:10px;color:var(--muted);white-space:nowrap;flex-shrink:0">Formula gives: <span id="formula-emi-display" style="font-family:var(--mono);color:var(--gold)">—</span></div>
+      </div>
+      <div style="font-size:9px;color:var(--muted);line-height:1.5">Banks round up by ₹5–₹15. Leave blank to use the formula, or enter your exact debit amount (e.g. ₹46,384) for precise tracking.</div>
+    </div>
+
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">
       <div><label style="font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px">Processing Fee (₹)</label><input type="number" id="in-fee" value="0"></div>
       <div><label style="font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px">Insurance (₹)</label><input type="number" id="in-insurance" value="0"></div>
@@ -373,25 +387,60 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 <div class="card">
   <div class="card-hd"><span class="card-title">📅 EMI Timeline & Loan Status</span><span class="card-sub" id="tl-status-label">Set start date to track progress</span></div>
   <div class="card-body">
+
     <div class="timeline-grid">
-      <div class="tl-field"><label>First EMI Date</label><input type="date" id="tl-start-date"></div>
-      <div class="tl-field"><label>EMIs Paid So Far</label><input type="number" id="tl-emis-paid" value="0" min="0"></div>
+      <div class="tl-field">
+        <label>First Regular EMI Date</label>
+        <input type="date" id="tl-start-date">
+        <div style="font-size:9px;color:var(--muted);margin-top:3px">When your regular monthly EMI schedule started</div>
+      </div>
+      <div class="tl-field">
+        <label>Regular EMIs Paid So Far</label>
+        <input type="number" id="tl-emis-paid" value="0" min="0">
+        <div style="font-size:9px;color:var(--muted);margin-top:3px">Count of normal monthly EMIs paid (not O.S. deposit)</div>
+      </div>
     </div>
-    <div style="background:var(--s2);border:1px solid var(--gold-border);border-radius:var(--rsm);padding:11px 13px;margin-bottom:12px">
-      <div style="font-size:10px;font-weight:700;color:var(--gold);margin-bottom:8px;letter-spacing:.04em;text-transform:uppercase">Pre-EMI Prepayment (paid before first EMI)</div>
+
+    <!-- O.S. Deposit / Pre-EMI Transfer -->
+    <div style="background:var(--s2);border:1.5px solid var(--gold-border);border-radius:var(--rsm);padding:12px 14px;margin-bottom:12px">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <div style="font-size:10px;font-weight:700;color:var(--gold);letter-spacing:.04em;text-transform:uppercase">O.S. Deposit / Pre-EMI Transfer</div>
+        <div style="font-size:9px;background:var(--gold-l);color:var(--gold);border:1px solid var(--gold-border);padding:1px 7px;border-radius:10px;font-weight:600">Before EMI #1</div>
+      </div>
+      <div style="font-size:10px;color:var(--muted);margin-bottom:10px;line-height:1.6">
+        A one-time amount collected by the bank <strong style="color:var(--text)">before the regular EMI schedule starts</strong> — reduces your effective outstanding principal. This is <em>not</em> counted as EMI #1. It goes directly off the principal.
+      </div>
       <div style="display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end">
-        <div><label style="font-size:9px;color:var(--muted);display:block;margin-bottom:4px">Amount Paid (₹)</label><input type="number" id="tl-pre-emi-pp" value="0" placeholder="e.g. 100000"></div>
+        <div>
+          <label style="font-size:9px;color:var(--muted);display:block;margin-bottom:4px">Amount Collected (₹) — e.g. ₹46,374</label>
+          <input type="number" id="tl-pre-emi-pp" value="0" placeholder="e.g. 46374">
+        </div>
         <button onclick="applyTimeline()" style="background:var(--gold);color:#000;border:none;border-radius:var(--rsm);padding:9px 16px;font-size:12px;font-weight:700;cursor:pointer;height:38px;white-space:nowrap">Apply</button>
       </div>
     </div>
+
+    <!-- Live status strip -->
     <div class="loan-status-strip">
-      <div class="lss-item"><div class="lss-lbl">Outstanding Balance</div><div class="lss-val" id="tl-outstanding" style="color:var(--gold)">—</div><div class="lss-sub" id="tl-outstanding-sub">after prepayments</div></div>
+      <div class="lss-item" style="grid-column:1/-1;background:linear-gradient(90deg,rgba(201,168,76,.07),transparent);border-color:var(--gold-border)">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+          <div>
+            <div class="lss-lbl">Effective Principal after O.S. Deposit</div>
+            <div class="lss-val" id="tl-eff-principal" style="color:var(--gold)">—</div>
+            <div class="lss-sub" id="tl-eff-principal-sub">Original − O.S. Deposit</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:9px;color:var(--muted);margin-bottom:2px">O.S. Deposit paid</div>
+            <div style="font-size:13px;font-weight:800;font-family:var(--mono);color:var(--green)" id="tl-os-deposit">—</div>
+          </div>
+        </div>
+      </div>
+      <div class="lss-item"><div class="lss-lbl">Outstanding Balance</div><div class="lss-val" id="tl-outstanding" style="color:var(--gold)">—</div><div class="lss-sub" id="tl-outstanding-sub">after paid EMIs</div></div>
       <div class="lss-item"><div class="lss-lbl">EMIs Remaining</div><div class="lss-val" id="tl-emis-rem" style="color:var(--blue)">—</div><div class="lss-sub" id="tl-emis-rem-sub">—</div></div>
-      <div class="lss-item"><div class="lss-lbl">Principal Reduced by PP</div><div class="lss-val" id="tl-prin-reduced" style="color:var(--green)">—</div><div class="lss-sub">via pre-EMI prepayment</div></div>
-      <div class="lss-item"><div class="lss-lbl">Interest Saved by PP</div><div class="lss-val" id="tl-int-saved" style="color:var(--green)">—</div><div class="lss-sub">vs no prepayment</div></div>
-      <div class="lss-item"><div class="lss-lbl">Total EMI Paid</div><div class="lss-val" id="tl-emi-paid-total" style="color:var(--muted)">—</div><div class="lss-sub" id="tl-emi-paid-sub">—</div></div>
+      <div class="lss-item"><div class="lss-lbl">Interest Saved by O.S. Deposit</div><div class="lss-val" id="tl-int-saved" style="color:var(--green)">—</div><div class="lss-sub">vs paying zero upfront</div></div>
+      <div class="lss-item"><div class="lss-lbl">Total Regular EMI Paid</div><div class="lss-val" id="tl-emi-paid-total" style="color:var(--muted)">—</div><div class="lss-sub" id="tl-emi-paid-sub">EMI payments only</div></div>
       <div class="lss-item"><div class="lss-lbl">Loan Closure Date</div><div class="lss-val" id="tl-closure" style="color:var(--gold);font-size:12px">—</div><div class="lss-sub" id="tl-closure-sub">—</div></div>
     </div>
+
   </div>
 </div>
 <!-- PREPAYMENT SIMULATOR -->
@@ -451,7 +500,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 <div class="page" id="page-myloans">
 <div class="ml-header"><div class="ml-header-inner"><div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px"><div><div class="ml-title">🏦 My Loans</div><div class="ml-sub">Your personal loan tracking dashboard — all loans, payments, and savings in one place</div></div><button class="btn-gold" style="padding:10px 20px;font-size:13px" onclick="openAddLoanModal()">+ Add New Loan</button></div></div></div>
 <div class="ml-wrap">
-  <div class="ml-summary"><div class="ml-sum-card" style="--mc:var(--gold)"><div class="ml-sum-lbl">Total Borrowed</div><div class="ml-sum-val" id="ml-total-borrowed" style="color:var(--gold)">₹0</div><div class="ml-sum-sub" id="ml-loan-count">0 loans</div></div><div class="ml-sum-card" style="--mc:var(--red)"><div class="ml-sum-lbl">Total Outstanding</div><div class="ml-sum-val" id="ml-total-outstanding" style="color:var(--red)">₹0</div><div class="ml-sum-sub">current balance</div></div><div class="ml-sum-card" style="--mc:var(--green)"><div class="ml-sum-lbl">Interest Saved</div><div class="ml-sum-val" id="ml-total-saved" style="color:var(--green)">₹0</div><div class="ml-sum-sub">via prepayments</div></div><div class="ml-sum-card" style="--mc:var(--blue)"><div class="ml-sum-lbl">Monthly EMI Total</div><div class="ml-sum-val" id="ml-total-emi" style="color:var(--blue)">₹0</div><div class="ml-sum-sub">combined outflow</div></div></div>
+  <div class="ml-summary"><div class="ml-sum-card" style="--mc:var(--gold)"><div class="ml-sum-lbl">Total Borrowed</div><div class="ml-sum-val" id="ml-total-borrowed" style="color:var(--gold)">₹0</div><div class="ml-sum-sub" id="ml-loan-count">0 loans</div></div><div class="ml-sum-card" style="--mc:var(--red)"><div class="ml-sum-lbl">Total Outstanding</div><div class="ml-sum-val" id="ml-total-outstanding" style="color:var(--red)">₹0</div><div class="ml-sum-sub">current balance</div></div><div class="ml-sum-card" style="--mc:var(--green)"><div class="ml-sum-lbl">Interest Saved</div><div class="ml-sum-val" id="ml-total-saved" style="color:var(--green)">₹0</div><div class="ml-sum-sub" id="ml-saved-sub">from part payments</div></div><div class="ml-sum-card" style="--mc:var(--blue)"><div class="ml-sum-lbl">Monthly EMI Total</div><div class="ml-sum-val" id="ml-total-emi" style="color:var(--blue)">₹0</div><div class="ml-sum-sub">combined outflow</div></div></div>
   <!-- ── EMBEDDED LOAN CALCULATOR (shown when "In Calculator" clicked) ── -->
   <div id="ml-calc-panel" style="display:none;margin-bottom:20px">
     <div class="card card-gold">
@@ -521,6 +570,104 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
   </div>
 
   <div class="loans-grid" id="loans-grid"></div>
+
+  <!-- ── INLINE LOAN DETAIL PANEL (expands below cards) ── -->
+  <div id="loan-detail-panel" style="display:none;margin-top:4px">
+    <div class="card card-gold" style="border-radius:var(--r)">
+
+      <!-- Panel header -->
+      <div class="card-hd-gold" style="gap:12px">
+        <div style="flex:1;min-width:0">
+          <div style="font-size:15px;font-weight:800;letter-spacing:-.02em;color:var(--text)" id="ldp-title">—</div>
+          <div style="font-size:11px;color:var(--muted);margin-top:2px" id="ldp-sub">—</div>
+        </div>
+        <button onclick="closeLoanDetail()" style="background:transparent;border:1px solid var(--border2);border-radius:var(--rsm);padding:5px 12px;font-size:11px;color:var(--muted);cursor:pointer;flex-shrink:0">✕ Close</button>
+      </div>
+
+      <div class="card-body" style="padding:16px">
+
+        <!-- Closure comparison: RED original vs BLUE new -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+          <div style="background:rgba(224,85,85,.08);border:1.5px solid rgba(224,85,85,.3);border-radius:var(--r);padding:13px 15px">
+            <div style="font-size:9px;font-weight:700;color:var(--red);letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px">Original Schedule (No Part Payments)</div>
+            <div style="font-size:17px;font-weight:800;font-family:var(--mono);color:var(--red)" id="ldp-orig-closure">—</div>
+            <div style="margin-top:8px;display:flex;flex-direction:column;gap:4px">
+              <div style="display:flex;justify-content:space-between;font-size:11px"><span style="color:var(--muted)">Total Interest</span><strong style="font-family:var(--mono);color:var(--red)" id="ldp-orig-int">—</strong></div>
+              <div style="display:flex;justify-content:space-between;font-size:11px"><span style="color:var(--muted)">Total Tenure</span><strong style="font-family:var(--mono);color:var(--muted)" id="ldp-orig-tenure">—</strong></div>
+            </div>
+          </div>
+          <div style="background:rgba(91,141,238,.08);border:1.5px solid rgba(91,141,238,.3);border-radius:var(--r);padding:13px 15px" id="ldp-new-box">
+            <div style="font-size:9px;font-weight:700;color:var(--blue);letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px">Updated Schedule (With Part Payments)</div>
+            <div style="font-size:17px;font-weight:800;font-family:var(--mono);color:var(--blue)" id="ldp-new-closure">—</div>
+            <div style="margin-top:8px;display:flex;flex-direction:column;gap:4px">
+              <div style="display:flex;justify-content:space-between;font-size:11px"><span style="color:var(--muted)">Total Interest</span><strong style="font-family:var(--mono);color:var(--blue)" id="ldp-new-int">—</strong></div>
+              <div style="display:flex;justify-content:space-between;font-size:11px"><span style="color:var(--green)">Interest Saved</span><strong style="font-family:var(--mono);color:var(--green)" id="ldp-int-saved">—</strong></div>
+              <div style="display:flex;justify-content:space-between;font-size:11px"><span style="color:var(--gold)">Tenure Saved</span><strong style="font-family:var(--mono);color:var(--gold)" id="ldp-tenure-saved">—</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Log a payment (compact inline row) -->
+        <div style="background:var(--s2);border:1px solid var(--border2);border-radius:var(--rsm);padding:11px 13px;margin-bottom:14px">
+          <div style="font-size:9px;font-weight:700;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px">Log a Payment</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end">
+            <div style="flex:0 0 130px"><div style="font-size:9px;color:var(--muted);margin-bottom:3px">Date</div><input type="date" id="log-date" style="font-size:12px"></div>
+            <div style="flex:0 0 140px"><div style="font-size:9px;color:var(--muted);margin-bottom:3px">Type</div>
+              <select id="log-type" onchange="onLogTypeChange()" style="font-size:12px">
+                <option value="emi">Regular EMI</option>
+                <option value="partpay">Part Payment</option>
+                <option value="prepay">Prepayment (Lump Sum)</option>
+              </select>
+            </div>
+            <div style="flex:0 0 130px"><div style="font-size:9px;color:var(--muted);margin-bottom:3px">Amount (₹)</div><input type="number" id="log-amount" placeholder="0" oninput="onLogAmountInput()" style="font-size:12px"></div>
+            <div style="flex:1;min-width:120px"><div style="font-size:9px;color:var(--muted);margin-bottom:3px">Note</div><input type="text" id="log-note" placeholder="Optional" style="font-size:12px"></div>
+            <button onclick="addPaymentLog()" class="btn-gold" style="padding:9px 16px;font-size:12px;height:38px;flex-shrink:0">Log</button>
+          </div>
+          <!-- Live impact preview for part payments -->
+          <div id="log-preview" style="display:none;margin-top:10px;padding:9px 11px;background:var(--s3);border:1px solid var(--gold-border);border-radius:var(--rsm)">
+            <div style="font-size:9px;font-weight:700;color:var(--gold);letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px">Preview Impact</div>
+            <div style="display:flex;gap:16px;flex-wrap:wrap">
+              <div><div style="font-size:9px;color:var(--muted)">Balance After</div><div style="font-size:13px;font-weight:700;font-family:var(--mono)" id="lp-bal">—</div></div>
+              <div><div style="font-size:9px;color:var(--muted)">Interest Saved</div><div style="font-size:13px;font-weight:700;font-family:var(--mono);color:var(--green)" id="lp-int">—</div></div>
+              <div><div style="font-size:9px;color:var(--muted)">Tenure Saved</div><div style="font-size:13px;font-weight:700;font-family:var(--mono);color:var(--gold)" id="lp-ten">—</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Combined EMI timeline — EMIs and part payments on same row per month -->
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <div style="font-size:11px;font-weight:700;color:var(--text)">EMI &amp; Payment Log</div>
+          <div style="font-size:10px;color:var(--muted)" id="ldp-log-count">—</div>
+        </div>
+        <div style="font-size:10px;color:var(--muted);margin-bottom:10px">Each row = one calendar month. Part payments appear inline alongside the regular EMI for that month.</div>
+        <div class="sched-wrap" style="max-height:420px">
+          <table class="sched-table" id="ldp-timeline-table">
+            <thead>
+              <tr>
+                <th style="width:30px">#</th>
+                <th>Month</th>
+                <th>EMI</th>
+                <th>Principal</th>
+                <th>Interest</th>
+                <th>Part Payment</th>
+                <th>Int. Saved</th>
+                <th>Balance</th>
+                <th style="width:28px"></th>
+              </tr>
+            </thead>
+            <tbody id="ldp-timeline-body"></tbody>
+          </table>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--muted)"><div style="width:10px;height:10px;background:rgba(224,85,85,.15);border:1px solid rgba(224,85,85,.3);border-radius:2px"></div>Paid EMI</div>
+          <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--muted)"><div style="width:10px;height:10px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);border-radius:2px"></div>Has part payment</div>
+          <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:var(--muted)"><div style="width:10px;height:10px;background:rgba(91,141,238,.15);border:1px solid rgba(91,141,238,.3);border-radius:2px"></div>Upcoming</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <div id="ml-empty" style="text-align:center;padding:60px 20px;display:none"><div style="font-size:48px;margin-bottom:16px">🏦</div><div style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px">No loans yet</div><div style="font-size:13px;color:var(--muted);margin-bottom:20px">Add your first loan to start tracking payments, prepayments, and savings.</div><button class="btn-gold" style="padding:11px 24px" onclick="openAddLoanModal()">+ Add Your First Loan</button></div>
 </div>
 </div><!-- /page-myloans -->
@@ -547,25 +694,6 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
   </div>
 </div>
 
-<div class="modal-overlay" id="loan-detail-modal">
-  <div class="modal" style="width:560px">
-    <h3 id="ldm-title">Loan Detail</h3><p id="ldm-sub">Payment history and prepayment tracking</p>
-    <div style="background:var(--s2);border:1px solid var(--gold-border);border-radius:var(--rsm);padding:12px;margin-bottom:14px"><div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center" id="ldm-summary"></div></div>
-    <div style="background:var(--s2);border:1px solid var(--border);border-radius:var(--rsm);padding:12px;margin-bottom:14px">
-      <div style="font-size:10px;font-weight:700;color:var(--gold);letter-spacing:.05em;text-transform:uppercase;margin-bottom:10px">Log a Payment</div>
-      <div class="modal-grid" style="margin-bottom:8px">
-        <div><label style="font-size:9px;color:var(--muted);display:block;margin-bottom:3px">Date</label><input type="date" id="log-date"></div>
-        <div><label style="font-size:9px;color:var(--muted);display:block;margin-bottom:3px">Type</label><select id="log-type"><option value="emi">Regular EMI</option><option value="prepay">Prepayment</option><option value="partpay">Part Payment</option></select></div>
-        <div><label style="font-size:9px;color:var(--muted);display:block;margin-bottom:3px">Amount (₹)</label><input type="number" id="log-amount" placeholder="0"></div>
-        <div><label style="font-size:9px;color:var(--muted);display:block;margin-bottom:3px">Note</label><input type="text" id="log-note" placeholder="Optional"></div>
-      </div>
-      <button onclick="addPaymentLog()" style="background:var(--gold);color:#000;border:none;border-radius:var(--rsm);padding:8px 16px;font-size:12px;font-weight:700;cursor:pointer">Log Payment</button>
-    </div>
-    <div style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px">Payment History</div>
-    <div class="sched-wrap" style="max-height:240px"><table class="sched-table"><thead><tr><th>#</th><th>Date</th><th>Type</th><th>Amount</th><th>Balance After</th><th>Note</th><th></th></tr></thead><tbody id="log-table-body"></tbody></table></div>
-    <div class="modal-footer" style="margin-top:12px"><button class="btn-outline" onclick="closeModal('loan-detail-modal')">Close</button><button class="btn-gold" style="padding:9px 16px" onclick="openInCalculator()">Open in Calculator</button></div>
-  </div>
-</div>
 
 <div class="modal-overlay" id="modal-share">
   <div class="modal" style="width:380px"><h3>Share LoanIQ</h3><p>Share this free calculator with family and friends</p><div class="url-row"><input type="text" id="share-url" value="https://loaniq.in" readonly><button onclick="copyURL()">Copy</button></div><div class="share-btns"><button class="share-social" onclick="shareWA()">💬 WhatsApp</button><button class="share-social" onclick="shareTwitter()">🐦 Twitter/X</button><button class="share-social" onclick="shareLinkedIn()">💼 LinkedIn</button><button class="share-social" onclick="closeModal('modal-share')">✕ Close</button></div></div>
@@ -610,12 +738,13 @@ const debounce = (fn, ms) => { let t; return (...a) => { clearTimeout(t); t=setT
 const S = {
   P: 5000000, R: 8.5, N: 240, fee: 0, insurance: 0,
   ppType: 'onetime',
-  prepayments: [],      // [{id,type,amount,fromMonth}]
+  prepayments: [],
   editingId: null,
   schedCache: null,
-  startDate: new Date(), // first EMI date
-  emisPaid: 0,           // how many EMIs already paid
-  preEmiPP: 0,           // pre-EMI lump prepayment
+  startDate: new Date(),
+  emisPaid: 0,
+  preEmiPP: 0,
+  actualEMI: 0,    // user-entered actual bank EMI — overrides formula if set
 };
 
 /* ═══════════ FINANCIAL CORE ═══════════ */
@@ -659,8 +788,16 @@ function getSchedules() {
   const strat = el('pp-strat') ? el('pp-strat').value : 'reduce_tenure';
   const fp = `${S.P}|${S.R}|${S.N}|${S.preEmiPP}|${strat}|${JSON.stringify(S.prepayments)}`;
   if (S.schedCache && S.schedCache.fp === fp) return S.schedCache;
+
+  // Use actual bank EMI if user has entered it (overrides formula)
+  // Banks round up by ₹5-₹15 — formula gives ₹46,374 but bank may charge ₹46,384
+  const emi  = (S.actualEMI && S.actualEMI > 0) ? S.actualEMI : calcEMI(S.P, S.R, S.N);
+
+  // KEY FIX 2: The schedule starts from effP (principal after O.S. deposit)
+  // because the O.S. deposit is 100% principal — no interest component — it
+  // reduces the opening balance before the first regular EMI fires.
   const effP = Math.max(0, S.P - S.preEmiPP);
-  const emi  = calcEMI(effP, S.R, S.N);
+
   const orig = buildSchedule(effP, emi, S.R, S.N, [], 'reduce_tenure');
   const prep = buildSchedule(effP, emi, S.R, S.N, S.prepayments, strat);
   S.schedCache = { fp, orig, prep, emi, effP };
@@ -704,6 +841,10 @@ function updateUI() {
   const saved  = orig.totalInt - prep.totalInt;
   const moSaved = orig.rows.length - prep.rows.length;
   const total  = effP + prep.totalInt + fee + insurance;
+
+  /* Formula EMI display (so user knows what the formula gives vs bank) */
+  const formulaEMI = calcEMI(S.P, S.R, S.N);
+  set('formula-emi-display', INR(formulaEMI));
 
   /* EMI card */
   set('out-emi',   INR(emi));
@@ -767,32 +908,51 @@ function updateTimeline(prep, orig, emi, effP) {
   const { emisPaid, preEmiPP, startDate } = S;
   const rows = prep.rows;
 
-  /* Outstanding after paid EMIs */
-  const curRow = emisPaid>0 ? rows[Math.min(emisPaid-1, rows.length-1)] : null;
+  // ── Effective Principal panel ──────────────────────────────────
+  // effP = S.P - preEmiPP (already computed in getSchedules)
+  // "Outstanding" = balance after emisPaid regular EMIs (not counting O.S. deposit again)
+  set('tl-eff-principal',     INR(effP));
+  set('tl-eff-principal-sub', preEmiPP > 0
+    ? INR(S.P) + ' − ' + INR(preEmiPP) + ' O.S. deposit = ' + INR(effP)
+    : 'No O.S. deposit entered yet');
+  set('tl-os-deposit', preEmiPP > 0 ? INR(preEmiPP) : '₹0');
+
+  // ── Outstanding balance after regular EMIs paid ────────────────
+  const curRow    = emisPaid > 0 ? rows[Math.min(emisPaid - 1, rows.length - 1)] : null;
   const outstanding = curRow ? Math.round(curRow.balance) : effP;
-
-  /* Total EMI cash paid so far */
-  const totalEMICash = emisPaid>0
-    ? rows.slice(0, Math.min(emisPaid, rows.length)).reduce((s,r)=>s+r.emi, 0)
-    : 0;
-
-  const remMonths = Math.max(0, prep.rows.length - emisPaid);
-  const intSaved  = orig.totalInt - prep.totalInt;
-  const closureDate = addMonths(startDate, prep.rows.length - 1);
-
   set('tl-outstanding',     INR(outstanding));
-  set('tl-outstanding-sub', preEmiPP>0 ? 'Pre-EMI PP of '+INRs(preEmiPP)+' applied' : 'Based on current schedule');
-  set('tl-emis-rem',        remMonths+' EMIs');
-  set('tl-emis-rem-sub',    'Approx '+fmtMo(remMonths));
-  set('tl-prin-reduced',    preEmiPP>0 ? INR(preEmiPP) : '₹0');
-  set('tl-int-saved',       intSaved>0 ? INR(intSaved) : '₹0');
-  set('tl-emi-paid-total',  emisPaid>0 ? INR(totalEMICash) : '₹0');
-  set('tl-emi-paid-sub',    emisPaid+' EMI'+(emisPaid!==1?'s':'')+' paid');
-  set('tl-closure',         fmtDateL(closureDate));
-  set('tl-closure-sub',     'Based on current prepayments');
-  set('tl-status-label',    emisPaid>0
-    ? emisPaid+' EMI'+(emisPaid!==1?'s':'')+' paid · '+fmtDate(addMonths(startDate, prep.rows.length))+' payoff'
-    : 'Set EMI date to track progress');
+  set('tl-outstanding-sub', emisPaid > 0
+    ? 'After ' + emisPaid + ' regular EMI' + (emisPaid !== 1 ? 's' : '')
+    : 'No regular EMIs paid yet');
+
+  // ── Remaining EMIs ─────────────────────────────────────────────
+  const remMonths = Math.max(0, rows.length - emisPaid);
+  set('tl-emis-rem',     remMonths + ' EMIs');
+  set('tl-emis-rem-sub', 'Approx ' + fmtMo(remMonths));
+
+  // ── Interest saved by O.S. deposit ─────────────────────────────
+  // Compare: what would total interest be if preEmiPP = 0?
+  const intSaved = orig.totalInt - prep.totalInt;
+  set('tl-int-saved', intSaved > 0 ? INR(intSaved) : '₹0');
+
+  // ── Total REGULAR EMI cash paid (O.S. deposit excluded) ────────
+  const totalEMICash = emisPaid > 0
+    ? rows.slice(0, Math.min(emisPaid, rows.length)).reduce((s, r) => s + r.emi, 0)
+    : 0;
+  set('tl-emi-paid-total', emisPaid > 0 ? INR(totalEMICash) : '₹0');
+  set('tl-emi-paid-sub',   emisPaid + ' regular EMI' + (emisPaid !== 1 ? 's' : '') + ' · O.S. deposit shown separately');
+
+  // ── Loan closure ───────────────────────────────────────────────
+  const closureDate = addMonths(startDate, rows.length - 1);
+  set('tl-closure',     fmtDateL(closureDate));
+  set('tl-closure-sub', 'EMI #1 = ' + fmtDate(startDate));
+
+  // ── Header label ───────────────────────────────────────────────
+  set('tl-status-label', emisPaid > 0
+    ? emisPaid + ' EMI' + (emisPaid !== 1 ? 's' : '') + ' paid · closes ' + fmtDate(closureDate)
+    : preEmiPP > 0
+      ? 'O.S. deposit ' + INRs(preEmiPP) + ' applied · effective principal ' + INRs(effP)
+      : 'Set first EMI date and O.S. deposit to track your loan');
 }
 
 function applyTimeline() {
@@ -846,24 +1006,32 @@ function setQuick(v, btn) {
   previewPP();
 }
 function previewPP() {
-  const amt  = parseFloat(el('pp-amt').value) || 0;
-  const from = parseInt(el('pp-from').value) || 1;
+  const amt   = parseFloat(el('pp-amt').value) || 0;
+  const from  = parseInt(el('pp-from').value) || 1;
   const strat = el('pp-strat').value;
-  const btn  = el('pp-add-btn');
-  if (amt<=0) { el('impact-box').style.display='none'; btn.disabled=true; return; }
+  const btn   = el('pp-add-btn');
+  if (amt <= 0) { el('impact-box').style.display='none'; btn.disabled=true; return; }
   btn.disabled = false;
+
   const { effP, orig } = getSchedules();
-  const emi = calcEMI(effP, S.R, S.N);
-  const preview = buildSchedule(effP, emi, S.R, S.N, [...S.prepayments,{type:S.ppType,amount:amt,fromMonth:from,id:-1}], strat);
+  const emi     = calcEMI(S.P, S.R, S.N);   // EMI on original principal
+  const preview = buildSchedule(effP, emi, S.R, S.N,
+    [...S.prepayments, {type:S.ppType, amount:amt, fromMonth:from, id:-1}], strat);
   const saved   = orig.totalInt - preview.totalInt;
   const moSaved = orig.rows.length - preview.rows.length;
-  set('ip-saved',  INR(saved));
-  set('ip-mo',     moSaved>0 ? fmtMo(moSaved) : '—');
+  const roi     = saved > 0 && amt > 0 ? (saved / amt).toFixed(2) : '0.00';
+
+  set('ip-saved',  saved > 0 ? INR(saved) : '₹0');
+  set('ip-mo',     moSaved > 0 ? fmtMo(moSaved) : '—');
   set('ip-payoff', fmtDate(addMonths(S.startDate, preview.rows.length)));
-  set('ip-roi',    amt>0 ? '₹'+(saved/amt).toFixed(2) : '—');
+  set('ip-roi',    '₹' + roi);
   el('impact-box').style.display = '';
+
+  // Show actual date of the prepayment in the hint
+  const ppDate    = addMonths(S.startDate, from - 1);
+  const ppDateStr = ppDate.toLocaleString('en-IN', {day:'numeric', month:'short', year:'numeric'});
   const ts = {onetime:'one-time',yearly:'yearly',monthly:'monthly'}[S.ppType];
-  set('pp-hint', INRs(amt)+' '+ts+' from EMI #'+from+' → saves '+INR(saved));
+  set('pp-hint', INRs(amt) + ' ' + ts + ' on ' + ppDateStr + ' (EMI #' + from + ') → saves ' + INR(saved));
 }
 function addPP() {
   if (S.editingId!==null) { saveEdit(); return; }
@@ -918,20 +1086,73 @@ function renderPPList() {
   const wrap = el('pp-list-wrap');
   if (!S.prepayments.length){wrap.style.display='none';return;}
   wrap.style.display='';
-  const strat  = el('pp-strat').value;
-  const {effP} = getSchedules();
-  const emi    = calcEMI(effP,S.R,S.N);
-  const withAll = buildSchedule(effP,emi,S.R,S.N,S.prepayments,strat);
-  el('pp-list').innerHTML = S.prepayments.map(pp=>{
-    const wo = buildSchedule(effP,emi,S.R,S.N,S.prepayments.filter(x=>x.id!==pp.id),strat);
-    const sv = wo.totalInt - withAll.totalInt;
+  const strat = el('pp-strat').value;
+  const {effP, orig} = getSchedules();   // orig = no prepayments baseline
+  const emi = calcEMI(S.P, S.R, S.N);   // EMI always on original principal S.P
+  // Build cumulative schedule WITH all prepayments once (cache reuse)
+  const withAll = buildSchedule(effP, emi, S.R, S.N, S.prepayments, strat);
+  // Total interest saved by ALL prepayments combined vs baseline
+  const totalSaved = orig.totalInt - withAll.totalInt;
+
+  el('pp-list').innerHTML = S.prepayments.map((pp, idx) => {
+    // Marginal saving: schedule with all OTHER prepayments vs schedule with this one included
+    const withoutThis = buildSchedule(effP, emi, S.R, S.N,
+      S.prepayments.filter(x => x.id !== pp.id), strat);
+    // Interest saved = what the schedule costs WITHOUT this PP minus what it costs WITH all PPs
+    // This correctly attributes the marginal saving of this specific prepayment
+    const sv = withoutThis.totalInt - withAll.totalInt;
+    const moSv = withoutThis.rows.length - withAll.rows.length;
+
     const tl = {onetime:'One-time',yearly:'Yearly',monthly:'Monthly'}[pp.type];
+    // Calculate the actual calendar date of this prepayment
+    const ppDate = addMonths(S.startDate, pp.fromMonth - 1);
+    const ppDateStr = ppDate.toLocaleString('en-IN', {day:'numeric', month:'short', year:'numeric'});
+
+    // Balance just before this prepayment hits (from withAll schedule)
+    const rowBefore = withAll.rows[pp.fromMonth - 2]; // row index is month-1, we want month before
+    const balBefore = rowBefore ? rowBefore.balance : effP;
+
     return `<div class="pp-entry${S.editingId===pp.id?' editing':''}">
-      <div class="ppe-left"><div class="ppe-amt">${INR(pp.amount)}</div><div class="ppe-meta">${tl} · From EMI #${pp.fromMonth}</div></div>
-      ${sv>0?`<span class="ppe-save">Saves ${INRs(sv)}</span>`:''}
-      <div class="ppe-actions"><button class="ppe-btn" onclick="editPP(${pp.id})">✏️</button><button class="ppe-btn ppe-del" onclick="deletePP(${pp.id})">✕</button></div>
+      <div class="ppe-left">
+        <div class="ppe-amt">${INR(pp.amount)}</div>
+        <div class="ppe-meta" style="display:flex;flex-wrap:wrap;gap:4px;align-items:center;margin-top:3px">
+          <span style="background:var(--s3);border:1px solid var(--border2);border-radius:4px;padding:1px 6px;font-size:9px;color:var(--muted)">${tl}</span>
+          <span style="background:var(--s3);border:1px solid var(--border2);border-radius:4px;padding:1px 6px;font-size:9px;color:var(--muted)">EMI #${pp.fromMonth}</span>
+          <span style="background:var(--s3);border:1px solid var(--border2);border-radius:4px;padding:1px 6px;font-size:9px;color:var(--gold)">${ppDateStr}</span>
+        </div>
+        ${sv > 0 ? `
+        <div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:4px">
+          <span style="background:var(--green-l);border:1px solid rgba(62,207,142,.2);border-radius:4px;padding:2px 7px;font-size:9px;font-weight:700;color:var(--green);font-family:var(--mono)">
+            Saves ${INRs(sv)} interest
+          </span>
+          ${moSv > 0 ? `<span style="background:var(--gold-l);border:1px solid var(--gold-border);border-radius:4px;padding:2px 7px;font-size:9px;font-weight:700;color:var(--gold);font-family:var(--mono)">${fmtMo(moSv)} shorter</span>` : ''}
+          <span style="background:var(--blue-l);border:1px solid rgba(91,141,238,.2);border-radius:4px;padding:2px 7px;font-size:9px;color:var(--blue);font-family:var(--mono)">
+            ₹${(sv / pp.amount).toFixed(2)} per ₹1
+          </span>
+        </div>` : `<div style="margin-top:4px;font-size:9px;color:var(--dim)">Savings included in combined total</div>`}
+      </div>
+      <div class="ppe-actions">
+        <button class="ppe-btn" onclick="editPP(${pp.id})" title="Edit">✏️</button>
+        <button class="ppe-btn ppe-del" onclick="deletePP(${pp.id})" title="Delete">✕</button>
+      </div>
     </div>`;
   }).join('');
+
+  // Show combined savings footer when multiple prepayments exist
+  if (S.prepayments.length > 1) {
+    const moSavedTotal = orig.rows.length - withAll.rows.length;
+    el('pp-list').insertAdjacentHTML('beforeend', `
+      <div style="margin-top:8px;padding:10px 12px;background:linear-gradient(120deg,rgba(201,168,76,.08),rgba(62,207,142,.06));border:1px solid var(--gold-border);border-radius:var(--rsm)">
+        <div style="font-size:9px;font-weight:700;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px">Combined Impact of All Prepayments</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <div><div style="font-size:9px;color:var(--muted)">Total Interest Saved</div><div style="font-size:14px;font-weight:800;font-family:var(--mono);color:var(--green)">${INR(totalSaved)}</div></div>
+          <div style="width:1px;background:var(--border)"></div>
+          <div><div style="font-size:9px;color:var(--muted)">Tenure Reduced</div><div style="font-size:14px;font-weight:800;font-family:var(--mono);color:var(--gold)">${fmtMo(moSavedTotal)}</div></div>
+          <div style="width:1px;background:var(--border)"></div>
+          <div><div style="font-size:9px;color:var(--muted)">New Closure</div><div style="font-size:13px;font-weight:700;font-family:var(--mono);color:var(--blue)">${fmtDate(addMonths(S.startDate, withAll.rows.length))}</div></div>
+        </div>
+      </div>`);
+  }
 }
 
 /* ═══════════ SCHEDULE TABLE ═══════════ */
@@ -942,21 +1163,63 @@ function renderSchedule() {
   if (flt==='pp')   rows=rows.filter(r=>r.prepay>0);
   if (flt==='yr')   rows=rows.filter(r=>r.month%12===0||r.balance<=0.5);
   if (flt==='paid') rows=rows.filter(r=>r.month<=S.emisPaid);
-  set('sched-count', rows.length+' rows');
-  el('sched-body').innerHTML = rows.map(r=>{
+  set('sched-count', rows.length + (S.preEmiPP>0 ? '+1' : '') + ' rows');
+
+  const {orig} = S.schedCache || {};
+  const strat = el('pp-strat') ? el('pp-strat').value : 'reduce_tenure';
+
+  // ── O.S. Deposit row: prepend BEFORE EMI #1 when deposit exists ──────────
+  // This represents the April 5th payment: 100% principal, zero interest.
+  // The bank collected it before the EMI schedule — it directly reduces principal.
+  let osDepositRow = '';
+  if (S.preEmiPP > 0 && flt === 'all') {
+    // Date of O.S. deposit = one month BEFORE first EMI date
+    const depositDate = addMonths(S.startDate, -1);
+    const ds = depositDate.toLocaleString('en-IN', {day:'numeric', month:'short', year:'numeric'});
+    const balAfter = S.P - S.preEmiPP;
+    osDepositRow = `<tr style="background:rgba(201,168,76,.08);border-left:3px solid var(--gold)" id="srow-os">
+      <td style="color:var(--gold);font-weight:700">—</td>
+      <td style="color:var(--gold)">${ds}</td>
+      <td style="color:var(--gold);font-weight:700">O.S. Deposit</td>
+      <td style="color:var(--green);font-weight:700">${INR(S.preEmiPP)}<div style="font-size:9px;color:var(--green);font-family:var(--mono)">100% principal</div></td>
+      <td style="color:var(--dim)">₹0<div style="font-size:9px;color:var(--dim)">no interest</div></td>
+      <td>—</td>
+      <td style="font-family:var(--mono);font-weight:600;color:var(--text)">${INR(balAfter)}</td>
+      <td><span class="badge ba">Pre-EMI</span></td>
+    </tr>`;
+  }
+
+  const schedHtml = rows.map(r=>{
     const d  = addMonths(S.startDate, r.month-1);
     const ds = d.toLocaleString('en-IN',{month:'short',year:'2-digit'});
     const pp = r.prepay>0, paid = r.month<=S.emisPaid;
+
+    let ppSavingHtml = '';
+    if (pp && orig) {
+      const remMonths = _schedRows.length - r.month;
+      const r_monthly = S.R / 100 / 12;
+      const ppAmt = r.prepay;
+      const intSaved = r_monthly > 0 && remMonths > 0
+        ? ppAmt * r_monthly * Math.pow(1+r_monthly, remMonths) / (Math.pow(1+r_monthly, remMonths) - 1) * remMonths - ppAmt
+        : 0;
+      if (intSaved > 0) {
+        ppSavingHtml = `<div style="font-size:9px;color:var(--green);font-weight:700;margin-top:2px;font-family:var(--mono)">~${INRs(intSaved)} saved</div>`;
+      }
+    }
+
     return `<tr class="${pp?'pp-row':''}${paid?' paid-row':''}" id="srow-${r.month}">
-      <td style="color:var(--muted)">${r.month}</td><td>${ds}</td>
+      <td style="color:var(--muted)">${r.month}</td>
+      <td>${ds}</td>
       <td style="font-weight:600">${INR(r.emi)}</td>
       <td style="color:var(--green)">${INR(r.principal)}</td>
       <td style="color:var(--red)">${INR(r.interest)}</td>
-      <td>${pp?`<span class="badge ba">${INR(r.prepay)}</span>`:'—'}</td>
+      <td>${pp ? `<div><span class="badge ba">${INR(r.prepay)}</span>${ppSavingHtml}</div>` : '—'}</td>
       <td style="font-weight:600;color:${paid?'var(--muted)':'var(--text)'}">${INR(r.balance)}</td>
       <td>${paid?'<span class="badge bg">Paid</span>':pp?'<span class="badge ba">PP</span>':r.balance<=0.5?'<span class="badge bg">Done</span>':''}</td>
     </tr>`;
   }).join('');
+
+  el('sched-body').innerHTML = osDepositRow + schedHtml;
 }
 const jumpToEMI = debounce(v=>{
   const row=el('srow-'+v); if(!row) return;
@@ -1118,13 +1381,18 @@ function renderMyLoans() {
   const totBorr = _loans.reduce((s,l)=>s+(l.orig||0),0);
   const totOut  = _loans.reduce((s,l)=>s+(l.outstanding||0),0);
   const totEMI  = active.reduce((s,l)=>s+(l.emi||0),0);
-  let totSaved  = 0;
+  let totSaved = 0;
   for (const l of _loans) {
-    if ((l.preEmiPP||0)>0) {
-      const e=calcEMI(l.orig,l.rate,l.tenure);
-      const wo=buildSchedule(l.orig,e,l.rate,l.tenure,[],   'reduce_tenure');
-      const wi=buildSchedule(l.orig-(l.preEmiPP||0),e,l.rate,l.tenure,[],'reduce_tenure');
-      totSaved += wo.totalInt - wi.totalInt;
+    const logs = _paymentLogs[l.id] || [];
+    const effP = Math.max(0, l.orig - (l.preEmiPP || 0));
+    const e    = calcEMI(l.orig, l.rate, l.tenure);  // EMI on original principal
+    const base = buildSchedule(effP, e, l.rate, l.tenure, [], 'reduce_tenure');
+    const ppList = buildPPListFromLogs(l, logs);
+    if (ppList.length > 0 || (l.preEmiPP || 0) > 0) {
+      const withPP = ppList.length > 0
+        ? buildSchedule(effP, e, l.rate, l.tenure, ppList, 'reduce_tenure')
+        : base;
+      totSaved += base.totalInt - withPP.totalInt;
     }
   }
   set('ml-total-borrowed',   INRs(totBorr));
@@ -1139,17 +1407,34 @@ function renderMyLoans() {
 
   const icons={home:'🏠',car:'🚗',personal:'💼'};
   grid.innerHTML=_loans.map(l=>{
-    const paidPct=Math.min(100,Math.round(((l.orig-(l.outstanding||0))/l.orig)*100));
-    const effP=l.orig-(l.preEmiPP||0);
-    const eC=calcEMI(effP,l.rate,l.tenure);
-    const sch=buildSchedule(effP,eC,l.rate,l.tenure,[],'reduce_tenure');
-    const closD=addMonths(l.startDate?new Date(l.startDate):new Date(), sch.rows.length);
-    const logs=_paymentLogs[l.id]||[];
+    const logs   = _paymentLogs[l.id] || [];
+    const effP   = Math.max(0, l.orig - (l.preEmiPP || 0));
+    const eC     = calcEMI(l.orig, l.rate, l.tenure);  // EMI on original principal
+    // Baseline = no part payments
+    const base   = buildSchedule(effP, eC, l.rate, l.tenure, [], 'reduce_tenure');
+    // With part payments
+    const ppList = buildPPListFromLogs(l, logs);
+    const withPP = ppList.length > 0
+      ? buildSchedule(effP, eC, l.rate, l.tenure, ppList, 'reduce_tenure')
+      : base;
+    const startD = l.startDate ? new Date(l.startDate) : new Date();
+    // RED = original closure (no part payments)
+    const closOrig = addMonths(startD, base.rows.length);
+    // BLUE = new closure (with part payments)
+    const closNew  = addMonths(startD, withPP.rows.length);
+    const intSaved = base.totalInt - withPP.totalInt;
+    const moSaved  = base.rows.length - withPP.rows.length;
+    const paidPct  = Math.min(100, Math.round(((l.orig - (l.outstanding || 0)) / l.orig) * 100));
+    const ppLogs   = logs.filter(lg => lg.type === 'partpay' || lg.type === 'prepay');
+    const totPP    = ppLogs.reduce((s, lg) => s + lg.amount, 0);
     return `<div class="loan-card${l.status==='closed'?' closed':''}" onclick="openLoanDetail(${l.id})">
       <div class="loan-card-hd">
         <div style="display:flex;align-items:center;gap:10px">
           <div class="lc-icon">${icons[l.type]||'💰'}</div>
-          <div><div class="lc-name">${l.name}</div><span class="lc-type-badge">${l.type.toUpperCase()}</span></div>
+          <div>
+            <div class="lc-name">${l.name}</div>
+            <span class="lc-type-badge">${l.type.toUpperCase()}</span>
+          </div>
         </div>
         <div class="lc-actions">
           <button class="lc-action-btn" onclick="event.stopPropagation();openLoanDetail(${l.id})" title="Details">📋</button>
@@ -1158,27 +1443,52 @@ function renderMyLoans() {
         </div>
       </div>
       <div class="loan-card-body">
+        <!-- Key stats -->
         <div class="lc-grid">
           <div class="lc-stat"><div class="ls-lbl">Original Loan</div><div class="ls-val" style="color:var(--gold)">${INRs(l.orig)}</div></div>
           <div class="lc-stat"><div class="ls-lbl">Outstanding</div><div class="ls-val" style="color:var(--red)">${INRs(l.outstanding||l.orig)}</div></div>
           <div class="lc-stat"><div class="ls-lbl">Monthly EMI</div><div class="ls-val" style="color:var(--blue)">${INRs(l.emi)}</div></div>
           <div class="lc-stat"><div class="ls-lbl">Rate</div><div class="ls-val">${l.rate}% p.a.</div></div>
-          <div class="lc-stat"><div class="ls-lbl">Payments Logged</div><div class="ls-val">${logs.length}</div></div>
-          <div class="lc-stat"><div class="ls-lbl">Closure Est.</div><div class="ls-val" style="font-size:11px">${closD.toLocaleString('en-IN',{month:'short',year:'numeric'})}</div></div>
+          <div class="lc-stat"><div class="ls-lbl">EMIs Paid</div><div class="ls-val">${l.emisPaid||0}</div></div>
+          <div class="lc-stat"><div class="ls-lbl">Part Payments</div><div class="ls-val" style="color:${ppLogs.length>0?'var(--green)':'var(--dim)'}">${ppLogs.length > 0 ? ppLogs.length+' ('+INRs(totPP)+')' : '—'}</div></div>
         </div>
+        <!-- Progress -->
         <div class="lc-progress">
           <div class="lc-prog-header"><span class="lc-prog-lbl">Repayment Progress</span><span class="lc-prog-pct">${paidPct}% paid</span></div>
           <div class="lc-prog-bar"><div class="lc-prog-fill" style="width:${paidPct}%"></div></div>
         </div>
-        <div class="lc-nums">
-          <div class="lc-num-box"><div class="lc-num-lbl">Remaining Interest</div><div class="lc-num-val" style="color:var(--red)">${INRs(sch.totalInt)}</div></div>
-          <div class="lc-num-box"><div class="lc-num-lbl">Total Left to Pay</div><div class="lc-num-val">${INRs((l.outstanding||l.orig)+sch.totalInt)}</div></div>
+        <!-- Closure dates: RED original, BLUE new -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
+          <div style="background:rgba(224,85,85,.08);border:1px solid rgba(224,85,85,.2);border-radius:var(--rsm);padding:9px 11px">
+            <div style="font-size:9px;font-weight:700;color:var(--red);letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px">Original Closure</div>
+            <div style="font-size:13px;font-weight:800;font-family:var(--mono);color:var(--red)">${fmtDate(closOrig)}</div>
+            <div style="font-size:9px;color:var(--muted);margin-top:2px">Interest: ${INRs(base.totalInt)}</div>
+          </div>
+          <div style="background:${intSaved>0?'rgba(91,141,238,.08)':'var(--s2)'};border:1px solid ${intSaved>0?'rgba(91,141,238,.25)':'var(--border)'};border-radius:var(--rsm);padding:9px 11px">
+            <div style="font-size:9px;font-weight:700;color:${intSaved>0?'var(--blue)':'var(--muted)'};letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px">${intSaved>0?'New Closure':'Projected'}</div>
+            <div style="font-size:13px;font-weight:800;font-family:var(--mono);color:${intSaved>0?'var(--blue)':'var(--muted)'}">${fmtDate(closNew)}</div>
+            <div style="font-size:9px;color:var(--muted);margin-top:2px">${intSaved>0?'Saved: '+INRs(intSaved)+'  |  '+fmtMo(moSaved)+' earlier':'Add part payments to save'}</div>
+          </div>
         </div>
+        <!-- Interest comparison: RED original, BLUE reduced -->
+        ${intSaved>0?`
+        <div style="background:var(--s2);border:1px solid var(--border);border-radius:var(--rsm);padding:9px 11px;margin-bottom:10px">
+          <div style="font-size:9px;font-weight:700;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px">Interest Impact</div>
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+            <div><div style="font-size:9px;color:var(--muted)">Original interest</div><div style="font-size:13px;font-weight:700;font-family:var(--mono);color:var(--red)">${INRs(base.totalInt)}</div></div>
+            <div style="color:var(--dim);font-size:16px">→</div>
+            <div><div style="font-size:9px;color:var(--muted)">After part payments</div><div style="font-size:13px;font-weight:700;font-family:var(--mono);color:var(--blue)">${INRs(withPP.totalInt)}</div></div>
+            <div style="margin-left:auto;text-align:right">
+              <div style="font-size:9px;color:var(--green)">Saved</div>
+              <div style="font-size:14px;font-weight:800;font-family:var(--mono);color:var(--green)">${INRs(intSaved)}</div>
+            </div>
+          </div>
+        </div>`:''}
         ${l.notes?`<div style="font-size:10px;color:var(--muted);padding:6px 8px;background:var(--s2);border-radius:5px;margin-top:4px">${l.notes}</div>`:''}
       </div>
       <div class="lc-footer">
-        <button class="btn-gold" style="flex:1" onclick="event.stopPropagation();openLoanDetail(${l.id})">View Details</button>
-        <button class="btn-outline" onclick="event.stopPropagation();openLoanInCalc(${l.id})">In Calculator</button>
+        <button class="btn-gold" style="flex:1" onclick="event.stopPropagation();openLoanDetail(${l.id})">View Details & Log</button>
+        <button class="btn-outline" onclick="event.stopPropagation();openLoanInCalc(${l.id})">Calculator</button>
       </div>
     </div>`;
   }).join('')
@@ -1216,63 +1526,311 @@ function deleteLoan(id) {
   saveLoans(); renderMyLoans(); showToast('Loan deleted');
 }
 function openLoanDetail(id) {
-  _activeLoanId=id;
-  const l=_loans.find(x=>x.id===id); if (!l) return;
-  set('ldm-title',l.name);
-  set('ldm-sub',l.type.toUpperCase()+' · '+l.rate+'% p.a. · '+l.tenure+' months');
-  const effP=l.orig-(l.preEmiPP||0);
-  const eC=calcEMI(effP,l.rate,l.tenure);
-  const sch=buildSchedule(effP,eC,l.rate,l.tenure,[],'reduce_tenure');
-  el('ldm-summary').innerHTML=[
-    ['Original Loan',  INRs(l.orig),        'var(--gold)'],
-    ['Outstanding',    INRs(l.outstanding||l.orig),'var(--red)'],
-    ['Total Interest', INRs(sch.totalInt),   'var(--red)'],
-    ['Monthly EMI',    INRs(l.emi),          'var(--blue)'],
-    ['EMIs Paid',      l.emisPaid||0,        'var(--muted)'],
-    ['Pre-EMI PP',     l.preEmiPP>0?INRs(l.preEmiPP):'₹0','var(--green)'],
-  ].map(([lb,v,c])=>`<div><div style="font-size:9px;color:var(--muted);margin-bottom:3px">${lb}</div><div style="font-size:13px;font-weight:700;font-family:var(--mono);color:${c}">${v}</div></div>`).join('');
-  el('log-date').value=new Date().toISOString().split('T')[0];
-  el('log-amount').value='';
-  renderLogTable(id);
-  el('loan-detail-modal').classList.add('open');
+  _activeLoanId = id;
+  const l = _loans.find(x => x.id === id); if (!l) return;
+  const panel = el('loan-detail-panel');
+  panel.style.display = '';
+  setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+  set('ldp-title', l.name);
+  set('ldp-sub', l.type.toUpperCase() + ' · ' + l.rate + '% p.a. · ' + l.tenure + ' months');
+  el('log-date').value   = new Date().toISOString().split('T')[0];
+  el('log-amount').value = '';
+  el('log-preview').style.display = 'none';
+  refreshLoanDetailSummary(id);
+  renderLoanTimeline(id);
 }
-function renderLogTable(id) {
-  const logs=(_paymentLogs[id]||[]).slice().reverse();
-  const tl={emi:'Regular EMI',prepay:'Prepayment',partpay:'Part Payment'};
-  const col={emi:'var(--green)',prepay:'var(--gold)',partpay:'var(--blue)'};
-  el('log-table-body').innerHTML=!logs.length
-    ?'<tr><td colspan="7" style="text-align:center;padding:24px;color:var(--muted)">No payments logged yet</td></tr>'
-    :logs.map((lg,i)=>`<tr>
-      <td style="color:var(--muted)">${logs.length-i}</td>
-      <td>${new Date(lg.date).toLocaleString('en-IN',{day:'numeric',month:'short',year:'numeric'})}</td>
-      <td><span class="badge" style="background:${col[lg.type]}18;color:${col[lg.type]}">${tl[lg.type]||lg.type}</span></td>
-      <td style="color:${col[lg.type]};font-weight:700">${INR(lg.amount)}</td>
-      <td style="color:var(--muted)">${lg.balanceAfter!=null?INR(lg.balanceAfter):'—'}</td>
-      <td style="color:var(--muted)">${lg.note||'—'}</td>
-      <td><button onclick="deleteLog(${_activeLoanId},${lg.id})" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:12px" title="Remove">✕</button></td>
-    </tr>`).join('');
+
+function closeLoanDetail() {
+  el('loan-detail-panel').style.display = 'none';
+  _activeLoanId = null;
 }
+
+/* Recompute RED/BLUE closure + interest boxes in the detail panel */
+function refreshLoanDetailSummary(id) {
+  const l    = _loans.find(x => x.id === id); if (!l) return;
+  const logs = _paymentLogs[id] || [];
+  const effP = Math.max(0, l.orig - (l.preEmiPP || 0));
+  const emi  = calcEMI(l.orig, l.rate, l.tenure);  // EMI on original principal
+  const base = buildSchedule(effP, emi, l.rate, l.tenure, [], 'reduce_tenure');
+  const ppList = buildPPListFromLogs(l, logs);
+  const withPP = ppList.length > 0
+    ? buildSchedule(effP, emi, l.rate, l.tenure, ppList, 'reduce_tenure')
+    : base;
+  const startD    = l.startDate ? new Date(l.startDate) : new Date();
+  const intSaved  = base.totalInt - withPP.totalInt;
+  const moSaved   = base.rows.length - withPP.rows.length;
+  const closOrig  = addMonths(startD, base.rows.length);
+  const closNew   = addMonths(startD, withPP.rows.length);
+
+  // RED box
+  set('ldp-orig-closure', fmtDate(closOrig));
+  set('ldp-orig-int',     INR(base.totalInt));
+  set('ldp-orig-tenure',  fmtMo(base.rows.length));
+
+  // BLUE box
+  set('ldp-new-closure',   fmtDate(closNew));
+  set('ldp-new-int',       INR(withPP.totalInt));
+  set('ldp-int-saved',     intSaved > 0 ? INR(intSaved) : '₹0');
+  set('ldp-tenure-saved',  moSaved > 0 ? fmtMo(moSaved) + ' shorter' : 'No change yet');
+}
+
+/* Convert logged partpay/prepay entries to a ppList for buildSchedule */
+function buildPPListFromLogs(loan, logs) {
+  const startDate = loan.startDate ? new Date(loan.startDate) : new Date();
+  const ppList = [];
+  for (const lg of logs) {
+    if (lg.type !== 'partpay' && lg.type !== 'prepay') continue;
+    // Derive EMI month number from payment date vs loan start date
+    const payDate   = new Date(lg.date);
+    const monthDiff = (payDate.getFullYear() - startDate.getFullYear()) * 12
+                    + (payDate.getMonth() - startDate.getMonth()) + 1;
+    const fromMonth = Math.max(1, Math.round(monthDiff));
+    ppList.push({ id: lg.id, type: 'onetime', amount: lg.amount, fromMonth });
+  }
+  return ppList;
+}
+
+/* Live preview when amount is typed in the log form */
+function onLogTypeChange() {
+  el('log-preview').style.display = 'none';
+  el('log-amount').value = '';
+}
+const dbuLogPreview = debounce(computeLogPreview, 150);
+function onLogAmountInput() { dbuLogPreview(); }
+
+function computeLogPreview() {
+  const type   = el('log-type').value;
+  const amount = parseFloat(el('log-amount').value) || 0;
+  if ((type !== 'partpay' && type !== 'prepay') || amount <= 0) {
+    el('log-preview').style.display = 'none'; return;
+  }
+  const id   = _activeLoanId; if (!id) return;
+  const loan = _loans.find(l => l.id === id); if (!loan) return;
+  const logs = _paymentLogs[id] || [];
+
+  const effP  = Math.max(0, loan.orig - (loan.preEmiPP || 0));
+  const emi   = calcEMI(loan.orig, loan.rate, loan.tenure);  // EMI on original principal
+  const base  = buildSchedule(effP, emi, loan.rate, loan.tenure, [], 'reduce_tenure');
+
+  // Existing part payments from log
+  const existingPPs = buildPPListFromLogs(loan, logs);
+
+  // Derive fromMonth for this new payment from the date input
+  const startDate = loan.startDate ? new Date(loan.startDate) : new Date();
+  const payDate   = new Date(el('log-date').value || new Date());
+  const fromMonth = Math.max(1, Math.round(
+    (payDate.getFullYear() - startDate.getFullYear()) * 12
+    + (payDate.getMonth() - startDate.getMonth()) + 1
+  ));
+
+  // Schedule with existing PPs + this new one
+  const withNew = buildSchedule(effP, emi, loan.rate, loan.tenure,
+    [...existingPPs, { id: -1, type: 'onetime', amount, fromMonth }], 'reduce_tenure');
+
+  // Balance after this payment
+  const lastBal  = logs.length > 0
+    ? (logs[logs.length - 1].balanceAfter || loan.outstanding)
+    : (loan.outstanding || effP);
+  const newBal   = Math.max(0, lastBal - amount);
+
+  const intSaved = base.totalInt - withNew.totalInt;
+  const moSaved  = base.rows.length - withNew.rows.length;
+
+  set('lp-bal', INR(newBal));
+  set('lp-int', intSaved > 0 ? INR(intSaved) : '₹0');
+  set('lp-ten', moSaved > 0 ? fmtMo(moSaved) : '—');
+  el('log-preview').style.display = '';
+}
+
+/* ── COMBINED EMI + PART PAYMENT TIMELINE ─────────────────────────────────
+   Each row = one scheduled month. Logged payments appear inline on that row.
+   Part payments show interest saved. Paid rows in red-tinted style.
+   Upcoming rows in blue-tinted style.
+─────────────────────────────────────────────────────────────────────────── */
+function renderLoanTimeline(id) {
+  const l    = _loans.find(x => x.id === id); if (!l) return;
+  const logs = _paymentLogs[id] || [];
+  const effP = Math.max(0, l.orig - (l.preEmiPP || 0));
+  const emi  = calcEMI(l.orig, l.rate, l.tenure);  // EMI on original principal
+  const base = buildSchedule(effP, emi, l.rate, l.tenure, [], 'reduce_tenure');
+  const ppList = buildPPListFromLogs(l, logs);
+  const withPP = ppList.length > 0
+    ? buildSchedule(effP, emi, l.rate, l.tenure, ppList, 'reduce_tenure')
+    : base;
+  const startD   = l.startDate ? new Date(l.startDate) : new Date();
+  const emisPaid = l.emisPaid || 0;
+
+  // Index logged EMIs by month number (1-based)
+  const logByMonth = {};
+  for (const lg of logs) {
+    const payDate   = new Date(lg.date);
+    const monthNum  = Math.max(1, Math.round(
+      (payDate.getFullYear() - startD.getFullYear()) * 12
+      + (payDate.getMonth() - startD.getMonth()) + 1
+    ));
+    if (!logByMonth[monthNum]) logByMonth[monthNum] = [];
+    logByMonth[monthNum].push(lg);
+  }
+
+  // Use withPP schedule rows (to show updated balance after part payments)
+  const rows = withPP.rows;
+  const total = rows.length;
+  set('ldp-log-count', total + ' months total · ' + emisPaid + ' paid');
+
+  const tbody = el('ldp-timeline-body');
+  const frag  = [];
+
+  for (const row of rows) {
+    const d       = addMonths(startD, row.month - 1);
+    const ds      = d.toLocaleString('en-IN', { month: 'short', year: '2-digit' });
+    const isPaid  = row.month <= emisPaid;
+    const monthLogs = logByMonth[row.month] || [];
+    const ppLogged  = monthLogs.filter(lg => lg.type === 'partpay' || lg.type === 'prepay');
+    const emiLogged = monthLogs.filter(lg => lg.type === 'emi');
+    const hasPP     = ppLogged.length > 0 || row.prepay > 0;
+
+    // Row background
+    let rowBg = '';
+    if (isPaid && hasPP)   rowBg = 'background:rgba(201,168,76,.06)';
+    else if (isPaid)       rowBg = 'background:rgba(224,85,85,.05)';
+    else if (!isPaid && hasPP) rowBg = 'background:rgba(201,168,76,.04)';
+    else                   rowBg = 'background:rgba(91,141,238,.03)';
+
+    // Part payment cell — show actual logged amount or schedule PP
+    let ppCell = '—';
+    if (ppLogged.length > 0) {
+      const totalLogged = ppLogged.reduce((s, lg) => s + lg.amount, 0);
+      const saved = ppLogged[ppLogged.length - 1].intSaved;
+      const moSv  = ppLogged[ppLogged.length - 1].moSaved;
+      ppCell = `<div>
+        <span class="badge ba">${INR(totalLogged)}</span>
+        ${saved > 0 ? `<div style="font-size:9px;color:var(--green);margin-top:2px;font-family:var(--mono)">saves ${INRs(saved)}</div>` : ''}
+        ${moSv > 0 ? `<div style="font-size:9px;color:var(--gold);font-family:var(--mono)">${fmtMo(moSv)} shorter</div>` : ''}
+        ${ppLogged.map(lg => `<button onclick="deleteLog(${id},${lg.id})" style="background:none;border:none;color:var(--dim);cursor:pointer;font-size:10px;padding:0" title="Delete">✕</button>`).join('')}
+      </div>`;
+    } else if (row.prepay > 0) {
+      ppCell = `<span class="badge ba">${INR(row.prepay)}</span>`;
+    }
+
+    // Interest saved column — only for rows with part payments
+    const intSavedCell = hasPP && ppLogged.length > 0 && ppLogged[ppLogged.length-1].intSaved > 0
+      ? `<span style="color:var(--green);font-weight:700;font-family:var(--mono);font-size:10px">${INRs(ppLogged[ppLogged.length-1].intSaved)}</span>`
+      : '—';
+
+    // Status badge
+    let statusBadge = '';
+    if (isPaid)          statusBadge = '<span class="badge br" style="font-size:9px">Paid</span>';
+    else if (row.balance <= 0.5) statusBadge = '<span class="badge bg" style="font-size:9px">Closed</span>';
+    else                 statusBadge = `<span style="font-size:9px;color:var(--dim)">${row.month - emisPaid} left</span>`;
+
+    frag.push(`<tr style="${rowBg}" id="ldptl-${row.month}">
+      <td style="color:var(--muted);font-size:11px">${row.month}</td>
+      <td style="font-size:11px">${ds}</td>
+      <td style="font-weight:600;color:${isPaid?'var(--muted)':'var(--text)'};font-family:var(--mono)">${INR(row.emi)}</td>
+      <td style="color:var(--green);font-family:var(--mono)">${INR(row.principal)}</td>
+      <td style="color:${isPaid?'var(--red)':'var(--muted)'};font-family:var(--mono)">${INR(row.interest)}</td>
+      <td>${ppCell}</td>
+      <td>${intSavedCell}</td>
+      <td style="font-weight:600;font-family:var(--mono);color:${isPaid?'var(--dim)':'var(--text)'}">${INR(row.balance)}</td>
+      <td>${statusBadge}</td>
+    </tr>`);
+  }
+
+  tbody.innerHTML = frag.join('');
+}
+
+/* Keep renderLogTable as alias for backward compat */
+function renderLogTable(id) { renderLoanTimeline(id); }
+
 function addPaymentLog() {
-  const id=_activeLoanId; if (!id) return;
-  const amount=parseFloat(el('log-amount').value)||0;
-  if (!amount){showToast('Enter a valid amount');return;}
-  const loan=_loans.find(l=>l.id===id); if (!loan) return;
-  const logs=_paymentLogs[id]||[];
-  const lastBal=logs.length>0?logs[logs.length-1].balanceAfter:(loan.outstanding||loan.orig);
-  const r=loan.rate/100/12;
-  const type=el('log-type').value;
-  const interestPart=lastBal*r;
-  const newBal=type==='emi'?Math.max(0,lastBal-(amount-interestPart)):Math.max(0,lastBal-amount);
-  const lg={id:Date.now(),date:el('log-date').value,type,amount,balanceAfter:Math.round(newBal),note:el('log-note').value};
-  _paymentLogs[id]=[...(_paymentLogs[id]||[]),lg];
-  loan.outstanding=Math.round(newBal);
-  saveLoans(); renderLogTable(id); renderMyLoans();
-  el('log-amount').value=''; el('log-note').value='';
-  showToast('Payment logged ✓');
+  const id     = _activeLoanId; if (!id) return;
+  const amount = parseFloat(el('log-amount').value) || 0;
+  if (!amount) { showToast('Enter a valid amount'); return; }
+  const loan   = _loans.find(l => l.id === id); if (!loan) return;
+  const logs   = _paymentLogs[id] || [];
+  const type   = el('log-type').value;
+
+  // Current balance — use last logged balance if available
+  const lastBal = logs.length > 0
+    ? (logs[logs.length - 1].balanceAfter || loan.outstanding)
+    : (loan.outstanding || loan.orig);
+
+  const r           = loan.rate / 100 / 12;
+  const interestPart = lastBal * r;
+
+  // New balance calculation
+  const newBal = type === 'emi'
+    ? Math.max(0, lastBal - (amount - interestPart))   // EMI: deduct principal part only
+    : Math.max(0, lastBal - amount);                    // Part pay / prepay: full deduction
+
+  // Calculate interest + tenure saved for part payments and prepayments
+  let intSaved = null, moSaved = null;
+  if (type === 'partpay' || type === 'prepay') {
+    const effP        = Math.max(0, loan.orig - (loan.preEmiPP || 0));
+    const emi         = calcEMI(loan.orig, loan.rate, loan.tenure);  // EMI on original principal
+    const startDate   = loan.startDate ? new Date(loan.startDate) : new Date();
+    const payDate     = new Date(el('log-date').value || new Date());
+    const fromMonth   = Math.max(1, Math.round(
+      (payDate.getFullYear() - startDate.getFullYear()) * 12
+      + (payDate.getMonth() - startDate.getMonth()) + 1
+    ));
+
+    // All part payments including this new one
+    const allPPs = buildPPListFromLogs(loan, logs);
+    allPPs.push({ id: Date.now() + 1, type: 'onetime', amount, fromMonth });
+
+    const base   = buildSchedule(effP, emi, loan.rate, loan.tenure, [], 'reduce_tenure');
+    const withPP = buildSchedule(effP, emi, loan.rate, loan.tenure, allPPs, 'reduce_tenure');
+
+    intSaved = Math.round(base.totalInt - withPP.totalInt);
+    moSaved  = base.rows.length - withPP.rows.length;
+  }
+
+  const lg = {
+    id: Date.now(),
+    date: el('log-date').value,
+    type,
+    amount,
+    balanceAfter: Math.round(newBal),
+    intSaved,      // null for regular EMIs, number for part payments
+    moSaved,       // null for regular EMIs, number for part payments
+    note: el('log-note').value,
+  };
+
+  _paymentLogs[id] = [...(_paymentLogs[id] || []), lg];
+  loan.outstanding = Math.round(newBal);
+
+  // Update emisPaid count for regular EMIs
+  if (type === 'emi') loan.emisPaid = (loan.emisPaid || 0) + 1;
+
+  saveLoans();
+  renderLoanTimeline(id);
+  refreshLoanDetailSummary(id);
+  renderMyLoans();
+  el('log-amount').value = '';
+  el('log-note').value   = '';
+  el('log-preview').style.display = 'none';
+
+  const msg = (type === 'partpay' || type === 'prepay') && intSaved > 0
+    ? `Part payment logged ✓ — saves ${INR(intSaved)} interest!`
+    : 'Payment logged ✓';
+  showToast(msg);
 }
-function deleteLog(loanId,logId) {
-  _paymentLogs[loanId]=(_paymentLogs[loanId]||[]).filter(l=>l.id!==logId);
-  saveLoans(); renderLogTable(loanId); showToast('Removed');
+
+function deleteLog(loanId, logId) {
+  const logs  = (_paymentLogs[loanId] || []).filter(l => l.id !== logId);
+  _paymentLogs[loanId] = logs;
+  const loan = _loans.find(l => l.id === loanId);
+  if (loan && logs.length > 0) {
+    loan.outstanding = logs[logs.length - 1].balanceAfter;
+  } else if (loan) {
+    loan.outstanding = loan.orig - (loan.preEmiPP || 0);
+  }
+  saveLoans();
+  renderLoanTimeline(loanId);
+  refreshLoanDetailSummary(loanId);
+  renderMyLoans();
+  showToast('Entry removed');
 }
 function openLoanInCalc(id) {
   const l = _loans.find(x => x.id === id); if (!l) return;
@@ -1301,6 +1859,7 @@ function openLoanInCalc(id) {
     ml_compute();
   }
   closeModal('loan-detail-modal');
+  closeLoanDetail();
   showToast(l.name + ' loaded in calculator ✓');
 }
 function openInCalculator() { if (_activeLoanId) openLoanInCalc(_activeLoanId); }
@@ -1316,8 +1875,10 @@ const ML = {
 function ml_getSchedules() {
   const fp = `${ML.P}|${ML.R}|${ML.N}|${ML.preEmiPP}|${JSON.stringify(ML.prepayments)}`;
   if (ML.schedCache && ML.schedCache.fp === fp) return ML.schedCache;
+  // EMI always on original principal (ML.P) — O.S. deposit doesn't change the bank's EMI
+  const emi  = calcEMI(ML.P, ML.R, ML.N);
+  // Schedule starts from effP (principal after O.S. deposit is removed)
   const effP = Math.max(0, ML.P - ML.preEmiPP);
-  const emi  = calcEMI(effP, ML.R, ML.N);
   const orig = buildSchedule(effP, emi, ML.R, ML.N, [], 'reduce_tenure');
   const prep = buildSchedule(effP, emi, ML.R, ML.N, ML.prepayments, 'reduce_tenure');
   ML.schedCache = { fp, orig, prep, emi, effP };
@@ -1388,7 +1949,7 @@ const openModal  = id => el(id).classList.add('open');
 const closeModal = id => el(id).classList.remove('open');
 const openShare  = ()  => openModal('modal-share');
 document.addEventListener('click',e=>{
-  ['add-loan-modal','loan-detail-modal','modal-share'].forEach(id=>{
+  ['add-loan-modal','modal-share'].forEach(id=>{
     const m=el(id); if(m&&e.target===m)m.classList.remove('open');
   });
 });
@@ -1405,7 +1966,7 @@ const FAQS=[
   {q:'Should I prepay my home loan or invest?',a:'If your loan rate exceeds expected investment returns, prepaying wins. At 8.5%+, FD/debt funds (6–7%) cannot match prepayment savings. Equity investments at 12%+ may win long-term, but prepayment gives a guaranteed return equal to your interest rate.'},
   {q:'Reduce Tenure vs Reduce EMI — which is better?',a:'"Reduce Tenure" keeps EMI constant and closes the loan faster — you save significantly more interest. "Reduce EMI" lowers the monthly burden but extends total interest paid. Reduce Tenure is strongly recommended.'},
   {q:'Is there a penalty for prepaying a home loan?',a:'RBI mandates zero prepayment penalty on floating-rate home loans. Fixed-rate loans may have 2–3% charges. Always check your loan agreement.'},
-  {q:'What does the Pre-EMI Prepayment field do?',a:'If you made a lump-sum payment before your first EMI (reducing the effective principal before the schedule started), enter it here. The tool reduces your principal and shows you exact interest and tenure savings from that early payment.'},
+  {q:'What is an O.S. Deposit / Pre-EMI Transfer?',a:'When a bank disburses a home loan, they sometimes collect a one-time amount before the regular EMI schedule starts — often called an Outstanding (O.S.) Deposit or Pre-EMI Transfer. For example, ₹46,374 collected on April 5th before your May 2026 EMI schedule. This amount goes directly off the principal — it is NOT counted as EMI #1. Enter it in the "O.S. Deposit" field so the calculator uses the correct effective principal (₹66L − ₹46,374 = ₹65,53,626) for all EMI and interest calculations.'},
 ];
 function buildFAQ(){
   el('faq-list').innerHTML=FAQS.map((f,i)=>`<div class="faq-item" id="faq-${i}"><div class="faq-q" onclick="el('faq-${i}').classList.toggle('open')"><span>${f.q}</span><span class="faq-icon">+</span></div><div class="faq-a">${f.a}</div></div>`).join('');
@@ -1413,13 +1974,33 @@ function buildFAQ(){
 
 /* ═══════════ INIT ═══════════ */
 function init(){
-  /* Default start date = today */
-  const today=new Date().toISOString().split('T')[0];
-  el('tl-start-date').value=today; S.startDate=new Date();
+  /* Pre-populate your exact loan scenario:
+     - Loan: ₹66,00,000
+     - O.S. Deposit (April 5): ₹46,374 → effective principal ₹65,53,626
+     - First regular EMI: May 2026
+     - Current: 0 regular EMIs paid (April payment was O.S. deposit, not EMI) */
+  const defaultStartDate = '2026-05-05';
+  el('tl-start-date').value  = defaultStartDate;
+  el('tl-pre-emi-pp').value  = '46374';
+  el('tl-emis-paid').value   = '0';
+  S.startDate = new Date(2026, 4, 5);  // May 5, 2026
+  S.preEmiPP  = 46374;
+  S.emisPaid  = 0;
 
-  /* Bind sliders */
+  /* Bind sliders — pre-set to your ₹66L loan */
+  S.P = 6600000; S.R = 7.55; S.N = 360;  // ₹66L, 7.55% p.a., 30 years
+  el('in-amount').value  = 6600000;
+  el('sl-amount').value  = 6600000;
+  el('in-rate').value    = 7.55;
+  el('sl-rate').value    = 7.55;
+  el('in-tenure').value  = 30;
+  el('sl-tenure').value  = 30;
+  set('badge-amount', INR(6600000));
+  set('badge-rate',   '7.55%');
+  set('badge-tenure', '30 Years');
+
   bindSlider('sl-amount','in-amount',100000,100000000,'badge-amount',v=>INR(v),   v=>{S.P=v;compute();});
-  bindSlider('sl-rate',  'in-rate',  5,20,            'badge-rate',  v=>v.toFixed(2)+'%', v=>{S.R=v;compute();});
+  bindSlider('sl-rate',  'in-rate',  5,20,            'badge-rate',  v=>parseFloat(v).toFixed(2)+'%', v=>{S.R=v;compute();});
 
   /* Tenure slider */
   const sl=el('sl-tenure'),inp=el('in-tenure'),unit=el('in-tenure-unit');
@@ -1433,10 +2014,19 @@ function init(){
   sl.addEventListener('input', ()=>{const v=parseInt(sl.value);inp.value=unit.value==='months'?v*12:v;updTen();});
   inp.addEventListener('input',updTen);
   unit.addEventListener('change',updTen);
-  paintSlider('sl-tenure',1,30,20);
+  paintSlider('sl-tenure',1,30,30);
+  paintSlider('sl-amount',100000,100000000,6600000);
+  paintSlider('sl-rate',5,20,7.55);
 
-  /* Fee / insurance */
-  el('in-fee').addEventListener('input',      ()=>{S.fee=parseFloat(el('in-fee').value)||0;compute();});
+  /* Actual bank EMI override */
+  el('in-actual-emi').value = '46384';  // pre-fill your bank's EMI
+  S.actualEMI = 46384;
+  el('in-actual-emi').addEventListener('input', () => {
+    const v = parseFloat(el('in-actual-emi').value) || 0;
+    S.actualEMI = v;
+    S.schedCache = null;
+    compute();
+  });
   el('in-insurance').addEventListener('input',()=>{S.insurance=parseFloat(el('in-insurance').value)||0;compute();});
 
   /* Timeline inputs live-update */
