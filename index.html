@@ -694,7 +694,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 
 <!-- PAGE 2: MY LOANS -->
 <div class="page" id="page-myloans">
-<div class="ml-header"><div class="ml-header-inner"><div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px"><div><div class="ml-title">🏦 My Loans</div><div class="ml-sub">Your personal loan tracking dashboard — all loans, payments, and savings in one place</div></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="gmail-btn" onclick="openPasteModal()" title="Paste bank email/SMS to auto-parse">📋 Paste &amp; Parse</button><button class="gmail-btn" id="gmail-connect-btn" onclick="gmailConnect()" title="Connect Gmail to auto-fetch EMI emails">📧 Connect Gmail</button><button class="btn-gold" style="padding:9px 16px;font-size:13px" onclick="openAddLoanModal()">+ Add New Loan</button></div></div></div></div>
+<div class="ml-header"><div class="ml-header-inner"><div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px"><div><div class="ml-title">🏦 My Loans</div><div class="ml-sub">Your personal loan tracking dashboard — all loans, payments, and savings in one place</div></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn-gold" style="padding:9px 16px;font-size:13px" onclick="openAddLoanModal()">+ Add New Loan</button></div></div></div></div>
 <div class="ml-wrap">
   <div class="ml-summary"><div class="ml-sum-card" style="--mc:var(--gold)"><div class="ml-sum-lbl">Total Borrowed</div><div class="ml-sum-val" id="ml-total-borrowed" style="color:var(--gold)">₹0</div><div class="ml-sum-sub" id="ml-loan-count">0 loans</div></div><div class="ml-sum-card" style="--mc:var(--red)"><div class="ml-sum-lbl">Total Outstanding</div><div class="ml-sum-val" id="ml-total-outstanding" style="color:var(--red)">₹0</div><div class="ml-sum-sub">current balance</div></div><div class="ml-sum-card" style="--mc:var(--green)"><div class="ml-sum-lbl">Interest Saved</div><div class="ml-sum-val" id="ml-total-saved" style="color:var(--green)">₹0</div><div class="ml-sum-sub" id="ml-saved-sub">from part payments</div></div><div class="ml-sum-card" style="--mc:var(--blue)"><div class="ml-sum-lbl">Monthly EMI Total</div><div class="ml-sum-val" id="ml-total-emi" style="color:var(--blue)">₹0</div><div class="ml-sum-sub">combined outflow</div></div></div>
   <!-- ── EMBEDDED LOAN CALCULATOR (shown when "In Calculator" clicked) ── -->
@@ -2184,6 +2184,7 @@ function showPage(name,btn){
     if(!_expInited){loadExpenses();_expInited=true;}
     _expMonth=new Date();_expMonth.setDate(1);
     renderExpPage();
+    initGmail();
   }
   if(name==='cards'){if(!_cardsInited){loadCards();_cardsInited=true;}renderCardsPage();}
 }
@@ -3324,19 +3325,39 @@ function gmailDisconnect() {
 }
 
 function gmailUpdateBar(connected) {
+  // Update My Loans bar (if present)
   const bar  = el('gmail-bar');
   const dot  = el('gmail-dot');
   const txt  = el('gmail-bar-text');
   const fetchBtn = el('gmail-fetch-btn');
-  const connectBtn = el('gmail-connect-btn');
-  if (!bar) return;
-  bar.style.display = '';
-  dot.className = 'gmail-status-dot ' + (connected ? 'connected' : '');
-  txt.innerHTML  = connected
-    ? '<strong>Gmail connected</strong> — EMI debit alerts will be fetched automatically'
-    : '<strong>Gmail not connected</strong> — Use Paste &amp; Parse for offline mode';
-  if (fetchBtn) fetchBtn.style.display = connected ? '' : 'none';
-  if (connectBtn) connectBtn.textContent = connected ? '📧 Gmail ✓' : '📧 Connect Gmail';
+  if (bar) {
+    bar.style.display = connected ? '' : 'none';
+    if (dot) dot.className = 'gmail-status-dot ' + (connected ? 'connected' : '');
+    if (txt) txt.innerHTML = connected
+      ? '<strong>Gmail connected</strong> — EMI debit alerts will be fetched automatically'
+      : '<strong>Gmail not connected</strong> — Use Paste &amp; Parse for offline mode';
+    if (fetchBtn) fetchBtn.style.display = connected ? '' : 'none';
+  }
+
+  // Update Expenses page Gmail button + bar
+  const connectBtns = document.querySelectorAll('#gmail-connect-btn');
+  connectBtns.forEach(btn => {
+    btn.textContent = connected ? '📧 Gmail ✓' : '📧 Connect Gmail';
+    btn.style.color = connected ? 'var(--green)' : '';
+  });
+  const expFetchBtn = el('exp-gmail-fetch-btn');
+  if (expFetchBtn) expFetchBtn.style.display = connected ? '' : 'none';
+
+  const expBar = el('exp-gmail-bar');
+  const expDot = el('exp-gmail-dot');
+  const expTxt = el('exp-gmail-bar-text');
+  if (expBar) {
+    expBar.style.display = connected ? 'flex' : 'none';
+    if (expDot) expDot.className = 'gmail-status-dot ' + (connected ? 'connected' : '');
+    if (expTxt) expTxt.innerHTML = connected
+      ? '<strong>Gmail connected</strong> — click "🔄 Import Transactions" to fetch debits &amp; credits from your inbox'
+      : 'Gmail disconnected';
+  }
 }
 
 /* ─── Fetch EMI emails from Gmail ─────────────────────────────────────────── */
@@ -3596,6 +3617,8 @@ function gmailSelectEmail(idx) {
 function initGmail() {
   if (gmailRestoreToken()) {
     gmailUpdateBar(true);
+  } else {
+    gmailUpdateBar(false);
   }
 }
 
@@ -4439,6 +4462,288 @@ async function ccFetchEmails() {
 
 /* ── Add modal to backdrop handler ── */
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   EXPENSES — Gmail Auto-Import
+   Fetches all debit/credit emails, parses them, maps merchant to expense
+   category, shows a review panel, then logs directly into expense tracker.
+═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Merchant → Expense Category mapper ─────────────────────────────────── */
+const MERCHANT_CAT_MAP = [
+  // Groceries
+  { keywords:['bigbasket','big basket','blinkit','zepto','dunzo','swiggy instamart','jiomart','dmart','more supermarket','reliance fresh','spencer','nature basket','grofers'], cat:'grocery' },
+  // Dining / Food delivery
+  { keywords:['swiggy','zomato','eatsure','faasos','box8','freshmenu','ola foods','rebel foods','mcdonald','kfc','domino','pizza hut','subway','burger king','starbucks','cafe coffee'], cat:'dining' },
+  // Transport / Fuel
+  { keywords:['uber','ola','rapido','meru','bluebike','yulu','bounce','bpcl','iocl','hpcl','essar fuel','shell fuel','fuel','petrol','diesel','indian oil','bharat petroleum'], cat:'transport' },
+  // Shopping / E-commerce
+  { keywords:['amazon','flipkart','myntra','ajio','nykaa','tata cliq','meesho','snapdeal','shopsy','limeroad','paytm mall','jiomart','croma','reliance digital'], cat:'shopping' },
+  // Medical / Healthcare
+  { keywords:['apollo','practo','netmeds','1mg','pharmeasy','medlife','tata 1mg','healthkart','max hospital','fortis','manipal','columbia asia','narayana','thyrocare','dr lal'], cat:'medical' },
+  // Entertainment / OTT
+  { keywords:['netflix','amazon prime','hotstar','disney','zee5','sonyliv','voot','alt balaji','eros now','mxplayer','jiocinema','bookmyshow','pvr','inox','cinepolis'], cat:'entertain' },
+  // Utilities / Bills
+  { keywords:['bescom','tpddl','bses','msedcl','adani electricity','torrent power','cesc','jdvvnl','electricity board','water board','bwssb','mcgm water','gas','mahanagar gas','igl','avvnl','dhbvn'], cat:'elec' },
+  // Subscriptions
+  { keywords:['spotify','apple music','youtube premium','google one','microsoft','adobe','dropbox','notion','slack','github','linkedin premium','icloud'], cat:'sub' },
+  // Insurance
+  { keywords:['lic','hdfc life','icici prudential','bajaj allianz','star health','max bupa','care health','niva bupa','policy bazaar','acko','digit insurance'], cat:'insurance' },
+  // Education
+  { keywords:['byju','unacademy','vedantu','udemy','coursera','upgrad','simplilearn','great learning','chegg','duolingo','testbook','gradeup'], cat:'education' },
+  // EMI / Loan payments — these map to rent category as fixed
+  { keywords:['nach debit','ecs debit','auto debit','loan emi','home loan','car loan','personal loan'], cat:'rent' },
+  // Investments
+  { keywords:['zerodha','groww','upstox','paytm money','kuvera','smallcase','coin by zerodha','scripbox','mutual fund','sip','fd','fixed deposit','ppf','nps'], cat:'sip' },
+  // Salary credit — maps to salary
+  { keywords:['salary','sal credit','payroll','ctc','stipend','wage','compensation credit'], cat:'salary' },
+  // Domestic help
+  { keywords:['cook','maid','cleaning','helper','domestic'], cat:'domestic' },
+];
+
+/* ── Map parsed email text to expense category ── */
+function mapToExpCat(bank, merchant, amount, type) {
+  const text = (bank + ' ' + merchant).toLowerCase();
+
+  // Check merchant map first
+  for (const rule of MERCHANT_CAT_MAP) {
+    if (rule.keywords.some(k => text.includes(k.toLowerCase()))) {
+      return rule.cat;
+    }
+  }
+
+  // Fallback by transaction type
+  if (type === 'salary') return 'salary';
+  if (type === 'emi')    return 'rent';
+
+  // Fallback by amount range — small amounts likely dining/daily
+  if (amount < 500)   return 'dining';
+  if (amount < 2000)  return 'shopping';
+  if (amount < 10000) return 'shopping';
+  return 'shopping'; // default
+}
+
+/* ── State for pending imports ── */
+let _pendingImports = [];
+
+/* ── Main Gmail fetch for Expenses ── */
+async function expFetchGmail() {
+  if (!_gmailToken) {
+    showToast('Connect Gmail first using the "📧 Connect Gmail" button');
+    return;
+  }
+
+  const btn = el('exp-gmail-fetch-btn');
+  if (btn) { btn.textContent = '⏳ Fetching…'; btn.disabled = true; }
+
+  // Broad query — ALL debit/credit alerts from any bank/payment app
+  const SENDERS = [
+    'icici.bank.in', 'icicibank.com',
+    'axis.bank.in',  'axisbank.com',
+    'hdfcbank.com',  'sbi.co.in', 'onlinesbi.com',
+    'kotak.com',     'indusind.com', 'yesbank.in',
+    'idfcfirstbank.com', 'federalbank.co.in',
+    'amazon.in',     'amazonpay.in',
+    'phonepe.com',   'paytm.com',
+    'razorpay.com',  'cred.club',
+    'google.com',    'upi',
+  ];
+  const senderQ = SENDERS.map(s => `from:@${s}`).join(' OR ');
+  const q = encodeURIComponent(`(${senderQ}) newer_than:60d`);
+
+  try {
+    const listRes = await fetch(
+      `https://gmail.googleapis.com/gmail/v1/users/me/messages?q=${q}&maxResults=50`,
+      { headers: { Authorization: 'Bearer ' + _gmailToken } }
+    );
+    if (!listRes.ok) throw new Error('Gmail API ' + listRes.status);
+    const { messages = [] } = await listRes.json();
+
+    if (!messages.length) {
+      showToast('No transaction emails found in the last 60 days');
+      if (btn) { btn.textContent = '🔄 Import Transactions'; btn.disabled = false; }
+      return;
+    }
+
+    // Show progress
+    const impPanel = el('exp-import-panel');
+    const impList  = el('exp-import-list');
+    if (impPanel) impPanel.style.display = '';
+    if (impList)  impList.innerHTML = `<div style="padding:20px;text-align:center;color:var(--muted);font-size:12px">Loading ${messages.length} emails…</div>`;
+
+    // Fetch details in batches of 5
+    const details = [];
+    for (let i = 0; i < Math.min(messages.length, 40); i += 5) {
+      const batch = await Promise.all(
+        messages.slice(i, i+5).map(m =>
+          fetch(
+            `https://gmail.googleapis.com/gmail/v1/users/me/messages/${m.id}?format=metadata` +
+            `&metadataHeaders=Subject&metadataHeaders=Date&metadataHeaders=From`,
+            { headers: { Authorization: 'Bearer ' + _gmailToken } }
+          ).then(r => r.json()).catch(() => null)
+        )
+      );
+      details.push(...batch.filter(Boolean));
+    }
+
+    // Parse each email
+    const parsed = [];
+    for (const msg of details) {
+      const headers  = msg.payload?.headers || [];
+      const getH     = n => headers.find(h => h.name.toLowerCase() === n.toLowerCase())?.value || '';
+      const subject  = getH('Subject');
+      const dateHdr  = getH('Date');
+      const from     = getH('From');
+      const snippet  = msg.snippet || '';
+      const fullText = from + ' ' + subject + ' ' + snippet;
+      const result   = parseBankText(fullText);
+      if (!result || result.amount <= 0) continue;
+
+      // Determine if debit or credit
+      const isCredit = /\b(credit|credited|received|refund|cashback|salary)\b/i.test(fullText);
+      const txnDate  = result.date || new Date().toISOString().split('T')[0];
+      const catId    = mapToExpCat(result.bank, subject + ' ' + snippet, result.amount, result.type);
+      const monthKey = txnDate.slice(0, 7); // YYYY-MM
+
+      parsed.push({
+        id:        msg.id,
+        date:      txnDate,
+        monthKey,
+        amount:    result.amount,
+        bank:      result.bank,
+        merchant:  subject.slice(0, 60),
+        catId,
+        isCredit,
+        snippet:   snippet.slice(0, 80),
+        checked:   true,
+      });
+    }
+
+    // De-duplicate by date+amount+bank
+    const seen = new Set();
+    const unique = parsed.filter(p => {
+      const key = `${p.date}|${p.amount}|${p.bank}`;
+      if (seen.has(key)) return false;
+      seen.add(key); return true;
+    });
+
+    // Sort by date descending
+    unique.sort((a,b) => b.date.localeCompare(a.date));
+    _pendingImports = unique;
+
+    renderImportList();
+    set('exp-import-count', unique.length + ' transactions found');
+
+    if (!unique.length) {
+      if (impList) impList.innerHTML = '<div style="padding:20px;text-align:center;color:var(--muted);font-size:12px">No parseable transactions found — try Paste & Parse for individual emails</div>';
+    }
+
+  } catch(e) {
+    showToast('Error: ' + e.message);
+    const impList = el('exp-import-list');
+    if (impList) impList.innerHTML = `<div style="padding:16px;font-size:11px;color:var(--red)">Error: ${e.message}</div>`;
+  } finally {
+    if (btn) { btn.textContent = '🔄 Import Transactions'; btn.disabled = false; }
+  }
+}
+
+/* ── Render the pending import review list ── */
+function renderImportList() {
+  const listEl = el('exp-import-list'); if (!listEl) return;
+
+  const catOptions = (_expCats || [])
+    .filter(c => c.id !== 'salary' || true)
+    .map(c => `<option value="${c.id}">${c.icon} ${c.name}</option>`)
+    .join('');
+
+  if (!_pendingImports.length) {
+    listEl.innerHTML = '<div style="padding:20px;text-align:center;color:var(--muted);font-size:12px">All transactions imported ✓</div>';
+    return;
+  }
+
+  listEl.innerHTML = _pendingImports.map((txn, idx) => {
+    const isAlreadyLogged = checkAlreadyLogged(txn);
+    const cat = (_expCats||[]).find(c => c.id === txn.catId);
+    return `<div style="display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid var(--border);${isAlreadyLogged ? 'opacity:.5' : ''}" id="imp-row-${idx}">
+      <input type="checkbox" ${txn.checked && !isAlreadyLogged ? 'checked' : ''} ${isAlreadyLogged ? 'disabled' : ''}
+        onchange="_pendingImports[${idx}].checked=this.checked"
+        style="width:auto;flex-shrink:0">
+      <div style="flex-shrink:0;width:70px;font-size:10px;color:var(--muted);font-family:var(--mono)">${txn.date.slice(5)}</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:11px;font-weight:600;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${txn.merchant}</div>
+        <div style="font-size:9px;color:var(--dim)">${txn.bank} · ${txn.snippet}</div>
+      </div>
+      <select onchange="_pendingImports[${idx}].catId=this.value" style="font-size:10px;width:140px;flex-shrink:0;padding:3px 5px">
+        ${catOptions.replace(`value="${txn.catId}"`, `value="${txn.catId}" selected`)}
+      </select>
+      <div style="font-size:13px;font-weight:800;font-family:var(--mono);color:${txn.isCredit?'var(--green)':'var(--red)'};width:80px;text-align:right;flex-shrink:0">
+        ${txn.isCredit ? '+' : '−'} ${INRs(txn.amount)}
+      </div>
+      <div style="flex-shrink:0;width:60px;text-align:center">
+        ${isAlreadyLogged
+          ? '<span style="font-size:9px;color:var(--green)">✓ Done</span>'
+          : `<button onclick="expImportOne(${idx})" style="background:var(--gold);color:#000;border:none;border-radius:var(--rsm);padding:3px 9px;font-size:10px;font-weight:700;cursor:pointer">Log</button>`}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ── Check if already logged (same date + amount in that month) ── */
+function checkAlreadyLogged(txn) {
+  const monthData = _expData?.[txn.monthKey]?.[txn.catId];
+  if (!monthData) return false;
+  // Simple check — if actual amount has been entered for that category that month
+  return monthData.actual > 0 && Math.abs(monthData.actual - txn.amount) < 1;
+}
+
+/* ── Log a single transaction ── */
+function expImportOne(idx) {
+  const txn = _pendingImports[idx]; if (!txn) return;
+  logExpTransaction(txn);
+  _pendingImports.splice(idx, 1);
+  renderImportList();
+  set('exp-import-count', _pendingImports.length + ' transactions remaining');
+  showToast(INR(txn.amount) + ' logged to ' + ((_expCats||[]).find(c=>c.id===txn.catId)?.name||txn.catId));
+}
+
+/* ── Log all checked transactions ── */
+function expImportAll() {
+  const toLog = _pendingImports.filter(t => t.checked);
+  if (!toLog.length) { showToast('No transactions selected'); return; }
+  let count = 0;
+  for (const txn of toLog) {
+    logExpTransaction(txn);
+    count++;
+  }
+  _pendingImports = _pendingImports.filter(t => !t.checked);
+  renderImportList();
+  set('exp-import-count', _pendingImports.length + ' remaining');
+  renderExpPage();
+  saveExpenses();
+  showToast(count + ' transaction' + (count!==1?'s':'') + ' logged ✓');
+}
+
+/* ── Core: write a transaction into _expData ── */
+function logExpTransaction(txn) {
+  if (!txn.catId || !txn.monthKey) return;
+  if (!_expData[txn.monthKey]) _expData[txn.monthKey] = {};
+  if (!_expData[txn.monthKey][txn.catId]) {
+    const cat = (_expCats||[]).find(c => c.id === txn.catId);
+    _expData[txn.monthKey][txn.catId] = { budget: cat?.budget||0, actual: 0, note: '' };
+  }
+  const entry = _expData[txn.monthKey][txn.catId];
+  if (txn.isCredit && txn.catId === 'salary') {
+    // Credit to salary — set as income
+    entry.actual = Math.max(entry.actual, txn.amount); // take the largest (in case of multiple credits)
+  } else if (txn.isCredit) {
+    // Refund/cashback — subtract from spending
+    entry.actual = Math.max(0, entry.actual - txn.amount);
+  } else {
+    // Debit — add to spending
+    entry.actual = (entry.actual || 0) + txn.amount;
+  }
+  saveExpenses();
+}
+
 document.addEventListener('DOMContentLoaded', init);
 </script>
 
@@ -4453,6 +4758,8 @@ document.addEventListener('DOMContentLoaded', init);
         <div class="ml-sub">Track spending across all categories · Set budgets · View trends</div>
       </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="gmail-btn" id="gmail-connect-btn" onclick="gmailConnect()" title="Connect Gmail to auto-import transactions">📧 Connect Gmail</button>
+        <button class="gmail-btn" id="exp-gmail-fetch-btn" onclick="expFetchGmail()" style="display:none">🔄 Import Transactions</button>
         <button class="btn-outline" onclick="openExpCatModal()">＋ Add Category</button>
         <button class="btn-gold" style="padding:9px 16px" onclick="exportExpCSV()">⬇ Export CSV</button>
       </div>
@@ -4470,6 +4777,33 @@ document.addEventListener('DOMContentLoaded', init);
     <div style="font-size:10px;color:var(--muted);margin-left:6px">Navigate months to enter or review expenses</div>
     <div style="margin-left:auto;display:flex;gap:6px">
       <button onclick="expCopyLastMonth()" class="btn-outline" style="font-size:11px;padding:5px 11px">📋 Copy last month's budget</button>
+    </div>
+  </div>
+
+  <!-- Gmail connection status bar -->
+  <div id="exp-gmail-bar" style="display:none;background:linear-gradient(90deg,rgba(91,141,238,.07),rgba(201,168,76,.04));border:1px solid rgba(91,141,238,.2);border-radius:var(--r);padding:11px 16px;margin-bottom:12px;display:none;align-items:center;gap:12px;flex-wrap:wrap">
+    <div class="gmail-status-dot" id="exp-gmail-dot"></div>
+    <div style="flex:1;font-size:12px;color:var(--muted)" id="exp-gmail-bar-text">—</div>
+    <button class="gmail-btn danger" onclick="gmailDisconnect()">Disconnect</button>
+  </div>
+
+  <!-- Imported transactions review panel -->
+  <div id="exp-import-panel" style="display:none;margin-bottom:16px">
+    <div class="card">
+      <div class="card-hd">
+        <span class="card-title">📥 Gmail Import — Review &amp; Confirm</span>
+        <div style="display:flex;gap:8px;align-items:center">
+          <span class="card-sub" id="exp-import-count">—</span>
+          <button onclick="expImportAll()" class="btn-gold" style="padding:5px 14px;font-size:11px">✓ Log All</button>
+          <button onclick="el('exp-import-panel').style.display='none'" class="btn-outline" style="padding:5px 10px;font-size:11px">✕</button>
+        </div>
+      </div>
+      <div class="card-body" style="padding:0">
+        <div style="padding:10px 14px;background:var(--s2);border-bottom:1px solid var(--border);font-size:10px;color:var(--muted)">
+          Transactions parsed from your Gmail. Edit the category before logging if needed. Click ✓ to log individually or "Log All" to import everything at once.
+        </div>
+        <div style="max-height:400px;overflow-y:auto" id="exp-import-list"></div>
+      </div>
     </div>
   </div>
 
