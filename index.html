@@ -429,6 +429,72 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 .gm-date{font-size:10px;color:var(--muted);white-space:nowrap;margin-left:8px}
 .gm-snippet{font-size:10px;color:var(--muted);margin-top:2px;line-height:1.4}
 
+
+/* Recurring badge */
+.recur-badge{display:inline-flex;align-items:center;gap:3px;font-size:9px;font-weight:700;padding:1px 5px;border-radius:10px;margin-left:5px;background:var(--blue-l);color:var(--blue);border:1px solid rgba(91,141,238,.2)}
+/* MoM comparison */
+.mom-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px;margin-top:12px}
+.mom-card{background:var(--s2);border:1px solid var(--border);border-radius:var(--rsm);padding:10px 12px}
+.mom-cat-name{font-size:11px;font-weight:600;color:var(--text);margin-bottom:6px;display:flex;align-items:center;gap:5px}
+.mom-row{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.mom-label{font-size:9px;color:var(--muted);width:45px;flex-shrink:0}
+.mom-bar-wrap{flex:1;height:5px;background:var(--s4);border-radius:3px;overflow:hidden}
+.mom-bar{height:100%;border-radius:3px;transition:width .3s}
+.mom-val{font-size:10px;font-family:var(--mono);width:60px;text-align:right;flex-shrink:0}
+.mom-delta{font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;flex-shrink:0}
+.mom-up{background:var(--red-l);color:var(--red)}
+.mom-down{background:var(--green-l);color:var(--green)}
+.mom-same{background:var(--s3);color:var(--muted)}
+/* Stacked bar chart */
+.exp-stacked-wrap{height:220px;position:relative;margin-top:4px}
+/* Tab switcher for charts */
+.exp-chart-tabs{display:flex;gap:4px;margin-bottom:10px}
+.exp-chart-tab{padding:4px 10px;border-radius:var(--rsm);border:1px solid var(--border2);background:transparent;font-size:10px;font-weight:600;color:var(--muted);cursor:pointer}
+.exp-chart-tab.active{background:var(--gold);color:#000;border-color:var(--gold)}
+
+
+/* ═══════════════════ CREDIT CARDS ═══════════════════ */
+.cc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px;margin-bottom:20px}
+.cc-card{background:var(--s1);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh);transition:border-color .2s,box-shadow .2s;cursor:pointer}
+.cc-card:hover{border-color:var(--gold-border);box-shadow:var(--sh-gold)}
+/* Card face — gradient chip visual */
+.cc-face{padding:18px 18px 14px;position:relative;overflow:hidden;min-height:130px}
+.cc-face::before{content:'';position:absolute;inset:0;opacity:.15;border-radius:var(--r) var(--r) 0 0}
+.cc-face.visa{background:linear-gradient(135deg,#1a2040,#2a3568)}
+.cc-face.mastercard{background:linear-gradient(135deg,#1a1008,#3a1808)}
+.cc-face.rupay{background:linear-gradient(135deg,#0f1a10,#1a3520)}
+.cc-face.amex{background:linear-gradient(135deg,#0a1a20,#102030)}
+.cc-bank-name{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:4px}
+.cc-card-name{font-size:15px;font-weight:800;color:#fff;letter-spacing:-.01em;margin-bottom:12px}
+.cc-number{font-family:var(--mono);font-size:13px;color:rgba(255,255,255,.85);letter-spacing:.2em;margin-bottom:10px}
+.cc-limit-row{display:flex;justify-content:space-between;align-items:flex-end}
+.cc-limit-lbl{font-size:9px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.05em}
+.cc-limit-val{font-size:12px;font-weight:700;font-family:var(--mono);color:#fff}
+/* Utilisation bar inside card face */
+.cc-util-bar{position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(255,255,255,.15)}
+.cc-util-fill{height:100%;transition:width .4s}
+/* Card body */
+.cc-body{padding:13px 16px}
+.cc-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+.cc-stat .cs-lbl{font-size:9px;color:var(--muted);margin-bottom:2px}
+.cc-stat .cs-val{font-size:13px;font-weight:700;font-family:var(--mono)}
+.cc-due-row{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:var(--rsm);margin-bottom:10px}
+.cc-due-row.urgent{background:var(--red-l);border:1px solid rgba(224,85,85,.2)}
+.cc-due-row.soon{background:var(--gold-l);border:1px solid var(--gold-border)}
+.cc-due-row.ok{background:var(--s2);border:1px solid var(--border)}
+.cc-footer{padding:10px 16px;border-top:1px solid var(--border);display:flex;gap:8px}
+/* Transaction list */
+.cc-txn-row{display:flex;align-items:center;gap:10px;padding:8px 12px;border-bottom:1px solid var(--border);font-size:11px}
+.cc-txn-row:last-child{border-bottom:none}
+.cc-txn-row:hover{background:var(--s2)}
+.cc-txn-merchant{flex:1;font-weight:500;color:var(--text)}
+.cc-txn-cat{font-size:9px;color:var(--muted)}
+.cc-txn-amt{font-family:var(--mono);font-weight:700}
+.cc-txn-date{font-size:9px;color:var(--dim);white-space:nowrap}
+/* Add card button */
+.add-cc-card{background:var(--s1);border:2px dashed var(--border2);border-radius:var(--r);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:36px 20px;cursor:pointer;transition:all .2s;min-height:220px;text-align:center}
+.add-cc-card:hover{border-color:var(--gold);box-shadow:var(--sh-gold)}
+
 </style>
 </head>
 <body>
@@ -439,6 +505,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
       <button class="page-tab active" onclick="showPage('calculator',this)">🧮 Calculator</button>
       <button class="page-tab" onclick="showPage('myloans',this)">🏦 My Loans</button>
       <button class="page-tab" onclick="showPage('expenses',this)">💸 Expenses</button>
+      <button class="page-tab" onclick="showPage('cards',this)">💳 Cards</button>
     </div>
     <div class="topbar-right"><button class="tbtn" onclick="openShare()">🔗 Share</button></div>
   </div>
@@ -2118,6 +2185,7 @@ function showPage(name,btn){
     _expMonth=new Date();_expMonth.setDate(1);
     renderExpPage();
   }
+  if(name==='cards'){if(!_cardsInited){loadCards();_cardsInited=true;}renderCardsPage();}
 }
 
 /* ═══════════ MODALS ═══════════ */
@@ -2125,7 +2193,7 @@ const openModal  = id => el(id).classList.add('open');
 const closeModal = id => el(id).classList.remove('open');
 const openShare  = ()  => openModal('modal-share');
 document.addEventListener('click',e=>{
-  ['add-loan-modal','modal-share','paste-modal','gmail-modal','exp-cat-modal','exp-entry-modal'].forEach(id=>{
+  ['add-loan-modal','modal-share','paste-modal','gmail-modal','exp-cat-modal','exp-entry-modal','add-card-modal'].forEach(id=>{
     const m=el(id); if(m&&e.target===m)m.classList.remove('open');
   });
 });
@@ -2261,6 +2329,10 @@ const EXP_DEFAULTS = [
   {id:'medical',  name:'Medical',            icon:'🏥', group:'personal',   budget:2000},
   {id:'clothing', name:'Clothing',           icon:'👗', group:'personal',   budget:2000},
   {id:'sub',      name:'Subscriptions',      icon:'📱', group:'personal',   budget:1500},
+  {id:'sub_ott',  name:'OTT (Netflix/Prime)', icon:'🎬', group:'personal',   budget:500,  parentId:'sub'},
+  {id:'sub_music',name:'Music (Spotify)',     icon:'🎵', group:'personal',   budget:200,  parentId:'sub'},
+  {id:'sub_cloud',name:'Cloud Storage',       icon:'☁️', group:'personal',   budget:200,  parentId:'sub'},
+  {id:'sub_apps', name:'Apps & Tools',        icon:'🔧', group:'personal',   budget:300,  parentId:'sub'},
   {id:'entertain',name:'Entertainment',      icon:'🎬', group:'personal',   budget:2000},
   {id:'education',name:'Education',          icon:'📚', group:'personal',   budget:2000},
   // Investments
@@ -2500,19 +2572,82 @@ function renderBalanceCard(income, emiTotal, totalFixed, totalVariable, catTotal
   }
 }
 
-/* ── Category rows ── */
+/* ── Category rows — supports sub-categories via parentId ── */
 function renderExpCategories(key, catTotals) {
   const wrap = el('exp-categories-wrap'); if (!wrap) return;
-  // Group categories
+
+  // Separate top-level cats from children
+  const topLevel = _expCats.filter(c => !c.parentId);
+  const children = _expCats.filter(c => c.parentId);
+
+  // Group top-level categories
   const groups = {};
-  for (const cat of _expCats) {
+  for (const cat of topLevel) {
     if (!groups[cat.group]) groups[cat.group] = [];
     groups[cat.group].push(cat);
   }
+
+  function buildCatRow(cat, isChild) {
+    // Sum children into parent's actual/budget if parent
+    const childCats = children.filter(c => c.parentId === cat.id);
+    const childActual = childCats.reduce((s,c) => s + (catTotals[c.id]?.actual||0), 0);
+    const childBudget = childCats.reduce((s,c) => s + (catTotals[c.id]?.budget||0), 0);
+    const e = catTotals[cat.id] || {budget:0, actual:0};
+    // For parent with children: show combined total
+    const displayActual = childCats.length > 0 ? (e.actual + childActual) : e.actual;
+    const displayBudget = childCats.length > 0 ? (e.budget || childBudget) : e.budget;
+    const pct = displayBudget > 0 ? Math.min(100, Math.round(displayActual/displayBudget*100)) : (displayActual > 0 ? 100 : 0);
+    const barColor = pct > 100 ? 'var(--red)' : pct > 80 ? 'var(--gold)' : 'var(--green)';
+    const isIncome = cat.id === 'salary';
+    const hasChildren = childCats.length > 0;
+    const indent = isChild ? 'margin-left:16px;border-left:2px solid var(--border2);' : '';
+    const childrenHtml = hasChildren
+      ? `<div id="subcat-${cat.id}" style="display:block">
+          ${childCats.map(child => buildCatRow(child, true)).join('')}
+          <div class="exp-add-row" style="margin-left:16px">
+            <input type="text" id="exp-new-sub-name-${cat.id}" placeholder="New sub-item" style="flex:1">
+            <input type="number" id="exp-new-sub-budget-${cat.id}" placeholder="Budget ₹" style="width:90px">
+            <input type="number" id="exp-new-sub-actual-${cat.id}" placeholder="Spent ₹" style="width:90px">
+            <button class="exp-add-btn-sm" onclick="addExpSubItem('${cat.id}','${key}')">＋</button>
+          </div>
+        </div>`
+      : '';
+
+    return `<div id="exprow-${cat.id}" style="${indent}">
+      <div class="exp-row" style="${isChild ? 'background:var(--s2);border-color:transparent;' : ''}">
+        <span style="font-size:${isChild?'12':'14'}px;flex-shrink:0">${cat.icon}</span>
+        <span class="exp-row-name">
+          ${cat.name}
+          ${hasChildren ? `<span onclick="toggleSubCat('${cat.id}')" style="cursor:pointer;font-size:10px;color:var(--gold);margin-left:5px" id="subcat-toggle-${cat.id}">▾ ${childCats.length} items</span>` : ''}
+          ${e.note ? `<span style="font-size:9px;color:var(--dim);margin-left:4px">${e.note}</span>` : ''}
+        </span>
+        ${!isIncome
+          ? `<span class="exp-row-budget">${displayBudget > 0 ? INRs(displayBudget) : '—'}</span>`
+          : '<span class="exp-row-budget" style="color:var(--green)">Income</span>'}
+        <span class="exp-row-actual" style="color:${isIncome?'var(--green)':(pct>100?'var(--red)':'var(--text)')}">
+          ${displayActual > 0 ? INR(displayActual) : '—'}
+        </span>
+        ${!isIncome
+          ? `<div class="exp-row-bar-wrap"><div class="exp-row-bar" style="width:${pct}%;background:${barColor}"></div></div>`
+          : '<div style="width:60px"></div>'}
+        <div class="exp-row-actions">
+          <button class="exp-row-btn" onclick="openExpEntry('${key}','${cat.id}')" title="Enter amount / budget">✏️</button>
+          <button class="exp-row-btn" onclick="openExpCatModal('${cat.id}')" title="Rename / edit">⚙️</button>
+          <button class="exp-row-btn del" onclick="deleteExpCat('${cat.id}')" title="Delete">✕</button>
+        </div>
+      </div>
+      ${childrenHtml}
+    </div>`;
+  }
+
   let html = '';
   for (const [grp, cats] of Object.entries(groups)) {
     const gInfo = EXP_GROUPS[grp] || EXP_GROUPS.custom;
-    const grpTotal = cats.reduce((s, c) => s + (catTotals[c.id]?.actual || 0), 0);
+    // Group total includes children
+    const grpTotal = cats.reduce((s,c) => {
+      const childSum = children.filter(ch => ch.parentId === c.id).reduce((cs,ch) => cs + (catTotals[ch.id]?.actual||0), 0);
+      return s + (catTotals[c.id]?.actual||0) + childSum;
+    }, 0);
     html += `<div class="exp-cat-group" id="expgrp-${grp}">
       <div class="exp-cat-hd" onclick="toggleExpGroup('${grp}')">
         <span class="exp-cat-icon">${gInfo.label.split(' ')[0]}</span>
@@ -2520,37 +2655,43 @@ function renderExpCategories(key, catTotals) {
         <span class="exp-cat-total">${INR(grpTotal)}</span>
         <span class="exp-cat-chevron">▾</span>
       </div>
-      <div class="exp-cat-rows">`;
-
-    for (const cat of cats) {
-      const e = catTotals[cat.id] || {budget:0, actual:0};
-      const pct = e.budget > 0 ? Math.min(100, Math.round(e.actual/e.budget*100)) : (e.actual > 0 ? 100 : 0);
-      const barColor = pct > 100 ? 'var(--red)' : pct > 80 ? 'var(--amber,#c9a84c)' : 'var(--green)';
-      const isIncome = cat.id === 'salary';
-      html += `<div class="exp-row" id="exprow-${cat.id}">
-        <span style="font-size:14px;flex-shrink:0">${cat.icon}</span>
-        <span class="exp-row-name">${cat.name}${e.note ? `<span style="font-size:9px;color:var(--dim);margin-left:4px">${e.note}</span>` : ''}</span>
-        ${!isIncome ? `<span class="exp-row-budget" title="Budget">${e.budget > 0 ? INRs(e.budget) : '—'}</span>` : '<span class="exp-row-budget" style="color:var(--green)">Income</span>'}
-        <span class="exp-row-actual" style="color:${isIncome ? 'var(--green)' : (pct > 100 ? 'var(--red)' : 'var(--text)')}">${e.actual > 0 ? INR(e.actual) : '—'}</span>
-        ${!isIncome ? `<div class="exp-row-bar-wrap"><div class="exp-row-bar" style="width:${pct}%;background:${barColor}"></div></div>` : '<div style="width:60px"></div>'}
-        <div class="exp-row-actions">
-          <button class="exp-row-btn" onclick="openExpEntry('${key}','${cat.id}')" title="Enter amount">✏️</button>
-          <button class="exp-row-btn del" onclick="deleteExpCat('${cat.id}')" title="Delete category">✕</button>
+      <div class="exp-cat-rows">
+        ${cats.map(cat => buildCatRow(cat, false)).join('')}
+        <div class="exp-add-row">
+          <input type="text" id="exp-new-name-${grp}" placeholder="New item name" style="flex:1">
+          <input type="number" id="exp-new-budget-${grp}" placeholder="Budget ₹" style="width:100px">
+          <input type="number" id="exp-new-actual-${grp}" placeholder="Spent ₹" style="width:100px">
+          <button class="exp-add-btn-sm" onclick="addExpItem('${grp}','${key}')">＋ Add</button>
         </div>
-      </div>`;
-    }
-
-    // Add entry row for new expense in this group
-    html += `<div class="exp-add-row">
-      <input type="text"   id="exp-new-name-${grp}"   placeholder="New item name" style="flex:1">
-      <input type="number" id="exp-new-budget-${grp}"  placeholder="Budget ₹" style="width:100px">
-      <input type="number" id="exp-new-actual-${grp}"  placeholder="Spent ₹" style="width:100px">
-      <button class="exp-add-btn-sm" onclick="addExpItem('${grp}','${key}')">＋ Add</button>
+      </div>
     </div>`;
-
-    html += `</div></div>`;
   }
   wrap.innerHTML = html;
+}
+
+function toggleSubCat(catId) {
+  const subEl = document.getElementById('subcat-' + catId);
+  const togEl = document.getElementById('subcat-toggle-' + catId);
+  if (!subEl) return;
+  const isHidden = subEl.style.display === 'none';
+  subEl.style.display = isHidden ? 'block' : 'none';
+  if (togEl) togEl.textContent = isHidden ? togEl.textContent.replace('▸','▾') : togEl.textContent.replace('▾','▸');
+}
+
+/* ── Add sub-item under a parent ── */
+function addExpSubItem(parentId, monthKey) {
+  const name   = (el('exp-new-sub-name-'  + parentId)?.value || '').trim();
+  const budget = parseFloat(el('exp-new-sub-budget-' + parentId)?.value) || 0;
+  const actual = parseFloat(el('exp-new-sub-actual-' + parentId)?.value) || 0;
+  if (!name) { showToast('Enter a name for the sub-item'); return; }
+  const parent = _expCats.find(c => c.id === parentId);
+  const id = 'c_' + Date.now();
+  _expCats.push({ id, name, icon: '└', group: parent?.group || 'custom', budget, parentId });
+  expEntry(monthKey, id);
+  _expData[monthKey][id] = { budget, actual, note: '' };
+  saveExpenses();
+  renderExpPage();
+  showToast(name + ' added under ' + (parent?.name || 'parent') + ' ✓');
 }
 
 function toggleExpGroup(grp) {
@@ -2578,10 +2719,19 @@ function openExpEntry(monthKey, catId) {
   _expEditEntryId = { monthKey, catId };
   const cat = _expCats.find(c => c.id === catId);
   const e   = expEntry(monthKey, catId);
-  set('exp-entry-modal-sub', (cat?.name || catId) + ' · ' + expMonthLabel(_expMonth));
+  set('exp-entry-modal-sub', expMonthLabel(_expMonth));
+  // Populate name/icon so user can rename inline
+  const nameEl = el('exp-edit-name');
+  const iconEl = el('exp-edit-icon');
+  const iconPrev = el('exp-edit-icon-preview');
+  if (nameEl)   nameEl.value = cat?.name || '';
+  if (iconEl) { iconEl.value = cat?.icon || '📌'; iconEl.oninput = () => { if (iconPrev) iconPrev.textContent = iconEl.value || '📌'; }; }
+  if (iconPrev) iconPrev.textContent = cat?.icon || '📌';
   el('exp-edit-budget').value = e.budget || '';
   el('exp-edit-actual').value = e.actual || '';
   el('exp-edit-note').value   = e.note   || '';
+  const recurEl = el('exp-edit-recur');
+  if (recurEl) recurEl.checked = cat?.recurring === 'monthly';
   openModal('exp-entry-modal');
 }
 function saveExpEntry() {
@@ -2591,9 +2741,15 @@ function saveExpEntry() {
   e.budget = parseFloat(el('exp-edit-budget').value) || 0;
   e.actual = parseFloat(el('exp-edit-actual').value) || 0;
   e.note   = el('exp-edit-note').value || '';
-  // Also update cat default budget
+  // Save name/icon if changed
   const cat = _expCats.find(c => c.id === catId);
-  if (cat) cat.budget = e.budget;
+  if (cat) {
+    cat.budget = e.budget;
+    const newName = (el('exp-edit-name')?.value || '').trim();
+    const newIcon = (el('exp-edit-icon')?.value || '').trim();
+    if (newName) cat.name = newName;
+    if (newIcon) cat.icon = newIcon;
+  }
   saveExpenses();
   closeModal('exp-entry-modal');
   renderExpPage();
@@ -2818,6 +2974,31 @@ const BANK_PATTERNS = [
   { bank:'Union Bank', regex:/Union.*?Bank.*?(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
   // Federal Bank
   { bank:'Federal', regex:/Federal.*?(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
+  // ICICI Credit Card specific formats
+  { bank:'ICICI', regex:/ICICI.*?(?:Rs\.?|INR|₹|INR )\s*([\d,]+(?:\.\d{1,2})?)/i,    amountGroup:1 },
+  { bank:'ICICI', regex:/(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?).*?(?:icici|ICICI)/i, amountGroup:1 },
+  // ICICI credit card — "INR X,XXX.XX spent on your ICICI Bank Credit Card"
+  { bank:'ICICI CC', regex:/INR\s*([\d,]+(?:\.\d{1,2})?)[\s\S]*?(?:spent|debited|Credit Card)/i, amountGroup:1 },
+  // ICICI — "Your a/c XX1234 is debited with Rs.X,XXX"
+  { bank:'ICICI', regex:/debited with (?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
+  // Axis Bank
+  { bank:'Axis', regex:/(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)[\s\S]*?(?:Axis|AXIS)/i, amountGroup:1 },
+  { bank:'Axis', regex:/(?:Axis|AXIS)[\s\S]*?(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
+  // Axis — "INR X,XXX.XX has been debited"
+  { bank:'Axis', regex:/INR\s*([\d,]+(?:\.\d{1,2})?)[\s\S]*?(?:debited|deducted)/i, amountGroup:1 },
+  // Amazon Pay — "Rs. X,XXX paid to / charged / refunded"
+  { bank:'Amazon Pay', regex:/(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)[\s\S]*?(?:Amazon|amazon|paid to|charged)/i, amountGroup:1 },
+  { bank:'Amazon Pay', regex:/(?:Amazon|amazon)[\s\S]*?(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
+  // PhonePe — "Rs. X,XXX debited/paid"
+  { bank:'PhonePe', regex:/(?:PhonePe|phonepe)[\s\S]*?(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
+  { bank:'PhonePe', regex:/(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)[\s\S]*?(?:PhonePe|phonepe)/i, amountGroup:1 },
+  // Paytm
+  { bank:'Paytm', regex:/(?:Paytm|paytm)[\s\S]*?(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i,     amountGroup:1 },
+  // CRED
+  { bank:'CRED', regex:/(?:CRED|cred)[\s\S]*?(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i,         amountGroup:1 },
+  // Generic "debited with" / "paid Rs." patterns (catches most Indian bank formats)
+  { bank:'Bank Alert', regex:/(?:debited|paid|charged|deducted)[\s\S]{0,30}(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
+  { bank:'Bank Alert', regex:/(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)[\s\S]{0,30}(?:debited|paid|charged|deducted)/i, amountGroup:1 },
   // Generic fallback: any Rs. / INR / ₹ + number pattern
   { bank:'Auto-detect', regex:/(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
 ];
@@ -2834,9 +3015,10 @@ const MONTH_MAP = {jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,
 
 // Payment type keywords
 const TYPE_HINTS = {
-  emi:    /\b(?:EMI|instalment|installment|loan repayment|emi debit)\b/i,
-  partpay:/\b(?:part payment|partial|prepayment|lump.?sum|pre.?pay)\b/i,
-  credit: /\b(?:credit|credited|salary|sal credit|received)\b/i,
+  emi:     /(?:EMI|instalment|installment|loan repayment|emi debit|auto debit|ECS|NACH)/i,
+  partpay: /(?:part payment|partial|prepayment|lump.?sum|pre.?pay)/i,
+  credit:  /(?:credit|credited|salary|sal credit|received|refund|cashback|reward)/i,
+  debit:   /(?:debit|debited|paid|charged|spent|purchase|transaction|pos|UPI)/i,
 };
 
 /* ─── Core parser ─────────────────────────────────────────────────────────── */
@@ -2845,7 +3027,35 @@ function parseBankText(text) {
 
   let amount = null, bank = 'Unknown', dateStr = null, type = 'emi';
 
-  // Detect bank + amount
+  // ── Step 1: Detect bank from email domain/sender first (most reliable) ──
+  const SENDER_BANK_MAP = [
+    ['icici.bank.in',   'ICICI Bank'],   // credit_cards@icici.bank.in
+    ['icicibank.com',   'ICICI Bank'],
+    ['axis.bank.in',    'Axis Bank'],    // alerts@axis.bank.in
+    ['axisbank.com',    'Axis Bank'],
+    ['hdfcbank.com',    'HDFC Bank'],
+    ['sbi.co.in',       'SBI'],
+    ['onlinesbi.com',   'SBI'],
+    ['kotak.com',       'Kotak Bank'],
+    ['amazon.in',       'Amazon Pay'],   // Amazon Pay India
+    ['amazonpay.in',    'Amazon Pay'],
+    ['phonepe.com',     'PhonePe'],
+    ['paytm.com',       'Paytm'],
+    ['cred.club',       'CRED'],
+    ['yesbank.in',      'Yes Bank'],
+    ['indusind.com',    'IndusInd'],
+    ['idfcfirstbank.com','IDFC First'],
+    ['federalbank.co.in','Federal Bank'],
+    ['pnb.co.in',       'PNB'],
+  ];
+  for (const [domain, name] of SENDER_BANK_MAP) {
+    if (text.toLowerCase().includes(domain.toLowerCase())) {
+      bank = name;
+      break;
+    }
+  }
+
+  // ── Step 2: Detect bank + amount from patterns ──
   for (const pat of BANK_PATTERNS) {
     const m = text.match(pat.regex);
     if (m && m[pat.amountGroup]) {
@@ -2887,15 +3097,41 @@ function parseBankText(text) {
   if (!dateStr) dateStr = new Date().toISOString().split('T')[0];
 
   // Detect type
-  for (const [t, re] of Object.entries(TYPE_HINTS)) {
-    if (re.test(text)) { type = t === 'credit' ? 'emi' : t; break; }
-  }
+  // Detect payment type from text
+  if (TYPE_HINTS.emi.test(text))     type = 'emi';
+  else if (TYPE_HINTS.partpay.test(text)) type = 'partpay';
+  else if (TYPE_HINTS.credit.test(text))  type = 'emi';  // salary credit maps to income
+  else if (TYPE_HINTS.debit.test(text))   type = 'emi';  // generic debit = regular payment
+  // else stays 'emi' as default
 
   // Detect bank name from text if still auto-detect
-  if (bank === 'Auto-detect') {
-    const bankNames = ['SBI','HDFC','ICICI','Axis','Kotak','PNB','BOB','Canara','IndusInd','Yes Bank','IDFC','UCO','IOB','Federal','Union Bank','Citibank'];
-    for (const b of bankNames) {
-      if (text.toLowerCase().includes(b.toLowerCase())) { bank = b; break; }
+  if (bank === 'Auto-detect' || bank === 'Bank Alert') {
+    const bankMap = [
+      ['icici.bank.in',     'ICICI Bank'],
+      ['icicibank',         'ICICI Bank'],
+      ['axis.bank.in',      'Axis Bank'],
+      ['axisbank',          'Axis Bank'],
+      ['hdfcbank',          'HDFC Bank'],
+      ['sbi.co.in',         'SBI'],
+      ['onlinesbi',         'SBI'],
+      ['kotak',             'Kotak Bank'],
+      ['amazon',            'Amazon Pay'],
+      ['phonepe',           'PhonePe'],
+      ['paytm',             'Paytm'],
+      ['cred.club',         'CRED'],
+      ['yesbank',           'Yes Bank'],
+      ['indusind',          'IndusInd'],
+      ['idfcfirst',         'IDFC First'],
+      ['federal',           'Federal Bank'],
+      ['pnb',               'PNB'],
+      ['bob',               'Bank of Baroda'],
+      ['canara',            'Canara Bank'],
+      ['unionbank',         'Union Bank'],
+      ['uco',               'UCO Bank'],
+    ];
+    const textLower = text.toLowerCase();
+    for (const [key, name] of bankMap) {
+      if (textLower.includes(key.toLowerCase())) { bank = name; break; }
     }
   }
 
@@ -3116,11 +3352,54 @@ async function gmailFetchEmails(customQuery) {
      Axis:     "Axis Bank", "Account Alert"
      Generic:  Rs., INR, debit, credit, auto-pay, ECS, NACH
   ─────────────────────────────────────────────────────────────────────── */
-  const baseQuery = customQuery ||
-    '(from:(alerts OR noreply OR notification OR no-reply OR donotreply) ' +
-    'OR subject:(alert OR debit OR credit OR transaction OR "auto debit" OR "auto pay" OR ' +
-    'EMI OR ECS OR NACH OR instalment OR "loan" OR "Rs." OR "INR")) ' +
-    'newer_than:90d -category:promotions -category:social';
+  // ── Gmail search query ───────────────────────────────────────────────────
+  // Targets actual Indian bank/payment sender domains directly.
+  // This is FAR more reliable than subject keyword matching because banks
+  // use inconsistent subjects ("Transaction Alert", "Txn", "Debit Intimation" etc.)
+  // but always send from predictable domains.
+  const BANK_SENDERS = [
+    // ICICI Bank — credit cards, savings, alerts
+    'icici.bank.in', 'icicibank.com',
+    // Axis Bank
+    'axis.bank.in', 'axisbank.com',
+    // SBI
+    'sbi.co.in', 'onlinesbi.com',
+    // HDFC
+    'hdfcbank.com',
+    // Kotak
+    'kotak.com',
+    // PNB
+    'pnb.co.in',
+    // IndusInd
+    'indusind.com',
+    // Yes Bank
+    'yesbank.in',
+    // IDFC First
+    'idfcfirstbank.com',
+    // Federal Bank
+    'federalbank.co.in',
+    // Amazon Pay / Amazon India
+    'amazon.in', 'amazonpay.in',
+    // PhonePe
+    'phonepe.com',
+    // Google Pay / GPay
+    'google.com',
+    // Paytm
+    'paytm.com',
+    // CRED
+    'cred.club',
+    // Razorpay
+    'razorpay.com',
+    // BBPS / NACH
+    'bbps.gov.in',
+  ];
+
+  const senderQuery = BANK_SENDERS.map(d => `from:@${d}`).join(' OR ');
+
+  const baseQuery = customQuery || (
+    '(' + senderQuery + ') ' +
+    'newer_than:180d'
+  );
 
   set('gmail-bar-text', 'Searching emails…');
 
@@ -3146,15 +3425,29 @@ async function gmailFetchEmails(customQuery) {
         panel.style.display = '';
         el('gmail-email-list').innerHTML = `
           <div style="padding:16px">
-            <div style="font-size:12px;color:var(--muted);margin-bottom:10px">
-              No bank alert emails matched the automatic search. Try a manual search:
+            <div style="font-size:12px;color:var(--muted);margin-bottom:12px">
+              No emails found from known bank senders. Try searching by your bank's email address directly:
             </div>
-            <div style="display:flex;gap:8px;margin-bottom:8px">
-              <input type="text" id="gmail-manual-q" placeholder='e.g. "SBI Alert" or "HDFC debit"'
+            <div style="display:flex;gap:8px;margin-bottom:10px">
+              <input type="text" id="gmail-manual-q" placeholder='e.g. from:icici.bank.in  OR  from:axis.bank.in'
                 style="flex:1;font-size:12px;background:var(--s3);border:1px solid var(--border2);border-radius:var(--rsm);padding:7px 10px;color:var(--text);outline:none">
               <button onclick="gmailFetchEmails(el('gmail-manual-q').value)" class="btn-gold" style="padding:8px 14px;font-size:12px">Search</button>
             </div>
-            <div style="font-size:10px;color:var(--dim)">Tip: search for your bank name e.g. "SBI" or "HDFC" to find all emails from that bank</div>
+            <div style="font-size:10px;color:var(--muted);margin-bottom:8px">Quick searches — click to try:</div>
+            <div style="display:flex;flex-wrap:wrap;gap:5px">
+              ${[
+                ['ICICI Bank',   'from:icici.bank.in'],
+                ['ICICI CC',     'from:credit_cards@icici.bank.in'],
+                ['Axis Bank',    'from:alerts@axis.bank.in'],
+                ['HDFC Bank',    'from:hdfcbank.com'],
+                ['SBI',          'from:sbi.co.in'],
+                ['Amazon Pay',   'from:amazon.in'],
+                ['PhonePe',      'from:phonepe.com'],
+                ['All banks',    'from:(icici.bank.in OR axis.bank.in OR hdfcbank.com OR sbi.co.in OR amazon.in)'],
+              ].map(([label, q]) =>
+                '<button onclick="gmailFetchEmails(\'' + q + '\')" style="background:var(--s3);border:1px solid var(--border2);border-radius:var(--rsm);padding:4px 9px;font-size:10px;color:var(--text);cursor:pointer">' + label + '</button>'
+              ).join('')}
+            </div>
           </div>`;
         set('gmail-email-count', '0 results');
       }
@@ -3305,6 +3598,846 @@ function initGmail() {
     gmailUpdateBar(true);
   }
 }
+
+
+/* ═══ EXPENSE TRACKER IMPROVEMENTS ═══════════════════════════════════════
+   1. Recurring expenses — auto-propagate fixed amounts forward
+   2. Stacked bar chart
+   3. Month-over-month comparison
+═══════════════════════════════════════════════════════════════════════ */
+
+/* ─── Chart tab switcher ─────────────────────────────────────────────── */
+let _expActiveChart = 'donut';
+function switchExpChart(view, btn) {
+  _expActiveChart = view;
+  ['donut','stacked','trend'].forEach(v => {
+    const el2 = el('exp-view-'+v);
+    if (el2) el2.style.display = v === view ? '' : 'none';
+  });
+  document.querySelectorAll('.exp-chart-tab').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  requestAnimationFrame(() => {
+    const key = expMonthKey(_expMonth);
+    const catTotals = {};
+    for (const cat of _expCats) {
+      const e = expEntry(key, cat.id);
+      catTotals[cat.id] = { budget: e.budget, actual: e.actual };
+    }
+    if (view === 'donut')   renderExpDonut(catTotals);
+    if (view === 'stacked') renderExpStacked(catTotals);
+    if (view === 'trend')   renderExpTrend();
+  });
+}
+
+/* ─── Stacked bar chart ──────────────────────────────────────────────── */
+function renderExpStacked(catTotals) {
+  const wrap = el('exp-stacked-bars'); if (!wrap) return;
+  const cats = _expCats.filter(c => c.id !== 'salary' && (catTotals[c.id]?.actual || 0) > 0);
+  const total = cats.reduce((s, c) => s + (catTotals[c.id]?.actual || 0), 0);
+  if (!total) { wrap.innerHTML = '<div style="font-size:11px;color:var(--muted);text-align:center;padding:20px">No spending logged yet</div>'; return; }
+
+  const palette = ['#c9a84c','#5b8dee','#3ecf8e','#e05555','#a06000','#b06ee8','#e0a055','#55c8e0'];
+  cats.sort((a,b) => (catTotals[b.id]?.actual||0) - (catTotals[a.id]?.actual||0));
+
+  // Full stacked horizontal bar
+  wrap.innerHTML = `
+    <div style="height:22px;border-radius:var(--rsm);overflow:hidden;display:flex;margin-bottom:12px">
+      ${cats.map((c,i) => {
+        const pct = Math.round((catTotals[c.id].actual / total) * 100);
+        return pct > 0 ? `<div style="width:${pct}%;background:${palette[i%palette.length]};height:100%" title="${c.name}: ${INR(catTotals[c.id].actual)} (${pct}%)"></div>` : '';
+      }).join('')}
+    </div>
+    ${cats.slice(0,8).map((c,i) => {
+      const amt = catTotals[c.id].actual;
+      const pct = Math.round(amt/total*100);
+      const bgt = catTotals[c.id].budget;
+      const over = bgt > 0 && amt > bgt;
+      return `<div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">
+        <div style="width:8px;height:8px;border-radius:50%;background:${palette[i%palette.length]};flex-shrink:0"></div>
+        <span style="flex:1;font-size:10px;color:var(--text);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${c.icon} ${c.name}</span>
+        <span style="font-size:10px;font-family:var(--mono);color:${over?'var(--red)':'var(--text)'}">${INRs(amt)}</span>
+        <span style="font-size:9px;color:var(--muted);width:28px;text-align:right">${pct}%</span>
+      </div>`;
+    }).join('')}
+    ${cats.length > 8 ? `<div style="font-size:9px;color:var(--dim);margin-top:4px">+${cats.length-8} more categories</div>` : ''}`;
+}
+
+/* ─── Improved BVA list ──────────────────────────────────────────────── */
+function renderExpBVA(catTotals) {
+  const cont = el('exp-bva-list'); if (!cont) return;
+  const cats = _expCats.filter(c => c.id !== 'salary' && (catTotals[c.id]?.budget > 0 || catTotals[c.id]?.actual > 0));
+  if (!cats.length) {
+    cont.innerHTML = '<div style="font-size:11px;color:var(--muted);text-align:center;padding:12px">Add expenses to see comparison</div>';
+    set('exp-bva-over-count','');
+    return;
+  }
+
+  let overCount = 0;
+  cats.sort((a,b) => {
+    const aOver = (catTotals[a.id]?.actual||0) > (catTotals[a.id]?.budget||0);
+    const bOver = (catTotals[b.id]?.actual||0) > (catTotals[b.id]?.budget||0);
+    return bOver - aOver;
+  });
+
+  cont.innerHTML = cats.map(cat => {
+    const e   = catTotals[cat.id] || {};
+    const bgt = e.budget || 0, act = e.actual || 0;
+    const over = act > bgt && bgt > 0;
+    const pct  = bgt > 0 ? Math.min(120, Math.round(act/bgt*100)) : (act > 0 ? 100 : 0);
+    if (over) overCount++;
+    const barCol = over ? 'var(--red)' : act/bgt > 0.8 ? 'var(--gold)' : 'var(--green)';
+    return `<div style="margin-bottom:8px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px">
+        <span style="font-size:10px;color:var(--text)">${cat.icon} ${cat.name}</span>
+        <span style="font-size:10px;font-family:var(--mono);color:${over?'var(--red)':'var(--muted)'}">
+          ${INRs(act)} <span style="color:var(--dim)">/ ${bgt > 0 ? INRs(bgt) : '—'}</span>
+          ${over ? `<span style="color:var(--red);font-size:9px"> +${INRs(act-bgt)}</span>` : ''}
+        </span>
+      </div>
+      <div style="height:5px;background:var(--s4);border-radius:3px;overflow:hidden">
+        <div style="width:${pct}%;height:100%;background:${barCol};border-radius:3px;transition:width .3s"></div>
+      </div>
+    </div>`;
+  }).join('');
+
+  set('exp-bva-over-count', overCount > 0 ? overCount + ' over budget' : 'all within budget');
+  const el2 = el('exp-bva-over-count');
+  if (el2) el2.style.color = overCount > 0 ? 'var(--red)' : 'var(--green)';
+}
+
+/* ─── Month-over-month comparison ───────────────────────────────────── */
+function renderExpMoM() {
+  const curKey  = expMonthKey(_expMonth);
+  const lastM   = new Date(_expMonth.getFullYear(), _expMonth.getMonth()-1, 1);
+  const lastKey = expMonthKey(lastM);
+
+  set('exp-mom-sub', expMonthLabel(lastM) + ' → ' + expMonthLabel(_expMonth));
+
+  // Summary totals
+  let curTotal = 0, lastTotal = 0;
+  for (const cat of _expCats) {
+    if (cat.id === 'salary') continue;
+    curTotal  += (_expData[curKey]  || {})[cat.id]?.actual || 0;
+    lastTotal += (_expData[lastKey] || {})[cat.id]?.actual || 0;
+  }
+  const delta    = curTotal - lastTotal;
+  const deltaPct = lastTotal > 0 ? Math.round(delta/lastTotal*100) : null;
+
+  const sumEl = el('exp-mom-summary');
+  if (sumEl) {
+    sumEl.innerHTML = `
+      <div style="background:var(--s2);border-radius:var(--rsm);padding:9px 11px;border:1px solid var(--border)">
+        <div style="font-size:9px;color:var(--muted);margin-bottom:3px">Last month</div>
+        <div style="font-size:15px;font-weight:700;font-family:var(--mono);color:var(--muted)">${INR(lastTotal)}</div>
+        <div style="font-size:9px;color:var(--dim)">${expMonthLabel(lastM)}</div>
+      </div>
+      <div style="background:var(--s2);border-radius:var(--rsm);padding:9px 11px;border:1px solid ${delta>0?'rgba(224,85,85,.2)':'rgba(62,207,142,.2)'}">
+        <div style="font-size:9px;color:var(--muted);margin-bottom:3px">This month</div>
+        <div style="font-size:15px;font-weight:700;font-family:var(--mono);color:${delta>0?'var(--red)':'var(--green)'}">${INR(curTotal)}</div>
+        <div style="font-size:9px;color:${delta>0?'var(--red)':'var(--green)'}">
+          ${delta !== 0 ? (delta>0?'▲ +':'▼ ')+INRs(Math.abs(delta))+(deltaPct!==null?' ('+Math.abs(deltaPct)+'%)':'') : 'No change'}
+        </div>
+      </div>`;
+  }
+
+  // Per-category comparison
+  const listEl = el('exp-mom-list'); if (!listEl) return;
+  const cats = _expCats.filter(c => c.id !== 'salary');
+  const rows = cats.map(cat => {
+    const cur  = (_expData[curKey]  || {})[cat.id]?.actual || 0;
+    const last = (_expData[lastKey] || {})[cat.id]?.actual || 0;
+    return { cat, cur, last, delta: cur - last };
+  }).filter(r => r.cur > 0 || r.last > 0)
+    .sort((a,b) => Math.abs(b.delta) - Math.abs(a.delta));
+
+  const maxVal = Math.max(...rows.map(r => Math.max(r.cur, r.last)), 1);
+
+  if (!rows.length) {
+    listEl.innerHTML = '<div style="font-size:11px;color:var(--muted);text-align:center;padding:16px">No data for either month yet</div>';
+    return;
+  }
+
+  listEl.innerHTML = rows.map(r => {
+    const curPct  = Math.round(r.cur  / maxVal * 100);
+    const lastPct = Math.round(r.last / maxVal * 100);
+    const dPct    = r.last > 0 ? Math.round(r.delta/r.last*100) : null;
+    const up = r.delta > 0, down = r.delta < 0;
+    const deltaBadge = r.delta !== 0
+      ? `<span class="mom-delta ${up?'mom-up':down?'mom-down':'mom-same'}">${up?'▲':'▼'} ${INRs(Math.abs(r.delta))}${dPct!==null?' ('+Math.abs(dPct)+'%)':''}</span>`
+      : `<span class="mom-delta mom-same">—</span>`;
+    return `<div class="mom-card">
+      <div class="mom-cat-name">${r.cat.icon} ${r.cat.name} ${deltaBadge}</div>
+      <div class="mom-row">
+        <span class="mom-label" style="color:var(--muted)">Last</span>
+        <div class="mom-bar-wrap"><div class="mom-bar" style="width:${lastPct}%;background:var(--s4);border:1px solid var(--border2)"></div></div>
+        <span class="mom-val" style="color:var(--muted)">${INRs(r.last)}</span>
+      </div>
+      <div class="mom-row">
+        <span class="mom-label" style="color:${up?'var(--red)':'var(--green)'}">Now</span>
+        <div class="mom-bar-wrap"><div class="mom-bar" style="width:${curPct}%;background:${up?'var(--red)':down?'var(--green)':'var(--blue)'}"></div></div>
+        <span class="mom-val" style="color:${up?'var(--red)':down?'var(--green)':'var(--text)'}">${INRs(r.cur)}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+/* ─── Recurring expense auto-fill ───────────────────────────────────── */
+function applyRecurring(targetMonthKey) {
+  // For each category marked recurring, copy budget (and optionally actual) from
+  // the most recent month that has data
+  let applied = 0;
+  for (const cat of _expCats) {
+    if (!cat.recurring || cat.recurring === 'none') continue;
+    if (!(_expData[targetMonthKey]?.[cat.id]?.actual)) {
+      // Find the most recent month with data for this category
+      const keys = Object.keys(_expData).sort().reverse();
+      for (const k of keys) {
+        if (k >= targetMonthKey) continue; // skip future or same month
+        const e = _expData[k]?.[cat.id];
+        if (e && (e.actual > 0 || e.budget > 0)) {
+          expEntry(targetMonthKey, cat.id);
+          if (!_expData[targetMonthKey][cat.id].actual) {
+            // Copy budget; only auto-fill actual for truly fixed recurring
+            _expData[targetMonthKey][cat.id].budget = e.budget;
+            if (cat.recurring === 'monthly') {
+              _expData[targetMonthKey][cat.id].actual = e.actual;
+              applied++;
+            }
+          }
+          break;
+        }
+      }
+    }
+  }
+  if (applied > 0) {
+    saveExpenses();
+    showToast(applied + ' recurring expense' + (applied!==1?'s':'')+' auto-filled ✓');
+  }
+}
+
+/* ─── Save recurring setting in saveExpCategory and saveExpEntry ─────── */
+const _origSaveExpCategory = saveExpCategory;
+saveExpCategory = function() {
+  const name   = el('exp-cat-name')?.value?.trim();
+  const recur  = el('exp-cat-recur')?.value || 'none';
+  const parent = el('exp-cat-parent-sel')?.value || '';
+  if (!name) { showToast('Enter a name'); return; }
+  _origSaveExpCategory();
+  // Patch recurring + parentId
+  const cat = _expCats.find(c => c.name === name);
+  if (cat) {
+    cat.recurring = recur;
+    cat.parentId  = parent || undefined;
+    if (parent) {
+      // Inherit group from parent
+      const parentCat = _expCats.find(c => c.id === parent);
+      if (parentCat) cat.group = parentCat.group;
+    }
+  }
+  saveExpenses();
+};
+
+const _origOpenExpCatModal = openExpCatModal;
+openExpCatModal = function(catId) {
+  _origOpenExpCatModal(catId);
+  const cat = catId ? _expCats.find(c => c.id === catId) : null;
+  const recurEl = el('exp-cat-recur');
+  if (recurEl) recurEl.value = cat?.recurring || 'none';
+  // Populate parent selector
+  const parentSel = el('exp-cat-parent-sel');
+  if (parentSel) {
+    const topLevel = _expCats.filter(c => !c.parentId && c.id !== catId);
+    parentSel.innerHTML = '<option value="">None (top-level)</option>' +
+      topLevel.map(c => `<option value="${c.id}" ${cat?.parentId===c.id?'selected':''}>${c.icon} ${c.name}</option>`).join('');
+  }
+};
+
+/* ─── Patch saveExpEntry to handle auto-forward fill ────────────────── */
+const _origSaveExpEntry = saveExpEntry;
+saveExpEntry = function() {
+  _origSaveExpEntry();
+  // If "apply every month" checkbox is ticked, mark the category as recurring
+  const autoFill = el('exp-edit-recur')?.checked;
+  if (autoFill && _expEditEntryId) {
+    const cat = _expCats.find(c => c.id === _expEditEntryId.catId);
+    if (cat) {
+      cat.recurring = 'monthly';
+      saveExpenses();
+      showToast('Marked as recurring — will auto-fill future months ✓');
+    }
+  }
+};
+
+/* ─── Patch renderExpPage to include MoM + stacked + apply recurring ── */
+const _origRenderExpPage = renderExpPage;
+renderExpPage = function() {
+  // Auto-fill recurring categories for current month
+  applyRecurring(expMonthKey(_expMonth));
+  _origRenderExpPage();
+  // Render MoM
+  requestAnimationFrame(() => {
+    renderExpMoM();
+    if (_expActiveChart === 'stacked') {
+      const key = expMonthKey(_expMonth);
+      const catTotals = {};
+      for (const cat of _expCats) {
+        const e = expEntry(key, cat.id);
+        catTotals[cat.id] = { budget: e.budget, actual: e.actual };
+      }
+      renderExpStacked(catTotals);
+    }
+  });
+};
+
+/* ─── Add recurring badge to category rows ───────────────────────────── */
+const _origRenderExpCategories = renderExpCategories;
+renderExpCategories = function(key, catTotals) {
+  _origRenderExpCategories(key, catTotals);
+  // Patch recurring badge into each recurring category row
+  for (const cat of _expCats) {
+    if (!cat.recurring || cat.recurring === 'none') continue;
+    const rowEl = document.getElementById('exprow-' + cat.id);
+    if (rowEl) {
+      const nameEl = rowEl.querySelector('.exp-row-name');
+      if (nameEl && !nameEl.querySelector('.recur-badge')) {
+        const badge = document.createElement('span');
+        badge.className = 'recur-badge';
+        badge.title = cat.recurring === 'monthly' ? 'Auto-fills every month' : 'Yearly recurring';
+        badge.textContent = cat.recurring === 'monthly' ? '↺ monthly' : '↺ yearly';
+        nameEl.appendChild(badge);
+      }
+    }
+  }
+};
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CREDIT CARDS — localStorage keys: loaniq_cards, loaniq_cc_txns
+   _cards   = [{id, name, bank, network, last4, limit, outstanding,
+                stmtDate, dueDate, minDue, annualFee, notes}]
+   _ccTxns  = {cardId: [{id, date, merchant, category, type, amount, note}]}
+═══════════════════════════════════════════════════════════════════════════ */
+
+let _cards       = [];
+let _ccTxns      = {};
+let _activeCardId= null;
+let _cardsInited = false;
+
+/* ── Storage ── */
+function loadCards() {
+  try { _cards  = JSON.parse(localStorage.getItem('loaniq_cards')  || '[]'); } catch { _cards  = []; }
+  try { _ccTxns = JSON.parse(localStorage.getItem('loaniq_cc_txns')|| '{}'); } catch { _ccTxns = {}; }
+}
+function saveCards() {
+  try {
+    localStorage.setItem('loaniq_cards',   JSON.stringify(_cards));
+    localStorage.setItem('loaniq_cc_txns', JSON.stringify(_ccTxns));
+  } catch(e) { showToast('Storage full'); }
+}
+
+/* ── Helpers ── */
+function ccDaysUntilDue(card) {
+  const now  = new Date();
+  const due  = new Date(now.getFullYear(), now.getMonth(), card.dueDate || 20);
+  if (due < now) due.setMonth(due.getMonth() + 1);
+  return Math.ceil((due - now) / 86400000);
+}
+function ccUtil(card) {
+  return card.limit > 0 ? Math.round((card.outstanding || 0) / card.limit * 100) : 0;
+}
+
+/* ── Render cards page ── */
+function renderCardsPage() {
+  const grid  = el('cc-grid');
+  const empty = el('cc-empty');
+  if (!grid) return;
+
+  const totalLimit       = _cards.reduce((s,c) => s + (c.limit       || 0), 0);
+  const totalOutstanding = _cards.reduce((s,c) => s + (c.outstanding  || 0), 0);
+  const totalAvailable   = totalLimit - totalOutstanding;
+  const totalMinDue      = _cards.reduce((s,c) => s + (c.minDue       || 0), 0);
+  const avgUtil          = _cards.length > 0
+    ? Math.round(_cards.reduce((s,c) => s + ccUtil(c), 0) / _cards.length) : 0;
+
+  set('cc-total-limit',       INR(totalLimit));
+  set('cc-total-outstanding', INR(totalOutstanding));
+  set('cc-total-available',   INR(totalAvailable));
+  set('cc-total-min-due',     INR(totalMinDue));
+  set('cc-avg-util',          avgUtil + '%');
+  set('cc-card-count',        _cards.length + ' card' + (_cards.length !== 1 ? 's' : ''));
+
+  const avgUtilEl = el('cc-avg-util');
+  if (avgUtilEl) avgUtilEl.style.color = avgUtil > 50 ? 'var(--red)' : avgUtil > 30 ? 'var(--gold)' : 'var(--green)';
+
+  const warnEl = el('cc-util-warning');
+  if (warnEl) warnEl.style.display = avgUtil > 30 ? '' : 'none';
+
+  // Due date reminder
+  const soonCard = _cards.filter(c => ccDaysUntilDue(c) <= 7).sort((a,b) => ccDaysUntilDue(a) - ccDaysUntilDue(b))[0];
+  const dueRemEl = el('cc-due-reminder');
+  const dueRemTxt = el('cc-due-reminder-text');
+  if (soonCard && dueRemEl) {
+    dueRemEl.style.display = '';
+    dueRemTxt.textContent = soonCard.name + ' payment of ' + INR(soonCard.outstanding) +
+      ' due in ' + ccDaysUntilDue(soonCard) + ' days — minimum due: ' + INR(soonCard.minDue);
+  } else if (dueRemEl) {
+    dueRemEl.style.display = 'none';
+  }
+
+  if (!_cards.length) {
+    grid.innerHTML = '';
+    if (empty) empty.style.display = '';
+    return;
+  }
+  if (empty) empty.style.display = 'none';
+
+  const networkColors = { visa:'#1a2040', mastercard:'#1a1008', rupay:'#0f1a10', amex:'#0a1a20' };
+
+  grid.innerHTML = _cards.map(card => {
+    const util     = ccUtil(card);
+    const days     = ccDaysUntilDue(card);
+    const utilCol  = util > 50 ? 'var(--red)' : util > 30 ? 'var(--gold)' : 'var(--green)';
+    const dueClass = days <= 3 ? 'urgent' : days <= 7 ? 'soon' : 'ok';
+    const txns     = (_ccTxns[card.id] || []);
+    const thisMonthSpend = txns
+      .filter(t => t.type === 'purchase' || t.type === 'emi')
+      .filter(t => { const d = new Date(t.date); const n = new Date(); return d.getMonth()===n.getMonth()&&d.getFullYear()===n.getFullYear(); })
+      .reduce((s,t) => s + t.amount, 0);
+
+    return `<div class="cc-card" onclick="openCCDetail('${card.id}')">
+      <div class="cc-face ${card.network || 'visa'}">
+        <div class="cc-bank-name">${card.bank || 'Bank'}</div>
+        <div class="cc-card-name">${card.name}</div>
+        <div class="cc-number">•••• •••• •••• ${card.last4 || '????'}</div>
+        <div class="cc-limit-row">
+          <div><div class="cc-limit-lbl">Credit Limit</div><div class="cc-limit-val">${INRs(card.limit)}</div></div>
+          <div style="text-align:right"><div class="cc-limit-lbl">Outstanding</div><div class="cc-limit-val" style="color:${util>50?'#ff8888':util>30?'#ffd070':'#88ffcc'}">${INRs(card.outstanding||0)}</div></div>
+        </div>
+        <div class="cc-util-bar"><div class="cc-util-fill" style="width:${Math.min(100,util)}%;background:${utilCol}"></div></div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-stats">
+          <div class="cc-stat"><div class="cs-lbl">Utilisation</div><div class="cs-val" style="color:${utilCol}">${util}%</div></div>
+          <div class="cc-stat"><div class="cs-lbl">Due in</div><div class="cs-val" style="color:${days<=3?'var(--red)':days<=7?'var(--gold)':'var(--text)'}">${days}d</div></div>
+          <div class="cc-stat"><div class="cs-lbl">This month</div><div class="cs-val">${INRs(thisMonthSpend)}</div></div>
+        </div>
+        <div class="cc-due-row ${dueClass}">
+          <div>
+            <div style="font-size:9px;color:var(--muted)">Payment due on ${card.dueDate || 20}th</div>
+            <div style="font-size:12px;font-weight:700;color:${days<=3?'var(--red)':days<=7?'var(--gold)':'var(--text)'}">${days <= 3 ? '⚠️ ' : ''}Min due: ${INR(card.minDue||0)}</div>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:9px;color:var(--muted)">Total due</div>
+            <div style="font-size:13px;font-weight:700;font-family:var(--mono);color:var(--red)">${INR(card.outstanding||0)}</div>
+          </div>
+        </div>
+        ${card.notes ? `<div style="font-size:10px;color:var(--muted);padding:5px 0">${card.notes}</div>` : ''}
+      </div>
+      <div class="cc-footer">
+        <button class="btn-gold" style="flex:1;font-size:11px" onclick="event.stopPropagation();openCCDetail('${card.id}')">View & Log</button>
+        <button class="btn-outline" style="font-size:11px" onclick="event.stopPropagation();openEditCardModal('${card.id}')">Edit</button>
+        <button class="btn-outline" style="font-size:11px;color:var(--red)" onclick="event.stopPropagation();deleteCard('${card.id}')">Delete</button>
+      </div>
+    </div>`;
+  }).join('') + `<div class="add-cc-card" onclick="openAddCardModal()">
+    <div style="font-size:28px;opacity:.5">＋</div>
+    <div style="font-size:13px;font-weight:700;color:var(--muted)">Add Another Card</div>
+    <div style="font-size:11px;color:var(--dim)">ICICI · HDFC · Axis · Kotak</div>
+  </div>`;
+}
+
+/* ── Add / Edit / Delete card ── */
+function openAddCardModal(cardId) {
+  const card = cardId ? _cards.find(c => c.id === cardId) : null;
+  el('cc-name').value        = card?.name        || '';
+  el('cc-bank').value        = card?.bank        || 'ICICI';
+  el('cc-network').value     = card?.network     || 'visa';
+  el('cc-last4').value       = card?.last4       || '';
+  el('cc-limit').value       = card?.limit       || '';
+  el('cc-outstanding').value = card?.outstanding || 0;
+  el('cc-stmt-date').value   = card?.stmtDate    || 1;
+  el('cc-due-date').value    = card?.dueDate     || 20;
+  el('cc-min-due').value     = card?.minDue      || 0;
+  el('cc-annual-fee').value  = card?.annualFee   || 0;
+  el('cc-notes').value       = card?.notes       || '';
+  el('add-card-modal')._editId = cardId || null;
+  openModal('add-card-modal');
+}
+function openEditCardModal(id) { openAddCardModal(id); }
+
+function saveCard() {
+  const name = el('cc-name').value.trim();
+  if (!name) { showToast('Enter a card name'); return; }
+  const editId = el('add-card-modal')._editId;
+  const card = {
+    id:          editId || ('cc_' + Date.now()),
+    name,
+    bank:        el('cc-bank').value,
+    network:     el('cc-network').value,
+    last4:       el('cc-last4').value.slice(-4),
+    limit:       parseFloat(el('cc-limit').value)       || 0,
+    outstanding: parseFloat(el('cc-outstanding').value) || 0,
+    stmtDate:    parseInt(el('cc-stmt-date').value)     || 1,
+    dueDate:     parseInt(el('cc-due-date').value)      || 20,
+    minDue:      parseFloat(el('cc-min-due').value)     || 0,
+    annualFee:   parseFloat(el('cc-annual-fee').value)  || 0,
+    notes:       el('cc-notes').value,
+  };
+  if (editId) {
+    const idx = _cards.findIndex(c => c.id === editId);
+    if (idx >= 0) _cards[idx] = card;
+  } else {
+    _cards.push(card);
+    _ccTxns[card.id] = [];
+  }
+  saveCards();
+  closeModal('add-card-modal');
+  renderCardsPage();
+  showToast(name + ' saved ✓');
+}
+
+function deleteCard(id) {
+  if (!confirm('Delete this card and all its transaction history?')) return;
+  _cards = _cards.filter(c => c.id !== id);
+  delete _ccTxns[id];
+  saveCards();
+  closeCCDetail();
+  renderCardsPage();
+  showToast('Card deleted');
+}
+
+/* ── Card detail panel ── */
+function openCCDetail(id) {
+  _activeCardId = id;
+  const card = _cards.find(c => c.id === id); if (!card) return;
+  const panel = el('cc-detail-panel');
+  panel.style.display = '';
+  setTimeout(() => panel.scrollIntoView({ behavior:'smooth', block:'start' }), 50);
+
+  set('ccdp-title', card.name + ' — ' + card.bank + ' ••' + card.last4);
+  const util    = ccUtil(card);
+  const utilCol = util > 50 ? 'var(--red)' : util > 30 ? 'var(--gold)' : 'var(--green)';
+  const days    = ccDaysUntilDue(card);
+
+  // Summary strip
+  const sumEl = el('ccdp-summary');
+  sumEl.innerHTML = [
+    ['Credit Limit',   INR(card.limit),                    'var(--gold)'],
+    ['Outstanding',    INR(card.outstanding||0),            'var(--red)'],
+    ['Available',      INR((card.limit||0)-(card.outstanding||0)), 'var(--green)'],
+    ['Annual Fee',     card.annualFee > 0 ? INR(card.annualFee) : 'Free', 'var(--muted)'],
+  ].map(([l,v,c]) => `<div style="background:var(--s2);border:1px solid var(--border);border-radius:var(--rsm);padding:10px 12px">
+    <div style="font-size:9px;color:var(--muted);margin-bottom:3px">${l}</div>
+    <div style="font-size:15px;font-weight:800;font-family:var(--mono);color:${c}">${v}</div>
+  </div>`).join('');
+
+  set('ccdp-due-date',  days + ' days — ' + card.dueDate + 'th every month');
+  set('ccdp-min-due',   INR(card.minDue || 0));
+  set('ccdp-total-due', INR(card.outstanding || 0));
+  const utilEl = el('ccdp-util');
+  if (utilEl) { utilEl.textContent = util + '%'; utilEl.style.color = utilCol; }
+  set('ccdp-limit',     INR(card.limit));
+  set('ccdp-available', INR((card.limit||0) - (card.outstanding||0)));
+
+  el('cc-txn-date').value = new Date().toISOString().split('T')[0];
+  el('cc-txn-amount').value = '';
+  el('cc-txn-merchant').value = '';
+
+  renderCCTxns();
+  renderCCSpendDonut();
+}
+
+function closeCCDetail() {
+  el('cc-detail-panel').style.display = 'none';
+  _activeCardId = null;
+}
+
+/* ── Add transaction ── */
+function ccAddTransaction() {
+  const id = _activeCardId; if (!id) return;
+  const amount = parseFloat(el('cc-txn-amount').value) || 0;
+  if (!amount) { showToast('Enter an amount'); return; }
+  const card = _cards.find(c => c.id === id); if (!card) return;
+
+  const type = el('cc-txn-type').value;
+  const txn  = {
+    id:       Date.now(),
+    date:     el('cc-txn-date').value,
+    merchant: el('cc-txn-merchant').value || '—',
+    category: el('cc-txn-cat').value,
+    type,
+    amount,
+    note:     '',
+  };
+
+  // Update outstanding balance
+  if (type === 'purchase' || type === 'emi') {
+    card.outstanding = (card.outstanding || 0) + amount;
+  } else if (type === 'payment') {
+    card.outstanding = Math.max(0, (card.outstanding || 0) - amount);
+    // Auto-update minDue if payment made
+    if (amount >= (card.minDue || 0)) card.minDue = 0;
+  } else if (type === 'cashback' || type === 'refund') {
+    card.outstanding = Math.max(0, (card.outstanding || 0) - amount);
+  }
+
+  if (!_ccTxns[id]) _ccTxns[id] = [];
+  _ccTxns[id].unshift(txn);
+  saveCards();
+
+  // Also log to expense tracker if it's a purchase
+  if (type === 'purchase' || type === 'emi') {
+    ccSyncToExpenses(txn, card);
+  }
+
+  el('cc-txn-amount').value   = '';
+  el('cc-txn-merchant').value = '';
+  renderCCTxns();
+  renderCCSpendDonut();
+  renderCardsPage();
+  showToast(type === 'payment' ? 'Payment logged ✓' : INR(amount) + ' logged ✓');
+}
+
+function ccOpenAddTxn() {
+  el('cc-txn-date').value     = new Date().toISOString().split('T')[0];
+  el('cc-txn-amount').value   = '';
+  el('cc-txn-merchant').value = '';
+  el('cc-txn-date').focus();
+}
+
+/* ── Sync CC purchase to Expense Tracker ── */
+function ccSyncToExpenses(txn, card) {
+  // Map CC category to expense category
+  const catMap = {
+    shopping:      'entertain',
+    dining:        'dining',
+    grocery:       'grocery',
+    fuel:          'transport',
+    travel:        'transport',
+    medical:       'medical',
+    entertainment: 'entertain',
+    utility:       'elec',
+    emi:           'rent',
+    other:         null,
+  };
+  const expCatId = catMap[txn.category];
+  if (!expCatId) return;
+
+  const txnDate  = new Date(txn.date);
+  const monthKey = txnDate.getFullYear() + '-' + String(txnDate.getMonth()+1).padStart(2,'0');
+
+  // Ensure expense data exists for this month and category
+  if (!_expData) return;
+  if (!_expData[monthKey]) _expData[monthKey] = {};
+  if (!_expData[monthKey][expCatId]) {
+    const cat = (_expCats || []).find(c => c.id === expCatId);
+    _expData[monthKey][expCatId] = { budget: cat?.budget || 0, actual: 0, note: '' };
+  }
+  _expData[monthKey][expCatId].actual = (_expData[monthKey][expCatId].actual || 0) + txn.amount;
+  saveExpenses();
+}
+
+/* ── Render transactions ── */
+function renderCCTxns() {
+  const id   = _activeCardId; if (!id) return;
+  const flt  = el('cc-txn-filter')?.value || 'all';
+  let txns   = (_ccTxns[id] || []).slice();
+  const now  = new Date();
+
+  if (flt === 'purchase') txns = txns.filter(t => t.type === 'purchase' || t.type === 'emi');
+  if (flt === 'payment')  txns = txns.filter(t => t.type === 'payment');
+  if (flt === 'this_month') txns = txns.filter(t => {
+    const d = new Date(t.date);
+    return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+  });
+
+  set('cc-txn-count', txns.length + ' transactions');
+  const typeCol  = { purchase:'var(--red)', emi:'var(--red)', payment:'var(--green)', cashback:'var(--green)', refund:'var(--green)' };
+  const typeLabel= { purchase:'Purchase', emi:'Card EMI', payment:'Payment', cashback:'Cashback', refund:'Refund' };
+  const catIcons = { shopping:'🛍️', dining:'🍽️', grocery:'🛒', fuel:'⛽', travel:'✈️', medical:'🏥', entertainment:'🎬', utility:'💡', emi:'💳', other:'📌' };
+
+  el('cc-txn-body').innerHTML = !txns.length
+    ? '<tr><td colspan="6" style="text-align:center;padding:24px;color:var(--muted)">No transactions yet — log one above</td></tr>'
+    : txns.map(t => {
+        const isDebit = t.type === 'purchase' || t.type === 'emi';
+        return `<tr class="cc-txn-row">
+          <td style="color:var(--muted);white-space:nowrap">${new Date(t.date).toLocaleDateString('en-IN',{day:'numeric',month:'short'})}</td>
+          <td><div style="font-weight:600;color:var(--text)">${t.merchant}</div></td>
+          <td><span style="font-size:9px;color:var(--muted)">${catIcons[t.category]||'📌'} ${t.category}</span></td>
+          <td><span style="font-size:9px;background:${typeCol[t.type]}18;color:${typeCol[t.type]};padding:2px 6px;border-radius:4px">${typeLabel[t.type]||t.type}</span></td>
+          <td class="cc-txn-amt" style="color:${typeCol[t.type]}">${isDebit?'−':'+'} ${INR(t.amount)}</td>
+          <td><button onclick="deleteCCTxn('${id}',${t.id})" style="background:none;border:none;color:var(--dim);cursor:pointer;font-size:11px;padding:2px 5px">✕</button></td>
+        </tr>`;
+      }).join('');
+}
+
+function deleteCCTxn(cardId, txnId) {
+  const card = _cards.find(c => c.id === cardId); if (!card) return;
+  const txn  = (_ccTxns[cardId]||[]).find(t => t.id === txnId); if (!txn) return;
+  // Reverse balance effect
+  if (txn.type === 'purchase' || txn.type === 'emi') card.outstanding = Math.max(0,(card.outstanding||0)-txn.amount);
+  else if (txn.type === 'payment' || txn.type === 'cashback' || txn.type === 'refund') card.outstanding = (card.outstanding||0)+txn.amount;
+  _ccTxns[cardId] = (_ccTxns[cardId]||[]).filter(t => t.id !== txnId);
+  saveCards();
+  renderCCTxns();
+  renderCCSpendDonut();
+  renderCardsPage();
+  showToast('Transaction removed');
+}
+
+/* ── Spending donut by category ── */
+function renderCCSpendDonut() {
+  const id  = _activeCardId; if (!id) return;
+  const txns= (_ccTxns[id]||[]).filter(t => t.type==='purchase'||t.type==='emi');
+  const cats= {};
+  for (const t of txns) cats[t.category] = (cats[t.category]||0) + t.amount;
+  const total = Object.values(cats).reduce((s,v)=>s+v,0);
+  const palette = ['#c9a84c','#5b8dee','#3ecf8e','#e05555','#a06000','#b06ee8','#e0a055','#55c8e0','#e055a8','#8de05b'];
+  const catIcons = { shopping:'🛍️', dining:'🍽️', grocery:'🛒', fuel:'⛽', travel:'✈️', medical:'🏥', entertainment:'🎬', utility:'💡', emi:'💳', other:'📌' };
+  const entries  = Object.entries(cats).sort((a,b)=>b[1]-a[1]);
+
+  const c   = el('cc-spend-donut'); if (!c) return;
+  const SZ  = 150, dpr = Math.min(window.devicePixelRatio||1,2);
+  c.width   = SZ*dpr; c.height = SZ*dpr;
+  c.style.width = SZ+'px'; c.style.height = SZ+'px';
+  const ctx = c.getContext('2d'); ctx.scale(dpr,dpr); ctx.clearRect(0,0,SZ,SZ);
+
+  if (!total) {
+    ctx.fillStyle = 'var(--s4)';
+    ctx.beginPath(); ctx.arc(SZ/2,SZ/2,SZ*0.35,0,2*Math.PI); ctx.fill();
+  } else {
+    let angle = -Math.PI/2;
+    entries.forEach(([cat,val],i) => {
+      const a = (val/total)*2*Math.PI;
+      ctx.beginPath(); ctx.arc(SZ/2,SZ/2,SZ*0.36,angle,angle+a-0.02);
+      ctx.strokeStyle = palette[i%palette.length]; ctx.lineWidth = SZ*0.18; ctx.lineCap='butt'; ctx.stroke();
+      angle += a;
+    });
+    ctx.fillStyle='var(--text,#f0ede6)'; ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.font=`700 ${Math.floor(SZ*0.1)}px DM Mono,monospace`;
+    ctx.fillText(INRs(total),SZ/2,SZ/2-SZ*0.05);
+    ctx.fillStyle='#8a8680'; ctx.font=`${Math.floor(SZ*0.07)}px DM Mono,monospace`;
+    ctx.fillText('spent',SZ/2,SZ/2+SZ*0.1);
+  }
+
+  const leg = el('cc-spend-legend'); if (!leg) return;
+  leg.innerHTML = entries.slice(0,6).map(([cat,val],i) =>
+    `<div style="display:flex;align-items:center;gap:6px;font-size:10px">
+      <div style="width:8px;height:8px;border-radius:50%;background:${palette[i%palette.length]};flex-shrink:0"></div>
+      <span style="flex:1;color:var(--muted)">${catIcons[cat]||'📌'} ${cat}</span>
+      <span style="font-family:var(--mono);font-weight:700">${INRs(val)}</span>
+      <span style="color:var(--dim);font-size:9px">${Math.round(val/total*100)}%</span>
+    </div>`
+  ).join('');
+}
+
+/* ── Gmail fetch for credit card emails ── */
+async function ccFetchEmails() {
+  if (!_gmailToken) {
+    showToast('Connect Gmail first — click "Connect Gmail" in My Loans');
+    return;
+  }
+
+  // Targeted query for CC transaction alerts
+  const q = encodeURIComponent(
+    '(from:credit_cards@icici.bank.in OR from:alerts@axis.bank.in ' +
+    'OR from:@hdfcbank.com OR from:@sbicard.com OR from:@kotak.com ' +
+    'OR from:amazon.in OR from:phonepe.com OR from:paytm.com) ' +
+    'newer_than:90d'
+  );
+
+  const btn = el('cc-gmail-fetch-btn');
+  if (btn) btn.textContent = '⏳ Fetching…';
+
+  try {
+    const listRes = await fetch(
+      `https://gmail.googleapis.com/gmail/v1/users/me/messages?q=${q}&maxResults=30`,
+      { headers: { Authorization: 'Bearer ' + _gmailToken } }
+    );
+    if (!listRes.ok) throw new Error('Gmail API ' + listRes.status);
+    const listData = await listRes.json();
+    const messages = listData.messages || [];
+
+    if (!messages.length) {
+      showToast('No card transaction emails found');
+      if (btn) btn.textContent = '📧 Fetch from Gmail';
+      return;
+    }
+
+    // Fetch details in batches
+    const details = [];
+    for (let i = 0; i < Math.min(messages.length, 25); i += 5) {
+      const batch = await Promise.all(
+        messages.slice(i, i+5).map(m =>
+          fetch(
+            `https://gmail.googleapis.com/gmail/v1/users/me/messages/${m.id}?format=metadata` +
+            `&metadataHeaders=Subject&metadataHeaders=Date&metadataHeaders=From`,
+            { headers: { Authorization: 'Bearer ' + _gmailToken } }
+          ).then(r => r.json()).catch(() => null)
+        )
+      );
+      details.push(...batch.filter(Boolean));
+    }
+
+    // Parse each email and show results in paste modal
+    const parsedRows = details.map(msg => {
+      const headers  = msg.payload?.headers || [];
+      const getHdr   = n => headers.find(h => h.name.toLowerCase()===n.toLowerCase())?.value||'';
+      const subject  = getHdr('Subject');
+      const dateHdr  = getHdr('Date');
+      const from     = getHdr('From');
+      const snippet  = msg.snippet || '';
+      const fullText = from + ' ' + subject + ' ' + snippet;
+      const parsed   = parseBankText(fullText);
+      return { subject, dateHdr, from, snippet, parsed };
+    }).filter(r => r.parsed);
+
+    if (!parsedRows.length) {
+      showToast('Emails found but could not parse amounts — try Paste & Parse');
+      if (btn) btn.textContent = '📧 Fetch from Gmail';
+      return;
+    }
+
+    // Auto-log transactions into the matching card
+    let logged = 0;
+    for (const row of parsedRows) {
+      const amt  = row.parsed.amount;
+      const date = row.parsed.date;
+      // Match to card by bank name
+      const matchCard = _cards.find(c =>
+        c.bank && row.parsed.bank && row.parsed.bank.toLowerCase().includes(c.bank.toLowerCase())
+      ) || (_cards.length === 1 ? _cards[0] : null);
+
+      if (matchCard) {
+        const txnId = Date.now() + logged;
+        const exists = (_ccTxns[matchCard.id]||[]).some(t => t.date===date && t.amount===amt);
+        if (!exists) {
+          if (!_ccTxns[matchCard.id]) _ccTxns[matchCard.id] = [];
+          _ccTxns[matchCard.id].unshift({
+            id: txnId, date, merchant: row.parsed.bank,
+            category: 'other', type: 'purchase', amount: amt,
+            note: row.subject.slice(0,50),
+          });
+          matchCard.outstanding = (matchCard.outstanding||0) + amt;
+          logged++;
+        }
+      }
+    }
+
+    saveCards();
+    renderCardsPage();
+    if (_activeCardId) { renderCCTxns(); renderCCSpendDonut(); }
+    showToast(logged > 0
+      ? logged + ' transaction' + (logged!==1?'s':'') + ' auto-logged from Gmail ✓'
+      : 'All transactions already logged — nothing new');
+
+  } catch(e) {
+    showToast('Error: ' + e.message);
+  } finally {
+    if (btn) btn.textContent = '📧 Fetch from Gmail';
+  }
+}
+
+/* ── Add modal to backdrop handler ── */
 
 document.addEventListener('DOMContentLoaded', init);
 </script>
@@ -3469,47 +4602,67 @@ document.addEventListener('DOMContentLoaded', init);
     <!-- LEFT: Category expense rows -->
     <div id="exp-categories-wrap"></div>
 
-    <!-- RIGHT: Charts + quick stats sidebar -->
+    <!-- RIGHT: Charts sidebar -->
     <div style="display:flex;flex-direction:column;gap:14px">
 
-      <!-- Donut breakdown -->
+      <!-- Chart tabs -->
       <div class="card">
-        <div class="card-hd"><span class="card-title">Spending Breakdown</span><span class="card-sub" id="exp-donut-sub">this month</span></div>
-        <div class="card-body" style="padding:12px">
-          <div class="exp-donut-wrap" style="height:190px">
-            <canvas id="exp-chart-donut" width="190" height="190"></canvas>
+        <div class="card-hd"><span class="card-title">Charts</span>
+          <div class="exp-chart-tabs">
+            <button class="exp-chart-tab active" onclick="switchExpChart('donut',this)">Breakdown</button>
+            <button class="exp-chart-tab" onclick="switchExpChart('stacked',this)">Stacked</button>
+            <button class="exp-chart-tab" onclick="switchExpChart('trend',this)">Trend</button>
           </div>
-          <div id="exp-donut-legend" style="display:flex;flex-direction:column;gap:6px;margin-top:10px"></div>
+        </div>
+        <div class="card-body" style="padding:12px">
+          <!-- Donut view -->
+          <div id="exp-view-donut">
+            <div class="exp-donut-wrap" style="height:190px">
+              <canvas id="exp-chart-donut" width="190" height="190"></canvas>
+            </div>
+            <div id="exp-donut-legend" style="display:flex;flex-direction:column;gap:6px;margin-top:10px"></div>
+          </div>
+          <!-- Stacked bar view -->
+          <div id="exp-view-stacked" style="display:none">
+            <div style="font-size:10px;color:var(--muted);margin-bottom:8px">Category breakdown as % of total spending</div>
+            <div id="exp-stacked-bars"></div>
+          </div>
+          <!-- Trend view -->
+          <div id="exp-view-trend" style="display:none">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <span style="font-size:10px;color:var(--muted)">6-month spending trend</span>
+              <select id="exp-trend-cat" onchange="renderExpTrend()" style="font-size:11px;width:130px;padding:4px 7px">
+                <option value="all">All categories</option>
+              </select>
+            </div>
+            <div class="exp-history-wrap">
+              <canvas id="exp-chart-trend" style="width:100%;height:180px;display:block"></canvas>
+            </div>
+            <div class="chart-legend" style="margin-top:8px">
+              <div class="legend-item"><div class="legend-dot" style="background:var(--gold)"></div>Budget</div>
+              <div class="legend-item"><div class="legend-dot" style="background:var(--blue)"></div>Actual</div>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- Budget vs Actual -->
       <div class="card">
-        <div class="card-hd"><span class="card-title">Budget vs Actual</span></div>
+        <div class="card-hd"><span class="card-title">Budget vs Actual</span><span class="card-sub" id="exp-bva-over-count"></span></div>
         <div class="card-body" style="padding:12px">
           <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--muted);margin-bottom:8px;font-weight:700;letter-spacing:.05em;text-transform:uppercase">
-            <span>Category</span><span>Budget / Actual</span>
+            <span>Category</span><span>Actual / Budget</span>
           </div>
           <div id="exp-bva-list"></div>
         </div>
       </div>
 
-      <!-- Monthly trend chart -->
+      <!-- Month-over-month comparison -->
       <div class="card">
-        <div class="card-hd">
-          <span class="card-title">6-Month Trend</span>
-          <select id="exp-trend-cat" onchange="renderExpTrend()" style="font-size:11px;width:130px;padding:4px 7px">
-            <option value="all">All categories</option>
-          </select>
-        </div>
+        <div class="card-hd"><span class="card-title">Month-over-Month</span><span class="card-sub" id="exp-mom-sub">vs last month</span></div>
         <div class="card-body" style="padding:12px">
-          <div class="exp-history-wrap">
-            <canvas id="exp-chart-trend" style="width:100%;height:160px;display:block"></canvas>
-          </div>
-          <div class="chart-legend" style="margin-top:8px">
-            <div class="legend-item"><div class="legend-dot" style="background:var(--gold)"></div>Budget</div>
-            <div class="legend-item"><div class="legend-dot" style="background:var(--blue)"></div>Actual</div>
-          </div>
+          <div id="exp-mom-summary" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px"></div>
+          <div id="exp-mom-list"></div>
         </div>
       </div>
 
@@ -3535,7 +4688,9 @@ document.addEventListener('DOMContentLoaded', init);
           <option value="custom">⚡ Custom</option>
         </select>
       </div>
+      <div class="field"><label>Sub-category of</label><select id="exp-cat-parent-sel"><option value="">None (top-level)</option></select></div>
       <div class="field"><label>Monthly Budget (₹)</label><input type="number" id="exp-cat-budget" placeholder="0"></div>
+      <div class="field"><label>Recurring</label><select id="exp-cat-recur"><option value="none">Not recurring</option><option value="monthly">Every month (auto-fill)</option><option value="yearly">Every year (same month)</option></select></div>
     </div>
     <div class="modal-footer">
       <button class="btn-outline" onclick="closeModal('exp-cat-modal')">Cancel</button>
@@ -3550,9 +4705,15 @@ document.addEventListener('DOMContentLoaded', init);
     <h3>Edit Expense</h3>
     <p id="exp-entry-modal-sub">Update the budget or actual amount</p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
+      <div class="field" style="grid-column:1/-1;display:flex;align-items:center;gap:10px">
+        <div style="flex:0 0 36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:20px" id="exp-edit-icon-preview">📌</div>
+        <div style="flex:1"><label>Name</label><input type="text" id="exp-edit-name" placeholder="Category name"></div>
+        <div style="flex:0 0 50px"><label>Icon</label><input type="text" id="exp-edit-icon" placeholder="📌" style="font-size:18px;text-align:center"></div>
+      </div>
       <div class="field"><label>Budget (₹)</label><input type="number" id="exp-edit-budget" placeholder="0"></div>
       <div class="field"><label>Actual Spent (₹)</label><input type="number" id="exp-edit-actual" placeholder="0"></div>
       <div class="field" style="grid-column:1/-1"><label>Note</label><input type="text" id="exp-edit-note" placeholder="Optional note"></div>
+      <div class="field" style="grid-column:1/-1"><label style="display:flex;align-items:center;gap:8px;cursor:pointer"><input type="checkbox" id="exp-edit-recur" style="width:auto"> <span>Auto-fill this amount every month going forward</span></label></div>
     </div>
     <div class="modal-footer">
       <button class="btn-outline" onclick="closeModal('exp-entry-modal')">Cancel</button>
@@ -3666,6 +4827,233 @@ document.addEventListener('DOMContentLoaded', init);
     <div class="modal-footer">
       <button class="btn-outline" onclick="closeModal('gmail-modal')">Cancel</button>
       <button class="btn-gold" onclick="gmailAuthorize()" style="padding:9px 20px">🔐 Authorize with Google</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- PAGE 4: CREDIT CARDS -->
+<div class="page" id="page-cards">
+
+<div class="ml-header">
+  <div class="ml-header-inner">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+      <div>
+        <div class="ml-title">💳 Credit Cards</div>
+        <div class="ml-sub">Track spending, utilisation, due dates and statements across all your cards</div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="gmail-btn" onclick="openPasteModal()" title="Paste card statement email to auto-parse">📋 Paste Statement</button>
+        <button class="gmail-btn" id="cc-gmail-fetch-btn" onclick="ccFetchEmails()" title="Fetch card transactions from Gmail">📧 Fetch from Gmail</button>
+        <button class="btn-gold" style="padding:9px 16px;font-size:13px" onclick="openAddCardModal()">+ Add Card</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ml-wrap">
+
+  <!-- Summary strip -->
+  <div class="ml-summary" style="grid-template-columns:repeat(5,1fr)">
+    <div class="ml-sum-card" style="--mc:var(--gold)">
+      <div class="ml-sum-lbl">Total Credit Limit</div>
+      <div class="ml-sum-val" id="cc-total-limit" style="color:var(--gold)">₹0</div>
+      <div class="ml-sum-sub" id="cc-card-count">0 cards</div>
+    </div>
+    <div class="ml-sum-card" style="--mc:var(--red)">
+      <div class="ml-sum-lbl">Total Outstanding</div>
+      <div class="ml-sum-val" id="cc-total-outstanding" style="color:var(--red)">₹0</div>
+      <div class="ml-sum-sub">across all cards</div>
+    </div>
+    <div class="ml-sum-card" style="--mc:var(--blue)">
+      <div class="ml-sum-lbl">Available Credit</div>
+      <div class="ml-sum-val" id="cc-total-available" style="color:var(--blue)">₹0</div>
+      <div class="ml-sum-sub">total available</div>
+    </div>
+    <div class="ml-sum-card" style="--mc:var(--amber,#c9a84c)">
+      <div class="ml-sum-lbl">Min Due This Month</div>
+      <div class="ml-sum-val" id="cc-total-min-due" style="color:var(--gold)">₹0</div>
+      <div class="ml-sum-sub" id="cc-next-due-sub">—</div>
+    </div>
+    <div class="ml-sum-card" style="--mc:var(--green)">
+      <div class="ml-sum-lbl">Avg Utilisation</div>
+      <div class="ml-sum-val" id="cc-avg-util" style="color:var(--text)">—</div>
+      <div class="ml-sum-sub">keep below 30%</div>
+    </div>
+  </div>
+
+  <!-- Utilisation warning -->
+  <div id="cc-util-warning" style="display:none;background:var(--red-l);border:1px solid rgba(224,85,85,.3);border-radius:var(--rsm);padding:10px 14px;margin-bottom:14px;font-size:12px;color:var(--red)">
+    ⚠️ <strong>High utilisation detected</strong> — keeping credit utilisation above 30% negatively impacts your credit score. Consider paying down the balance before the statement date.
+  </div>
+
+  <!-- Due date reminder -->
+  <div id="cc-due-reminder" style="display:none;background:var(--gold-l);border:1px solid var(--gold-border);border-radius:var(--rsm);padding:10px 14px;margin-bottom:14px;font-size:12px;color:var(--gold)">
+    🔔 <span id="cc-due-reminder-text">—</span>
+  </div>
+
+  <!-- Cards grid -->
+  <div class="cc-grid" id="cc-grid"></div>
+
+  <!-- Empty state -->
+  <div id="cc-empty" style="text-align:center;padding:60px 20px;display:none">
+    <div style="font-size:48px;margin-bottom:16px">💳</div>
+    <div style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px">No credit cards yet</div>
+    <div style="font-size:13px;color:var(--muted);margin-bottom:20px">Add your cards to track spending, due dates and utilisation.</div>
+    <button class="btn-gold" style="padding:11px 24px" onclick="openAddCardModal()">+ Add Your First Card</button>
+  </div>
+
+  <!-- Card detail panel — expands inline below grid -->
+  <div id="cc-detail-panel" style="display:none;margin-top:4px">
+    <div class="card card-gold">
+      <div class="card-hd-gold">
+        <span class="card-title" id="ccdp-title">Card Details</span>
+        <div style="display:flex;gap:8px">
+          <button onclick="ccOpenAddTxn()" class="btn-gold" style="padding:5px 12px;font-size:11px">+ Add Transaction</button>
+          <button onclick="closeCCDetail()" style="background:transparent;border:1px solid var(--border2);border-radius:var(--rsm);padding:5px 11px;font-size:11px;color:var(--muted);cursor:pointer">✕ Close</button>
+        </div>
+      </div>
+      <div class="card-body">
+
+        <!-- Card summary row -->
+        <div id="ccdp-summary" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px"></div>
+
+        <!-- RED: original due / BLUE: if paid in full -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px">
+          <div style="background:rgba(224,85,85,.08);border:1.5px solid rgba(224,85,85,.3);border-radius:var(--r);padding:13px">
+            <div style="font-size:9px;font-weight:700;color:var(--red);letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px">Payment Due</div>
+            <div style="font-size:17px;font-weight:800;font-family:var(--mono);color:var(--red)" id="ccdp-due-date">—</div>
+            <div style="margin-top:8px;display:flex;flex-direction:column;gap:4px">
+              <div style="display:flex;justify-content:space-between;font-size:11px"><span style="color:var(--muted)">Minimum Due</span><strong style="font-family:var(--mono);color:var(--red)" id="ccdp-min-due">—</strong></div>
+              <div style="display:flex;justify-content:space-between;font-size:11px"><span style="color:var(--muted)">Total Due</span><strong style="font-family:var(--mono);color:var(--red)" id="ccdp-total-due">—</strong></div>
+            </div>
+          </div>
+          <div style="background:rgba(91,141,238,.08);border:1.5px solid rgba(91,141,238,.3);border-radius:var(--r);padding:13px">
+            <div style="font-size:9px;font-weight:700;color:var(--blue);letter-spacing:.06em;text-transform:uppercase;margin-bottom:5px">Credit Utilisation</div>
+            <div style="font-size:17px;font-weight:800;font-family:var(--mono)" id="ccdp-util">—</div>
+            <div style="margin-top:8px;display:flex;flex-direction:column;gap:4px">
+              <div style="display:flex;justify-content:space-between;font-size:11px"><span style="color:var(--muted)">Limit</span><strong style="font-family:var(--mono)" id="ccdp-limit">—</strong></div>
+              <div style="display:flex;justify-content:space-between;font-size:11px"><span style="color:var(--muted)">Available</span><strong style="font-family:var(--mono);color:var(--green)" id="ccdp-available">—</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Log a transaction -->
+        <div style="background:var(--s2);border:1px solid var(--border2);border-radius:var(--rsm);padding:11px 13px;margin-bottom:14px">
+          <div style="font-size:9px;font-weight:700;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px">Log a Transaction</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end">
+            <div style="flex:0 0 120px"><div style="font-size:9px;color:var(--muted);margin-bottom:3px">Date</div><input type="date" id="cc-txn-date" style="font-size:12px"></div>
+            <div style="flex:0 0 130px"><div style="font-size:9px;color:var(--muted);margin-bottom:3px">Type</div>
+              <select id="cc-txn-type" style="font-size:12px">
+                <option value="purchase">Purchase</option>
+                <option value="emi">Card EMI</option>
+                <option value="payment">Payment Made</option>
+                <option value="cashback">Cashback/Reward</option>
+                <option value="refund">Refund</option>
+              </select>
+            </div>
+            <div style="flex:1;min-width:120px"><div style="font-size:9px;color:var(--muted);margin-bottom:3px">Merchant / Description</div><input type="text" id="cc-txn-merchant" placeholder="e.g. Amazon, Swiggy" style="font-size:12px"></div>
+            <div style="flex:0 0 110px"><div style="font-size:9px;color:var(--muted);margin-bottom:3px">Amount (₹)</div><input type="number" id="cc-txn-amount" placeholder="0" style="font-size:12px"></div>
+            <div style="flex:0 0 120px"><div style="font-size:9px;color:var(--muted);margin-bottom:3px">Category</div>
+              <select id="cc-txn-cat" style="font-size:12px">
+                <option value="shopping">🛍️ Shopping</option>
+                <option value="dining">🍽️ Dining</option>
+                <option value="grocery">🛒 Groceries</option>
+                <option value="fuel">⛽ Fuel</option>
+                <option value="travel">✈️ Travel</option>
+                <option value="medical">🏥 Medical</option>
+                <option value="entertainment">🎬 Entertainment</option>
+                <option value="utility">💡 Utilities</option>
+                <option value="emi">💳 Card EMI</option>
+                <option value="other">📌 Other</option>
+              </select>
+            </div>
+            <button onclick="ccAddTransaction()" class="btn-gold" style="padding:9px 14px;font-size:12px;height:38px;flex-shrink:0">Log</button>
+          </div>
+        </div>
+
+        <!-- Transaction history -->
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <div style="font-size:11px;font-weight:700;color:var(--text)">Transaction History</div>
+          <div style="display:flex;gap:6px;align-items:center">
+            <select id="cc-txn-filter" onchange="renderCCTxns()" style="font-size:11px;width:120px;padding:4px 7px">
+              <option value="all">All transactions</option>
+              <option value="purchase">Purchases only</option>
+              <option value="payment">Payments only</option>
+              <option value="this_month">This month</option>
+            </select>
+            <span style="font-size:10px;color:var(--muted)" id="cc-txn-count">—</span>
+          </div>
+        </div>
+        <div class="sched-wrap" style="max-height:340px">
+          <table class="sched-table">
+            <thead><tr><th>Date</th><th>Merchant</th><th>Category</th><th>Type</th><th>Amount</th><th></th></tr></thead>
+            <tbody id="cc-txn-body"></tbody>
+          </table>
+        </div>
+
+        <!-- Spending by category donut -->
+        <div style="margin-top:14px;display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:center">
+          <div style="position:relative;width:150px;height:150px;flex-shrink:0">
+            <canvas id="cc-spend-donut" width="300" height="300" style="width:150px;height:150px;position:absolute;inset:0"></canvas>
+          </div>
+          <div>
+            <div style="font-size:11px;font-weight:700;color:var(--text);margin-bottom:8px">Spending by Category</div>
+            <div id="cc-spend-legend" style="display:flex;flex-direction:column;gap:6px"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+</div><!-- /page-cards -->
+
+<!-- ADD CARD MODAL -->
+<div class="modal-overlay" id="add-card-modal">
+  <div class="modal" style="width:500px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+      <h3 style="margin:0">Add Credit Card</h3>
+      <button onclick="closeModal('add-card-modal')" style="background:transparent;border:1px solid var(--border2);border-radius:var(--rsm);padding:4px 11px;font-size:12px;color:var(--muted);cursor:pointer">✕</button>
+    </div>
+    <p>Enter your card details to track spending and due dates.</p>
+    <div class="modal-grid">
+      <div class="field" style="grid-column:1/-1"><label>Card Name (nickname)</label><input id="cc-name" placeholder="e.g. ICICI Amazon Pay, Axis Flipkart"></div>
+      <div class="field"><label>Bank</label>
+        <select id="cc-bank">
+          <option value="ICICI">ICICI Bank</option>
+          <option value="HDFC">HDFC Bank</option>
+          <option value="Axis">Axis Bank</option>
+          <option value="SBI">SBI Card</option>
+          <option value="Kotak">Kotak Bank</option>
+          <option value="IndusInd">IndusInd Bank</option>
+          <option value="Yes">Yes Bank</option>
+          <option value="IDFC">IDFC First</option>
+          <option value="AmEx">American Express</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="field"><label>Card Network</label>
+        <select id="cc-network">
+          <option value="visa">Visa</option>
+          <option value="mastercard">Mastercard</option>
+          <option value="rupay">RuPay</option>
+          <option value="amex">Amex</option>
+        </select>
+      </div>
+      <div class="field"><label>Last 4 Digits</label><input id="cc-last4" placeholder="e.g. 1234" maxlength="4" style="font-family:var(--mono);letter-spacing:.2em"></div>
+      <div class="field"><label>Credit Limit (₹)</label><input type="number" id="cc-limit" placeholder="e.g. 100000"></div>
+      <div class="field"><label>Current Outstanding (₹)</label><input type="number" id="cc-outstanding" placeholder="0" value="0"></div>
+      <div class="field"><label>Statement Date (day of month)</label><input type="number" id="cc-stmt-date" placeholder="e.g. 1" min="1" max="31" value="1"></div>
+      <div class="field"><label>Payment Due Date (day of month)</label><input type="number" id="cc-due-date" placeholder="e.g. 20" min="1" max="31" value="20"></div>
+      <div class="field"><label>Minimum Due (₹)</label><input type="number" id="cc-min-due" placeholder="0" value="0"></div>
+      <div class="field"><label>Annual Fee (₹)</label><input type="number" id="cc-annual-fee" placeholder="0" value="0"></div>
+    </div>
+    <div class="field"><label>Notes (rewards, cashback %)</label><input id="cc-notes" placeholder="e.g. 5% cashback on Amazon, 2x rewards on dining"></div>
+    <div class="modal-footer">
+      <button class="btn-outline" onclick="closeModal('add-card-modal')">Cancel</button>
+      <button class="btn-gold" onclick="saveCard()" style="padding:9px 20px">Save Card</button>
     </div>
   </div>
 </div>
