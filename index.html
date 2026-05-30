@@ -301,6 +301,134 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 @media(max-width:1000px){.two-col{grid-template-columns:1fr}.sidebar{display:none}.ml-summary{grid-template-columns:1fr 1fr}.metrics-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.hero h1{font-size:22px}.metrics-grid{grid-template-columns:1fr}.result-row{grid-template-columns:1fr}.impact-cards{grid-template-columns:1fr}.loans-grid{grid-template-columns:1fr}.ml-summary{grid-template-columns:1fr 1fr}.modal-grid{grid-template-columns:1fr}.donut-wrap{flex-direction:column;align-items:center}}
 @media(max-width:400px){.ml-summary{grid-template-columns:1fr}}
+
+/* ═══════════════ EXPENSE TRACKER ═══════════════ */
+.exp-header{background:linear-gradient(135deg,#100f1a,#1a1008);border-bottom:1px solid var(--gold-border);padding:24px 20px 20px;position:relative;overflow:hidden}
+.exp-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 80% 0%,rgba(201,168,76,.07),transparent)}
+.exp-header-inner{max-width:1240px;margin:0 auto;position:relative;z-index:1}
+.exp-wrap{max-width:1240px;margin:0 auto;padding:18px 16px}
+
+/* Month navigator */
+.exp-month-nav{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.exp-month-btn{background:var(--s2);border:1px solid var(--border2);border-radius:var(--rsm);padding:5px 10px;font-size:18px;color:var(--muted);cursor:pointer;line-height:1}
+.exp-month-btn:hover{border-color:var(--gold);color:var(--gold)}
+.exp-month-label{font-size:17px;font-weight:800;letter-spacing:-.03em;color:var(--text);min-width:130px;text-align:center}
+
+/* Summary strip */
+.exp-summary{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:18px}
+.exp-sum-card{background:var(--s1);border:1px solid var(--border);border-radius:var(--r);padding:13px 15px;position:relative;overflow:hidden}
+.exp-sum-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2.5px;background:var(--mc,var(--gold));border-radius:var(--r) var(--r) 0 0}
+.exp-sum-lbl{font-size:9px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.exp-sum-val{font-size:18px;font-weight:800;font-family:var(--mono);letter-spacing:-.04em;line-height:1}
+.exp-sum-sub{font-size:9px;color:var(--muted);margin-top:3px}
+
+/* Two-col layout */
+.exp-grid{display:grid;grid-template-columns:1fr 340px;gap:16px;align-items:start}
+
+/* Category group */
+.exp-cat-group{margin-bottom:14px}
+.exp-cat-hd{display:flex;align-items:center;gap:8px;margin-bottom:8px;padding:8px 12px;background:var(--s2);border-radius:var(--rsm);border:1px solid var(--border);cursor:pointer;user-select:none}
+.exp-cat-hd:hover{border-color:var(--gold-border)}
+.exp-cat-icon{font-size:15px}
+.exp-cat-title{font-size:12px;font-weight:700;flex:1;color:var(--text)}
+.exp-cat-total{font-size:12px;font-weight:700;font-family:var(--mono);color:var(--gold)}
+.exp-cat-chevron{font-size:11px;color:var(--muted);transition:transform .2s}
+.exp-cat-group.collapsed .exp-cat-chevron{transform:rotate(-90deg)}
+.exp-cat-group.collapsed .exp-cat-rows{display:none}
+
+/* Expense rows */
+.exp-cat-rows{display:flex;flex-direction:column;gap:4px;padding-left:4px}
+.exp-row{display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--s1);border:1px solid var(--border);border-radius:var(--rsm);transition:border-color .12s}
+.exp-row:hover{border-color:var(--border2)}
+.exp-row-name{flex:1;font-size:12px;font-weight:500;color:var(--text);min-width:0}
+.exp-row-budget{font-size:11px;font-family:var(--mono);color:var(--muted);width:80px;text-align:right}
+.exp-row-actual{font-size:12px;font-family:var(--mono);font-weight:700;width:90px;text-align:right}
+.exp-row-bar-wrap{width:60px;height:4px;background:var(--s4);border-radius:2px;overflow:hidden;flex-shrink:0}
+.exp-row-bar{height:100%;border-radius:2px;transition:width .3s}
+.exp-row-actions{display:flex;gap:3px;flex-shrink:0}
+.exp-row-btn{background:transparent;border:none;color:var(--dim);cursor:pointer;font-size:11px;padding:2px 4px;border-radius:3px}
+.exp-row-btn:hover{color:var(--gold);background:var(--gold-g)}
+.exp-row-btn.del:hover{color:var(--red);background:var(--red-l)}
+
+/* Add entry row */
+.exp-add-row{display:flex;gap:6px;align-items:center;padding:6px 10px;background:var(--s2);border:1px dashed var(--border2);border-radius:var(--rsm);margin-top:4px}
+.exp-add-row input,.exp-add-row select{font-size:11px;padding:5px 7px}
+.exp-add-row input[type=text]{flex:1}
+.exp-add-row input[type=number]{width:90px}
+.exp-add-btn-sm{background:var(--gold);color:#000;border:none;border-radius:var(--rsm);padding:5px 10px;font-size:11px;font-weight:700;cursor:pointer;white-space:nowrap;flex-shrink:0}
+
+/* Sidebar chart */
+.exp-donut-wrap{display:flex;align-items:center;justify-content:center;height:180px;position:relative}
+.exp-donut-canvas{position:absolute;inset:0;margin:auto}
+
+/* Budget vs Actual bar */
+.bva-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.bva-label{font-size:10px;color:var(--muted);width:120px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bva-bars{flex:1;display:flex;flex-direction:column;gap:2px}
+.bva-bar-wrap{height:5px;background:var(--s4);border-radius:2px;overflow:hidden;position:relative}
+.bva-bar-budget{height:100%;background:var(--s4);border-radius:2px;position:absolute;top:0;left:0;border-right:1.5px solid var(--muted)}
+.bva-bar-actual{height:100%;border-radius:2px;position:absolute;top:0;left:0;transition:width .3s}
+.bva-vals{font-size:9px;font-family:var(--mono);color:var(--muted);white-space:nowrap;width:80px;text-align:right;flex-shrink:0}
+
+/* History chart */
+.exp-history-wrap{height:160px;position:relative;margin-top:4px}
+
+/* Custom category modal */
+.exp-modal{background:var(--s1);border:1px solid var(--gold-border);border-radius:var(--r);padding:20px;width:380px;max-width:calc(100vw - 32px);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+
+@media(max-width:960px){.exp-summary{grid-template-columns:repeat(3,1fr)}.exp-grid{grid-template-columns:1fr}}
+@media(max-width:600px){.exp-summary{grid-template-columns:1fr 1fr}}
+
+
+/* ═══════════ GMAIL INTEGRATION ═══════════ */
+.gmail-connect-bar{
+  background:linear-gradient(90deg,rgba(201,168,76,.07),rgba(91,141,238,.05));
+  border:1px solid var(--gold-border);border-radius:var(--r);
+  padding:12px 16px;margin-bottom:14px;
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+}
+.gmail-status-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;background:var(--dim)}
+.gmail-status-dot.connected{background:var(--green);box-shadow:0 0 6px rgba(62,207,142,.5)}
+.gmail-status-dot.pending{background:var(--gold);animation:pulse 1.2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.gmail-status-text{flex:1;font-size:12px;color:var(--muted)}
+.gmail-status-text strong{color:var(--text)}
+.gmail-btn{
+  background:var(--s3);border:1px solid var(--border2);border-radius:var(--rsm);
+  padding:6px 13px;font-size:12px;font-weight:600;color:var(--text);cursor:pointer;
+  display:flex;align-items:center;gap:6px;flex-shrink:0;
+}
+.gmail-btn:hover{border-color:var(--gold);color:var(--gold)}
+.gmail-btn.primary{background:linear-gradient(135deg,var(--gold-d),var(--gold));color:#000;border-color:transparent}
+.gmail-btn.primary:hover{box-shadow:var(--sh-gold);transform:translateY(-1px)}
+.gmail-btn.danger:hover{border-color:var(--red);color:var(--red)}
+
+/* Parse panel */
+.parse-result-row{
+  display:flex;align-items:center;gap:10px;padding:10px 12px;
+  background:var(--s2);border:1px solid var(--border);border-radius:var(--rsm);
+  margin-bottom:6px;
+}
+.parse-result-row.matched{border-color:rgba(62,207,142,.3);background:rgba(62,207,142,.04)}
+.parse-result-row.unmatched{border-color:rgba(224,85,85,.2);background:rgba(224,85,85,.03)}
+.pr-bank{font-size:11px;font-weight:700;color:var(--gold);min-width:60px}
+.pr-type{font-size:10px;color:var(--muted);min-width:70px}
+.pr-amount{font-size:14px;font-weight:800;font-family:var(--mono);color:var(--text);min-width:80px}
+.pr-date{font-size:10px;color:var(--muted);flex:1}
+.pr-loan-sel{font-size:11px;width:160px}
+
+/* Gmail fetched emails list */
+.gmail-email-row{
+  padding:10px 13px;border-bottom:1px solid var(--border);
+  display:flex;align-items:flex-start;gap:10px;cursor:pointer;
+  transition:background .12s;
+}
+.gmail-email-row:hover{background:var(--s2)}
+.gmail-email-row.selected{background:var(--gold-g);border-left:2px solid var(--gold)}
+.gm-subject{font-size:12px;font-weight:600;color:var(--text);flex:1}
+.gm-date{font-size:10px;color:var(--muted);white-space:nowrap;margin-left:8px}
+.gm-snippet{font-size:10px;color:var(--muted);margin-top:2px;line-height:1.4}
+
 </style>
 </head>
 <body>
@@ -310,6 +438,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
     <div class="page-nav">
       <button class="page-tab active" onclick="showPage('calculator',this)">🧮 Calculator</button>
       <button class="page-tab" onclick="showPage('myloans',this)">🏦 My Loans</button>
+      <button class="page-tab" onclick="showPage('expenses',this)">💸 Expenses</button>
     </div>
     <div class="topbar-right"><button class="tbtn" onclick="openShare()">🔗 Share</button></div>
   </div>
@@ -498,7 +627,7 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 
 <!-- PAGE 2: MY LOANS -->
 <div class="page" id="page-myloans">
-<div class="ml-header"><div class="ml-header-inner"><div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px"><div><div class="ml-title">🏦 My Loans</div><div class="ml-sub">Your personal loan tracking dashboard — all loans, payments, and savings in one place</div></div><button class="btn-gold" style="padding:10px 20px;font-size:13px" onclick="openAddLoanModal()">+ Add New Loan</button></div></div></div>
+<div class="ml-header"><div class="ml-header-inner"><div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px"><div><div class="ml-title">🏦 My Loans</div><div class="ml-sub">Your personal loan tracking dashboard — all loans, payments, and savings in one place</div></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="gmail-btn" onclick="openPasteModal()" title="Paste bank email/SMS to auto-parse">📋 Paste &amp; Parse</button><button class="gmail-btn" id="gmail-connect-btn" onclick="gmailConnect()" title="Connect Gmail to auto-fetch EMI emails">📧 Connect Gmail</button><button class="btn-gold" style="padding:9px 16px;font-size:13px" onclick="openAddLoanModal()">+ Add New Loan</button></div></div></div></div>
 <div class="ml-wrap">
   <div class="ml-summary"><div class="ml-sum-card" style="--mc:var(--gold)"><div class="ml-sum-lbl">Total Borrowed</div><div class="ml-sum-val" id="ml-total-borrowed" style="color:var(--gold)">₹0</div><div class="ml-sum-sub" id="ml-loan-count">0 loans</div></div><div class="ml-sum-card" style="--mc:var(--red)"><div class="ml-sum-lbl">Total Outstanding</div><div class="ml-sum-val" id="ml-total-outstanding" style="color:var(--red)">₹0</div><div class="ml-sum-sub">current balance</div></div><div class="ml-sum-card" style="--mc:var(--green)"><div class="ml-sum-lbl">Interest Saved</div><div class="ml-sum-val" id="ml-total-saved" style="color:var(--green)">₹0</div><div class="ml-sum-sub" id="ml-saved-sub">from part payments</div></div><div class="ml-sum-card" style="--mc:var(--blue)"><div class="ml-sum-lbl">Monthly EMI Total</div><div class="ml-sum-val" id="ml-total-emi" style="color:var(--blue)">₹0</div><div class="ml-sum-sub">combined outflow</div></div></div>
   <!-- ── EMBEDDED LOAN CALCULATOR (shown when "In Calculator" clicked) ── -->
@@ -670,6 +799,26 @@ input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.2)}
 
   <div id="ml-empty" style="text-align:center;padding:60px 20px;display:none"><div style="font-size:48px;margin-bottom:16px">🏦</div><div style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:6px">No loans yet</div><div style="font-size:13px;color:var(--muted);margin-bottom:20px">Add your first loan to start tracking payments, prepayments, and savings.</div><button class="btn-gold" style="padding:11px 24px" onclick="openAddLoanModal()">+ Add Your First Loan</button></div>
 </div>
+
+  <!-- Gmail status bar (shown after connect) -->
+  <div class="gmail-connect-bar" id="gmail-bar" style="display:none">
+    <div class="gmail-status-dot" id="gmail-dot"></div>
+    <div class="gmail-status-text" id="gmail-bar-text">—</div>
+    <button class="gmail-btn" onclick="gmailFetchEmails()" id="gmail-fetch-btn" style="display:none">🔄 Fetch EMI emails</button>
+    <button class="gmail-btn danger" onclick="gmailDisconnect()">Disconnect</button>
+  </div>
+
+  <!-- Fetched emails list (shown below bar) -->
+  <div id="gmail-emails-panel" style="display:none;margin-bottom:14px">
+    <div class="card">
+      <div class="card-hd">
+        <span class="card-title">📧 Gmail — EMI & Debit Alerts</span>
+        <span class="card-sub" id="gmail-email-count">—</span>
+      </div>
+      <div id="gmail-email-list" style="max-height:320px;overflow-y:auto"></div>
+    </div>
+  </div>
+
 </div><!-- /page-myloans -->
 
 <!-- MODALS -->
@@ -1168,24 +1317,23 @@ function renderSchedule() {
   const {orig} = S.schedCache || {};
   const strat = el('pp-strat') ? el('pp-strat').value : 'reduce_tenure';
 
-  // ── O.S. Deposit row: prepend BEFORE EMI #1 when deposit exists ──────────
-  // This represents the April 5th payment: 100% principal, zero interest.
-  // The bank collected it before the EMI schedule — it directly reduces principal.
+  // ── O.S. Deposit row: always show before EMI #1 when deposit exists ──────
+  // The April 5 payment: 100% principal, zero interest.
+  // Shown regardless of filter so it's never hidden.
   let osDepositRow = '';
-  if (S.preEmiPP > 0 && flt === 'all') {
-    // Date of O.S. deposit = one month BEFORE first EMI date
+  if (S.preEmiPP > 0) {
     const depositDate = addMonths(S.startDate, -1);
     const ds = depositDate.toLocaleString('en-IN', {day:'numeric', month:'short', year:'numeric'});
     const balAfter = S.P - S.preEmiPP;
-    osDepositRow = `<tr style="background:rgba(201,168,76,.08);border-left:3px solid var(--gold)" id="srow-os">
-      <td style="color:var(--gold);font-weight:700">—</td>
-      <td style="color:var(--gold)">${ds}</td>
-      <td style="color:var(--gold);font-weight:700">O.S. Deposit</td>
-      <td style="color:var(--green);font-weight:700">${INR(S.preEmiPP)}<div style="font-size:9px;color:var(--green);font-family:var(--mono)">100% principal</div></td>
-      <td style="color:var(--dim)">₹0<div style="font-size:9px;color:var(--dim)">no interest</div></td>
-      <td>—</td>
+    osDepositRow = `<tr id="srow-os" style="background:rgba(201,168,76,.1)">
+      <td style="color:var(--gold);font-weight:800;border-left:3px solid var(--gold)">0</td>
+      <td style="color:var(--gold);font-weight:600">${ds}</td>
+      <td style="color:var(--gold);font-weight:800;letter-spacing:-.01em">O.S. Deposit<div style="font-size:9px;font-weight:400;color:var(--muted);margin-top:1px">Pre-EMI transfer</div></td>
+      <td style="color:var(--green);font-weight:700">${INR(S.preEmiPP)}<div style="font-size:9px;color:var(--green);font-family:var(--mono);margin-top:1px">100% principal</div></td>
+      <td style="color:var(--dim)">₹0<div style="font-size:9px;color:var(--dim);margin-top:1px">no interest</div></td>
+      <td style="color:var(--dim)">—</td>
       <td style="font-family:var(--mono);font-weight:600;color:var(--text)">${INR(balAfter)}</td>
-      <td><span class="badge ba">Pre-EMI</span></td>
+      <td><span class="badge ba" style="font-size:9px">Pre-EMI</span></td>
     </tr>`;
   }
 
@@ -1642,111 +1790,133 @@ function computeLogPreview() {
   el('log-preview').style.display = '';
 }
 
-/* ── COMBINED EMI + PART PAYMENT TIMELINE ─────────────────────────────────
-   Each row = one scheduled month. Logged payments appear inline on that row.
-   Part payments show interest saved. Paid rows in red-tinted style.
-   Upcoming rows in blue-tinted style.
+/* ── MY LOANS TIMELINE ─────────────────────────────────────────────────────
+   Uses the loan's ACTUAL bank EMI (l.emi), not a recalculated formula value.
+   Schedule is built from effP (orig − preEmiPP) with the actual bank EMI so
+   every row's principal/interest split matches the bank statement.
+   Logged part payments are applied at their exact calendar month.
 ─────────────────────────────────────────────────────────────────────────── */
 function renderLoanTimeline(id) {
   const l    = _loans.find(x => x.id === id); if (!l) return;
   const logs = _paymentLogs[id] || [];
-  const effP = Math.max(0, l.orig - (l.preEmiPP || 0));
-  const emi  = calcEMI(l.orig, l.rate, l.tenure);  // EMI on original principal
-  const base = buildSchedule(effP, emi, l.rate, l.tenure, [], 'reduce_tenure');
-  const ppList = buildPPListFromLogs(l, logs);
-  const withPP = ppList.length > 0
-    ? buildSchedule(effP, emi, l.rate, l.tenure, ppList, 'reduce_tenure')
-    : base;
-  const startD   = l.startDate ? new Date(l.startDate) : new Date();
-  const emisPaid = l.emisPaid || 0;
 
-  // Index logged EMIs by month number (1-based)
+  const preEmiPP = l.preEmiPP  || 0;
+  const effP     = Math.max(0, l.orig - preEmiPP);
+  const bankEMI  = l.emi || calcEMI(l.orig, l.rate, l.tenure); // use actual bank EMI
+  const emisPaid = l.emisPaid || 0;
+  const startD   = l.startDate ? new Date(l.startDate) : new Date();
+
+  const ppList = buildPPListFromLogs(l, logs);
+  const base   = buildSchedule(effP, bankEMI, l.rate, l.tenure, [], 'reduce_tenure');
+  const withPP = ppList.length > 0
+    ? buildSchedule(effP, bankEMI, l.rate, l.tenure, ppList, 'reduce_tenure')
+    : base;
+
+  // Group logs by EMI month number. Month 0 = before schedule (O.S. deposit)
   const logByMonth = {};
   for (const lg of logs) {
-    const payDate   = new Date(lg.date);
-    const monthNum  = Math.max(1, Math.round(
+    const payDate  = new Date(lg.date);
+    const monthNum = Math.round(
       (payDate.getFullYear() - startD.getFullYear()) * 12
-      + (payDate.getMonth() - startD.getMonth()) + 1
-    ));
-    if (!logByMonth[monthNum]) logByMonth[monthNum] = [];
-    logByMonth[monthNum].push(lg);
+      + (payDate.getMonth()  - startD.getMonth()) + 1
+    );
+    const key = monthNum <= 0 ? 0 : monthNum;
+    if (!logByMonth[key]) logByMonth[key] = [];
+    logByMonth[key].push(lg);
   }
 
-  // Use withPP schedule rows (to show updated balance after part payments)
   const rows = withPP.rows;
-  const total = rows.length;
-  set('ldp-log-count', total + ' months total · ' + emisPaid + ' paid');
+  set('ldp-log-count',
+    rows.length + ' months total \u00b7 ' +
+    emisPaid + ' regular EMI' + (emisPaid !== 1 ? 's' : '') + ' paid');
 
-  const tbody = el('ldp-timeline-body');
-  const frag  = [];
+  const frag = [];
 
+  // ── Row 0: O.S. Deposit ───────────────────────────────────────────────────
+  const preEmiLogs   = logByMonth[0] || [];
+  const preEmiAmount = preEmiPP || preEmiLogs.reduce((s, lg) => s + lg.amount, 0);
+  if (preEmiAmount > 0) {
+    const depositDate = addMonths(startD, -1);
+    const ds = depositDate.toLocaleString('en-IN', { day:'numeric', month:'short', year:'numeric' });
+    const balAfter = l.orig - preEmiAmount;
+    frag.push(`<tr style="background:rgba(201,168,76,.12)" id="ldptl-os">
+      <td style="border-left:3px solid var(--gold);color:var(--gold);font-weight:800">0</td>
+      <td style="color:var(--gold);font-weight:600">${ds}</td>
+      <td style="color:var(--gold);font-weight:700">O.S. Deposit<div style="font-size:9px;color:var(--muted);font-weight:400;margin-top:1px">100% principal \u00b7 no interest</div></td>
+      <td style="color:var(--green);font-family:var(--mono);font-weight:700">${INR(preEmiAmount)}</td>
+      <td style="color:var(--dim);font-family:var(--mono)">\u20b90</td>
+      <td style="color:var(--dim)">\u2014</td>
+      <td style="color:var(--dim)">\u2014</td>
+      <td style="font-family:var(--mono);font-weight:600">${INR(balAfter)}</td>
+      <td><span class="badge ba" style="font-size:9px">Pre-EMI</span></td>
+    </tr>`);
+  }
+
+  // ── Rows 1…N: Regular EMI schedule ────────────────────────────────────────
   for (const row of rows) {
-    const d       = addMonths(startD, row.month - 1);
-    const ds      = d.toLocaleString('en-IN', { month: 'short', year: '2-digit' });
-    const isPaid  = row.month <= emisPaid;
+    const d   = addMonths(startD, row.month - 1);
+    const ds  = d.toLocaleString('en-IN', { month:'short', year:'2-digit' });
+    const isPaid    = row.month <= emisPaid;
     const monthLogs = logByMonth[row.month] || [];
     const ppLogged  = monthLogs.filter(lg => lg.type === 'partpay' || lg.type === 'prepay');
-    const emiLogged = monthLogs.filter(lg => lg.type === 'emi');
     const hasPP     = ppLogged.length > 0 || row.prepay > 0;
 
-    // Row background
-    let rowBg = '';
-    if (isPaid && hasPP)   rowBg = 'background:rgba(201,168,76,.06)';
-    else if (isPaid)       rowBg = 'background:rgba(224,85,85,.05)';
-    else if (!isPaid && hasPP) rowBg = 'background:rgba(201,168,76,.04)';
-    else                   rowBg = 'background:rgba(91,141,238,.03)';
+    const rowBg = isPaid && hasPP ? 'background:rgba(201,168,76,.07)'
+                : isPaid          ? 'background:rgba(224,85,85,.05)'
+                : hasPP           ? 'background:rgba(201,168,76,.04)'
+                :                   'background:rgba(91,141,238,.02)';
 
-    // Part payment cell — show actual logged amount or schedule PP
-    let ppCell = '—';
+    let ppCell = '<span style="color:var(--dim)">\u2014</span>';
     if (ppLogged.length > 0) {
-      const totalLogged = ppLogged.reduce((s, lg) => s + lg.amount, 0);
-      const saved = ppLogged[ppLogged.length - 1].intSaved;
-      const moSv  = ppLogged[ppLogged.length - 1].moSaved;
+      const totalPP = ppLogged.reduce((s, lg) => s + lg.amount, 0);
+      const lastPPL = ppLogged[ppLogged.length - 1];
       ppCell = `<div>
-        <span class="badge ba">${INR(totalLogged)}</span>
-        ${saved > 0 ? `<div style="font-size:9px;color:var(--green);margin-top:2px;font-family:var(--mono)">saves ${INRs(saved)}</div>` : ''}
-        ${moSv > 0 ? `<div style="font-size:9px;color:var(--gold);font-family:var(--mono)">${fmtMo(moSv)} shorter</div>` : ''}
-        ${ppLogged.map(lg => `<button onclick="deleteLog(${id},${lg.id})" style="background:none;border:none;color:var(--dim);cursor:pointer;font-size:10px;padding:0" title="Delete">✕</button>`).join('')}
+        <span class="badge ba">${INR(totalPP)}</span>
+        ${lastPPL.intSaved > 0 ? `<div style="font-size:9px;color:var(--green);margin-top:2px;font-family:var(--mono)">saves ${INRs(lastPPL.intSaved)}</div>` : ''}
+        ${lastPPL.moSaved  > 0 ? `<div style="font-size:9px;color:var(--gold);font-family:var(--mono)">${fmtMo(lastPPL.moSaved)} shorter</div>` : ''}
+        ${ppLogged.map(lg => `<button onclick="deleteLog(${id},${lg.id})" style="background:none;border:none;color:var(--dim);cursor:pointer;font-size:10px;padding:1px 3px" title="Delete">\u2715</button>`).join('')}
       </div>`;
     } else if (row.prepay > 0) {
       ppCell = `<span class="badge ba">${INR(row.prepay)}</span>`;
     }
 
-    // Interest saved column — only for rows with part payments
-    const intSavedCell = hasPP && ppLogged.length > 0 && ppLogged[ppLogged.length-1].intSaved > 0
-      ? `<span style="color:var(--green);font-weight:700;font-family:var(--mono);font-size:10px">${INRs(ppLogged[ppLogged.length-1].intSaved)}</span>`
-      : '—';
+    const lastPP       = ppLogged[ppLogged.length - 1];
+    const intSavedCell = lastPP && lastPP.intSaved > 0
+      ? `<span style="color:var(--green);font-weight:700;font-family:var(--mono);font-size:10px">${INRs(lastPP.intSaved)}</span>`
+      : '<span style="color:var(--dim)">\u2014</span>';
 
-    // Status badge
-    let statusBadge = '';
-    if (isPaid)          statusBadge = '<span class="badge br" style="font-size:9px">Paid</span>';
-    else if (row.balance <= 0.5) statusBadge = '<span class="badge bg" style="font-size:9px">Closed</span>';
-    else                 statusBadge = `<span style="font-size:9px;color:var(--dim)">${row.month - emisPaid} left</span>`;
+    const statusBadge = isPaid
+      ? '<span class="badge br" style="font-size:9px">Paid</span>'
+      : row.balance <= 0.5
+        ? '<span class="badge bg" style="font-size:9px">Closed</span>'
+        : `<span style="font-size:9px;color:var(--dim)">${row.month - emisPaid} left</span>`;
 
     frag.push(`<tr style="${rowBg}" id="ldptl-${row.month}">
       <td style="color:var(--muted);font-size:11px">${row.month}</td>
       <td style="font-size:11px">${ds}</td>
-      <td style="font-weight:600;color:${isPaid?'var(--muted)':'var(--text)'};font-family:var(--mono)">${INR(row.emi)}</td>
+      <td style="font-weight:600;color:${isPaid ? 'var(--muted)' : 'var(--text)'};font-family:var(--mono)">${INR(row.emi)}</td>
       <td style="color:var(--green);font-family:var(--mono)">${INR(row.principal)}</td>
-      <td style="color:${isPaid?'var(--red)':'var(--muted)'};font-family:var(--mono)">${INR(row.interest)}</td>
+      <td style="color:${isPaid ? 'var(--red)' : 'var(--muted)'};font-family:var(--mono)">${INR(row.interest)}</td>
       <td>${ppCell}</td>
       <td>${intSavedCell}</td>
-      <td style="font-weight:600;font-family:var(--mono);color:${isPaid?'var(--dim)':'var(--text)'}">${INR(row.balance)}</td>
+      <td style="font-weight:600;font-family:var(--mono);color:${isPaid ? 'var(--dim)' : 'var(--text)'}">${INR(row.balance)}</td>
       <td>${statusBadge}</td>
     </tr>`);
   }
 
-  tbody.innerHTML = frag.join('');
+  el('ldp-timeline-body').innerHTML = frag.join('');
 }
 
-/* Keep renderLogTable as alias for backward compat */
+/* Keep renderLogTable as alias */
 function renderLogTable(id) { renderLoanTimeline(id); }
 
 function addPaymentLog() {
   const id     = _activeLoanId; if (!id) return;
   const amount = parseFloat(el('log-amount').value) || 0;
   if (!amount) { showToast('Enter a valid amount'); return; }
-  const loan   = _loans.find(l => l.id === id); if (!loan) return;
+  // Normalise ID — may be number or string depending on source
+  const loan   = _loans.find(l => l.id === id || String(l.id) === String(id));
+  if (!loan) { showToast('Loan not found — please reopen the loan detail'); return; }
   const logs   = _paymentLogs[id] || [];
   const type   = el('log-type').value;
 
@@ -1936,12 +2106,18 @@ function ml_compute() {
 }
 
 /* ═══════════ PAGE NAV ═══════════ */
+let _expInited = false;
 function showPage(name,btn){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   el('page-'+name).classList.add('active');
   document.querySelectorAll('.page-tab').forEach(b=>b.classList.remove('active'));
   if(btn)btn.classList.add('active');
-  if(name==='myloans')renderMyLoans();
+  if(name==='myloans'){renderMyLoans();initGmail();}
+  if(name==='expenses'){
+    if(!_expInited){loadExpenses();_expInited=true;}
+    _expMonth=new Date();_expMonth.setDate(1);
+    renderExpPage();
+  }
 }
 
 /* ═══════════ MODALS ═══════════ */
@@ -1949,7 +2125,7 @@ const openModal  = id => el(id).classList.add('open');
 const closeModal = id => el(id).classList.remove('open');
 const openShare  = ()  => openModal('modal-share');
 document.addEventListener('click',e=>{
-  ['add-loan-modal','modal-share'].forEach(id=>{
+  ['add-loan-modal','modal-share','paste-modal','gmail-modal','exp-cat-modal','exp-entry-modal'].forEach(id=>{
     const m=el(id); if(m&&e.target===m)m.classList.remove('open');
   });
 });
@@ -2027,7 +2203,8 @@ function init(){
     S.schedCache = null;
     compute();
   });
-  el('in-insurance').addEventListener('input',()=>{S.insurance=parseFloat(el('in-insurance').value)||0;compute();});
+  el('in-fee').addEventListener('input',       ()=>{S.fee=parseFloat(el('in-fee').value)||0;compute();});
+  el('in-insurance').addEventListener('input', ()=>{S.insurance=parseFloat(el('in-insurance').value)||0;compute();});
 
   /* Timeline inputs live-update */
   el('tl-start-date').addEventListener('change',()=>{
@@ -2060,7 +2237,1358 @@ function init(){
   buildFAQ();
   compute();
 }
-document.addEventListener('DOMContentLoaded',init);
+
+/* ═══════════════════════════════════════════════════════════════════
+   EXPENSE TRACKER — localStorage keys: loaniq_exp_cats, loaniq_exp_data
+   Structure:
+     _expCats  = [{id, name, icon, group, budget}]
+     _expData  = { 'YYYY-MM': { catId: {budget, actual, note} } }
+═══════════════════════════════════════════════════════════════════ */
+
+/* ── Default category definitions ── */
+const EXP_DEFAULTS = [
+  // House & Living
+  {id:'rent',     name:'Rent / Home EMI',    icon:'🏠', group:'house',      budget:46384},
+  {id:'elec',     name:'Electricity',        icon:'⚡', group:'house',      budget:2000},
+  {id:'water',    name:'Water & Gas',        icon:'💧', group:'house',      budget:500},
+  {id:'maint',    name:'Maintenance',        icon:'🔧', group:'house',      budget:1000},
+  {id:'grocery',  name:'Groceries',          icon:'🛒', group:'house',      budget:8000},
+  {id:'domestic', name:'Domestic Help',      icon:'🧹', group:'house',      budget:3000},
+  // Personal
+  {id:'salary',   name:'Salary (Income)',    icon:'💰', group:'personal',   budget:0},
+  {id:'transport',name:'Transport / Fuel',   icon:'🚗', group:'personal',   budget:4000},
+  {id:'dining',   name:'Dining Out',         icon:'🍽️', group:'personal',   budget:3000},
+  {id:'medical',  name:'Medical',            icon:'🏥', group:'personal',   budget:2000},
+  {id:'clothing', name:'Clothing',           icon:'👗', group:'personal',   budget:2000},
+  {id:'sub',      name:'Subscriptions',      icon:'📱', group:'personal',   budget:1500},
+  {id:'entertain',name:'Entertainment',      icon:'🎬', group:'personal',   budget:2000},
+  {id:'education',name:'Education',          icon:'📚', group:'personal',   budget:2000},
+  // Investments
+  {id:'sip',      name:'SIP / Mutual Funds', icon:'📈', group:'investment', budget:10000},
+  {id:'fd',       name:'Fixed Deposits',     icon:'🏦', group:'investment', budget:0},
+  {id:'insurance',name:'Insurance Premium',  icon:'🛡️', group:'investment', budget:3000},
+  {id:'stocks',   name:'Stocks / ETF',       icon:'📊', group:'investment', budget:5000},
+];
+
+const EXP_GROUPS = {
+  house:      { label:'🏠 House & Living',  color:'#c9a84c' },
+  personal:   { label:'👤 Personal',        color:'#5b8dee' },
+  investment: { label:'📈 Investments',     color:'#3ecf8e' },
+  custom:     { label:'⚡ Custom',          color:'#e05555' },
+};
+
+/* ── State ── */
+let _expCats  = [];
+let _expData  = {};      // {'YYYY-MM': {catId: {budget,actual,note}}}
+let _expMonth = new Date(); // currently viewed month
+let _expEditCatId = null;
+let _expEditEntryId = null;
+
+/* ── Storage ── */
+function loadExpenses() {
+  try { _expCats = JSON.parse(localStorage.getItem('loaniq_exp_cats') || 'null') || JSON.parse(JSON.stringify(EXP_DEFAULTS)); } catch { _expCats = JSON.parse(JSON.stringify(EXP_DEFAULTS)); }
+  try { _expData = JSON.parse(localStorage.getItem('loaniq_exp_data') || '{}'); } catch { _expData = {}; }
+}
+function saveExpenses() {
+  try {
+    localStorage.setItem('loaniq_exp_cats', JSON.stringify(_expCats));
+    localStorage.setItem('loaniq_exp_data', JSON.stringify(_expData));
+  } catch(e) { showToast('Storage full — clear old data'); }
+}
+
+/* ── Key helpers ── */
+const expMonthKey = (d) => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
+const expMonthLabel = (d) => d.toLocaleString('en-IN', { month:'long', year:'numeric' });
+
+function expEntry(monthKey, catId) {
+  if (!_expData[monthKey]) _expData[monthKey] = {};
+  if (!_expData[monthKey][catId]) {
+    const cat = _expCats.find(c => c.id === catId);
+    _expData[monthKey][catId] = { budget: cat ? cat.budget : 0, actual: 0, note: '' };
+  }
+  return _expData[monthKey][catId];
+}
+
+/* ── Month navigation ── */
+function expChangeMonth(delta) {
+  _expMonth = new Date(_expMonth.getFullYear(), _expMonth.getMonth() + delta, 1);
+  renderExpPage();
+}
+
+function expCopyLastMonth() {
+  const lastM = new Date(_expMonth.getFullYear(), _expMonth.getMonth() - 1, 1);
+  const lastKey = expMonthKey(lastM);
+  const curKey  = expMonthKey(_expMonth);
+  if (_expData[lastKey]) {
+    if (!_expData[curKey]) _expData[curKey] = {};
+    for (const [cid, entry] of Object.entries(_expData[lastKey])) {
+      if (!_expData[curKey][cid]) {
+        _expData[curKey][cid] = { budget: entry.budget, actual: 0, note: '' };
+      } else {
+        _expData[curKey][cid].budget = entry.budget;
+      }
+    }
+    saveExpenses(); renderExpPage(); showToast('Last month\'s budgets copied ✓');
+  } else { showToast('No data found for last month'); }
+}
+
+/* ── Main render ── */
+function renderExpPage() {
+  const key = expMonthKey(_expMonth);
+  set('exp-month-label', expMonthLabel(_expMonth));
+  set('exp-balance-month-label', expMonthLabel(_expMonth));
+
+  /* ── Build per-category totals ───────────────────────────── */
+  let totalVariable = 0, totalFixed = 0, overCount = 0, income = 0;
+  const catTotals = {};
+
+  // Fixed categories — these are mandatory monthly deductions
+  const FIXED_CAT_IDS = ['rent','elec','water','maint','domestic','insurance'];
+
+  for (const cat of _expCats) {
+    const e = expEntry(key, cat.id);
+    catTotals[cat.id] = { budget: e.budget, actual: e.actual, note: e.note };
+    if (cat.id === 'salary') { income = e.actual; continue; }
+    const isFixed = FIXED_CAT_IDS.includes(cat.id) || cat.group === 'investment';
+    if (isFixed) totalFixed  += e.actual || e.budget;
+    else         totalVariable += e.actual;
+    if (e.actual > e.budget && e.budget > 0) overCount++;
+  }
+
+  // Pull EMI totals from My Loans (active loans)
+  const emiTotal = _loans
+    .filter(l => l.status !== 'closed')
+    .reduce((s, l) => s + (l.emi || 0), 0);
+
+  // Total outflow = EMIs + fixed expenses + variable expenses
+  const totalOutflow = emiTotal + totalFixed + totalVariable;
+  const netBalance   = income - totalOutflow;
+  const savingsRate  = income > 0 ? Math.round(netBalance / income * 100) : null;
+
+  /* ── Summary strip ────────────────────────────────────────── */
+  set('exp-total-spent',  INR(totalVariable));
+  set('exp-spent-sub',    totalVariable > 0 ? 'variable spending' : 'no variable expenses yet');
+  set('exp-fixed-total',  INR(emiTotal + totalFixed));
+  set('exp-fixed-sub',    INR(emiTotal) + ' EMIs + ' + INR(totalFixed) + ' fixed');
+  set('exp-total-budget', INR(totalOutflow));
+  set('exp-savings-rate', savingsRate !== null ? savingsRate + '%' : income > 0 ? '0%' : '—');
+
+  const srEl = el('exp-savings-rate');
+  if (srEl) srEl.style.color = savingsRate > 20 ? 'var(--green)' : savingsRate > 0 ? 'var(--gold)' : 'var(--red)';
+
+  /* ── Salary quick entry ───────────────────────────────────── */
+  const salInput = el('exp-salary-input');
+  if (salInput && !salInput.value && income > 0) salInput.value = income;
+  set('exp-salary-display', income > 0 ? INR(income) : '—');
+
+  /* ── Account balance card ─────────────────────────────────── */
+  renderBalanceCard(income, emiTotal, totalFixed, totalVariable, catTotals, key);
+
+  /* ── Category rows ────────────────────────────────────────── */
+  renderExpCategories(key, catTotals);
+
+  /* ── Charts ───────────────────────────────────────────────── */
+  requestAnimationFrame(() => {
+    renderExpDonut(catTotals);
+    renderExpBVA(catTotals);
+    renderExpTrend();
+  });
+}
+
+/* ── Salary input handler ─────────────────────────────────── */
+const dbuSalary = debounce(() => {
+  const key    = expMonthKey(_expMonth);
+  const amount = parseFloat(el('exp-salary-input')?.value) || 0;
+  expEntry(key, 'salary');
+  _expData[key]['salary'].actual = amount;
+  saveExpenses();
+  renderExpPage();
+}, 400);
+
+function onSalaryInput() { dbuSalary(); }
+
+/* ── Account balance breakdown card ──────────────────────────
+   Shows: Salary In | Fixed Deductions | Net Remaining
+   Fixed deductions = EMIs (from My Loans) + fixed expense cats
+──────────────────────────────────────────────────────────── */
+function renderBalanceCard(income, emiTotal, totalFixed, totalVariable, catTotals, key) {
+  const totalOutflow = emiTotal + totalFixed + totalVariable;
+  const netBalance   = income - totalOutflow;
+
+  /* Top 3 boxes */
+  set('bal-salary', income > 0 ? INR(income) : '—');
+
+  /* Fixed deductions rows */
+  const fixedRows  = [];
+  const FIXED_IDS  = ['rent','elec','water','maint','domestic','insurance'];
+
+  // EMIs from My Loans
+  for (const loan of _loans.filter(l => l.status !== 'closed')) {
+    fixedRows.push({ label: loan.name, tag: 'EMI', amount: loan.emi || 0, color: 'var(--red)' });
+  }
+  // Fixed expense categories
+  for (const cat of _expCats) {
+    if (!FIXED_IDS.includes(cat.id) && cat.group !== 'investment') continue;
+    if (cat.id === 'salary') continue;
+    const e = catTotals[cat.id] || {};
+    const amt = e.actual || e.budget || 0;
+    if (amt > 0) fixedRows.push({ label: cat.name, tag: cat.group === 'investment' ? 'Invest' : 'Fixed', amount: amt, color: cat.group === 'investment' ? 'var(--green)' : 'var(--red)' });
+  }
+
+  const fixedSum = fixedRows.reduce((s, r) => s + r.amount, 0);
+
+  const fixedRowsEl = el('bal-fixed-rows');
+  if (fixedRowsEl) {
+    fixedRowsEl.innerHTML = fixedRows.slice(0, 6).map(r =>
+      `<div style="display:flex;justify-content:space-between;font-size:10px;align-items:center">
+        <span style="color:var(--muted);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.label}</span>
+        <span style="background:${r.color}18;color:${r.color};font-size:8px;padding:1px 4px;border-radius:3px;margin:0 4px;flex-shrink:0">${r.tag}</span>
+        <span style="font-family:var(--mono);color:${r.color};flex-shrink:0">${INRs(r.amount)}</span>
+      </div>`
+    ).join('') + (fixedRows.length > 6 ? `<div style="font-size:9px;color:var(--dim)">+${fixedRows.length-6} more…</div>` : '');
+  }
+  set('bal-fixed-total', INR(fixedSum));
+
+  /* Net balance */
+  const netEl = el('bal-net');
+  if (netEl) {
+    netEl.textContent = income > 0 ? INR(Math.abs(netBalance)) : '—';
+    netEl.style.color = netBalance >= 0 ? 'var(--green)' : 'var(--red)';
+  }
+  set('bal-net-sub', income > 0
+    ? (netBalance >= 0 ? 'surplus after all deductions' : 'DEFICIT — spending more than income!')
+    : 'Enter salary above to calculate');
+
+  /* Full breakdown table */
+  const bEl = el('bal-breakdown-rows');
+  if (bEl) {
+    const allRows = [
+      ...fixedRows,
+      ..._expCats
+        .filter(c => !['salary',...FIXED_IDS].includes(c.id) && c.group !== 'investment')
+        .map(c => ({ label: c.name, tag: 'Variable', amount: catTotals[c.id]?.actual || 0, color: 'var(--blue)' }))
+        .filter(r => r.amount > 0),
+    ];
+    bEl.innerHTML = allRows.map(r =>
+      `<div style="display:grid;grid-template-columns:1fr 90px 90px;padding:7px 12px;border-bottom:1px solid var(--border);font-size:11px;align-items:center">
+        <span style="color:var(--text)">${r.label}</span>
+        <span style="text-align:right"><span style="background:${r.color}18;color:${r.color};font-size:9px;padding:1px 6px;border-radius:3px">${r.tag}</span></span>
+        <span style="text-align:right;font-family:var(--mono);font-weight:600;color:${r.color}">${INR(r.amount)}</span>
+      </div>`
+    ).join('') || '<div style="padding:14px 12px;font-size:11px;color:var(--muted)">No expenses logged yet — add some above</div>';
+  }
+  set('bal-total-outflow', INR(totalOutflow));
+  const ntt = el('bal-net-table');
+  if (ntt) {
+    ntt.textContent = income > 0 ? INR(Math.abs(netBalance)) : '—';
+    ntt.style.color = netBalance >= 0 ? 'var(--green)' : 'var(--red)';
+  }
+
+  /* Stacked bar */
+  if (income > 0) {
+    const fixedPct    = Math.min(100, Math.round(fixedSum / income * 100));
+    const varPct      = Math.min(100 - fixedPct, Math.round(totalVariable / income * 100));
+    const savePct     = Math.max(0, 100 - fixedPct - varPct);
+    set('bal-bar-pct', fixedPct + '% fixed · ' + varPct + '% variable · ' + savePct + '% savings');
+    set('bal-fixed-pct',    fixedPct);
+    set('bal-variable-pct', varPct);
+    set('bal-savings-pct',  savePct);
+    const bf = el('bal-bar-fixed'),    bv = el('bal-bar-variable'), bs = el('bal-bar-savings');
+    if (bf) bf.style.width = fixedPct + '%';
+    if (bv) bv.style.width = varPct   + '%';
+    if (bs) bs.style.width = savePct  + '%';
+  }
+}
+
+/* ── Category rows ── */
+function renderExpCategories(key, catTotals) {
+  const wrap = el('exp-categories-wrap'); if (!wrap) return;
+  // Group categories
+  const groups = {};
+  for (const cat of _expCats) {
+    if (!groups[cat.group]) groups[cat.group] = [];
+    groups[cat.group].push(cat);
+  }
+  let html = '';
+  for (const [grp, cats] of Object.entries(groups)) {
+    const gInfo = EXP_GROUPS[grp] || EXP_GROUPS.custom;
+    const grpTotal = cats.reduce((s, c) => s + (catTotals[c.id]?.actual || 0), 0);
+    html += `<div class="exp-cat-group" id="expgrp-${grp}">
+      <div class="exp-cat-hd" onclick="toggleExpGroup('${grp}')">
+        <span class="exp-cat-icon">${gInfo.label.split(' ')[0]}</span>
+        <span class="exp-cat-title">${gInfo.label.slice(2)}</span>
+        <span class="exp-cat-total">${INR(grpTotal)}</span>
+        <span class="exp-cat-chevron">▾</span>
+      </div>
+      <div class="exp-cat-rows">`;
+
+    for (const cat of cats) {
+      const e = catTotals[cat.id] || {budget:0, actual:0};
+      const pct = e.budget > 0 ? Math.min(100, Math.round(e.actual/e.budget*100)) : (e.actual > 0 ? 100 : 0);
+      const barColor = pct > 100 ? 'var(--red)' : pct > 80 ? 'var(--amber,#c9a84c)' : 'var(--green)';
+      const isIncome = cat.id === 'salary';
+      html += `<div class="exp-row" id="exprow-${cat.id}">
+        <span style="font-size:14px;flex-shrink:0">${cat.icon}</span>
+        <span class="exp-row-name">${cat.name}${e.note ? `<span style="font-size:9px;color:var(--dim);margin-left:4px">${e.note}</span>` : ''}</span>
+        ${!isIncome ? `<span class="exp-row-budget" title="Budget">${e.budget > 0 ? INRs(e.budget) : '—'}</span>` : '<span class="exp-row-budget" style="color:var(--green)">Income</span>'}
+        <span class="exp-row-actual" style="color:${isIncome ? 'var(--green)' : (pct > 100 ? 'var(--red)' : 'var(--text)')}">${e.actual > 0 ? INR(e.actual) : '—'}</span>
+        ${!isIncome ? `<div class="exp-row-bar-wrap"><div class="exp-row-bar" style="width:${pct}%;background:${barColor}"></div></div>` : '<div style="width:60px"></div>'}
+        <div class="exp-row-actions">
+          <button class="exp-row-btn" onclick="openExpEntry('${key}','${cat.id}')" title="Enter amount">✏️</button>
+          <button class="exp-row-btn del" onclick="deleteExpCat('${cat.id}')" title="Delete category">✕</button>
+        </div>
+      </div>`;
+    }
+
+    // Add entry row for new expense in this group
+    html += `<div class="exp-add-row">
+      <input type="text"   id="exp-new-name-${grp}"   placeholder="New item name" style="flex:1">
+      <input type="number" id="exp-new-budget-${grp}"  placeholder="Budget ₹" style="width:100px">
+      <input type="number" id="exp-new-actual-${grp}"  placeholder="Spent ₹" style="width:100px">
+      <button class="exp-add-btn-sm" onclick="addExpItem('${grp}','${key}')">＋ Add</button>
+    </div>`;
+
+    html += `</div></div>`;
+  }
+  wrap.innerHTML = html;
+}
+
+function toggleExpGroup(grp) {
+  const el2 = document.getElementById('expgrp-' + grp);
+  if (el2) el2.classList.toggle('collapsed');
+}
+
+/* ── Add new expense item inline ── */
+function addExpItem(grp, monthKey) {
+  const name   = (el('exp-new-name-'+grp)?.value || '').trim();
+  const budget = parseFloat(el('exp-new-budget-'+grp)?.value) || 0;
+  const actual = parseFloat(el('exp-new-actual-'+grp)?.value) || 0;
+  if (!name) { showToast('Enter a category name'); return; }
+  const id = 'c_' + Date.now();
+  _expCats.push({ id, name, icon: '📌', group: grp, budget });
+  expEntry(monthKey, id);
+  _expData[monthKey][id] = { budget, actual, note: '' };
+  saveExpenses();
+  renderExpPage();
+  showToast(name + ' added ✓');
+}
+
+/* ── Edit entry modal ── */
+function openExpEntry(monthKey, catId) {
+  _expEditEntryId = { monthKey, catId };
+  const cat = _expCats.find(c => c.id === catId);
+  const e   = expEntry(monthKey, catId);
+  set('exp-entry-modal-sub', (cat?.name || catId) + ' · ' + expMonthLabel(_expMonth));
+  el('exp-edit-budget').value = e.budget || '';
+  el('exp-edit-actual').value = e.actual || '';
+  el('exp-edit-note').value   = e.note   || '';
+  openModal('exp-entry-modal');
+}
+function saveExpEntry() {
+  if (!_expEditEntryId) return;
+  const { monthKey, catId } = _expEditEntryId;
+  const e = expEntry(monthKey, catId);
+  e.budget = parseFloat(el('exp-edit-budget').value) || 0;
+  e.actual = parseFloat(el('exp-edit-actual').value) || 0;
+  e.note   = el('exp-edit-note').value || '';
+  // Also update cat default budget
+  const cat = _expCats.find(c => c.id === catId);
+  if (cat) cat.budget = e.budget;
+  saveExpenses();
+  closeModal('exp-entry-modal');
+  renderExpPage();
+  showToast('Saved ✓');
+}
+
+/* ── Category modal ── */
+function openExpCatModal(catId) {
+  _expEditCatId = catId || null;
+  const cat = catId ? _expCats.find(c => c.id === catId) : null;
+  set('exp-cat-modal-title', cat ? 'Edit Category' : 'Add Category');
+  el('exp-cat-name').value   = cat?.name   || '';
+  el('exp-cat-icon').value   = cat?.icon   || '📌';
+  el('exp-cat-group-sel').value = cat?.group || 'custom';
+  el('exp-cat-budget').value = cat?.budget || '';
+  openModal('exp-cat-modal');
+}
+function saveExpCategory() {
+  const name   = el('exp-cat-name').value.trim();
+  const icon   = el('exp-cat-icon').value.trim() || '📌';
+  const group  = el('exp-cat-group-sel').value;
+  const budget = parseFloat(el('exp-cat-budget').value) || 0;
+  if (!name) { showToast('Enter a name'); return; }
+  if (_expEditCatId) {
+    const cat = _expCats.find(c => c.id === _expEditCatId);
+    if (cat) { cat.name = name; cat.icon = icon; cat.group = group; cat.budget = budget; }
+  } else {
+    _expCats.push({ id: 'c_' + Date.now(), name, icon, group, budget });
+  }
+  saveExpenses();
+  closeModal('exp-cat-modal');
+  renderExpPage();
+  showToast('Category saved ✓');
+}
+function deleteExpCat(catId) {
+  if (!confirm('Delete this category and all its data?')) return;
+  _expCats = _expCats.filter(c => c.id !== catId);
+  for (const k of Object.keys(_expData)) delete _expData[k][catId];
+  saveExpenses(); renderExpPage(); showToast('Deleted');
+}
+
+/* ── Donut chart ── */
+function renderExpDonut(catTotals) {
+  const c = el('exp-chart-donut'); if (!c) return;
+  const SZ = 190, dpr = Math.min(window.devicePixelRatio || 1, 3);
+  c.width = SZ * dpr; c.height = SZ * dpr;
+  c.style.width = SZ + 'px'; c.style.height = SZ + 'px';
+  const ctx = c.getContext('2d'); ctx.scale(dpr, dpr);
+  ctx.clearRect(0, 0, SZ, SZ);
+
+  // Collect non-income categories with actual > 0
+  const slices = _expCats
+    .filter(cat => cat.id !== 'salary' && (catTotals[cat.id]?.actual || 0) > 0)
+    .map((cat, i) => ({
+      label: cat.name, icon: cat.icon,
+      val: catTotals[cat.id].actual,
+      color: Object.values(EXP_GROUPS)[i % 4]?.color || '#c9a84c',
+    }));
+
+  // Override colors to be varied
+  const palette = ['#c9a84c','#5b8dee','#3ecf8e','#e05555','#a06000','#b06ee8','#e0a055','#55c8e0','#e055a8','#8de05b'];
+  slices.forEach((s, i) => s.color = palette[i % palette.length]);
+
+  const total = slices.reduce((s, x) => s + x.val, 0);
+  if (!total) {
+    ctx.fillStyle = 'var(--s4)'; // no data
+    ctx.beginPath(); ctx.arc(SZ/2, SZ/2, SZ*0.35, 0, 2*Math.PI); ctx.fill();
+  } else {
+    const cx = SZ/2, cy = SZ/2, r = SZ*0.36, sw = SZ*0.16, gap = 0.025;
+    let angle = -Math.PI/2;
+    for (const s of slices) {
+      const a = (s.val / total) * 2 * Math.PI;
+      ctx.beginPath(); ctx.arc(cx, cy, r, angle, angle + a - gap);
+      ctx.strokeStyle = s.color; ctx.lineWidth = sw; ctx.lineCap = 'butt'; ctx.stroke();
+      angle += a;
+    }
+    ctx.fillStyle = 'var(--text,#f0ede6)';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.font = `700 ${Math.floor(SZ*0.09)}px DM Mono,monospace`;
+    ctx.fillText(INRs(total), cx, cy - SZ*0.05);
+    ctx.fillStyle = '#8a8680'; ctx.font = `${Math.floor(SZ*0.065)}px DM Mono,monospace`;
+    ctx.fillText('total spent', cx, cy + SZ*0.08);
+  }
+
+  // Legend
+  const leg = el('exp-donut-legend'); if (!leg) return;
+  leg.innerHTML = slices.slice(0, 8).map(s =>
+    `<div style="display:flex;align-items:center;gap:7px;font-size:10px">
+      <div style="width:8px;height:8px;border-radius:50%;background:${s.color};flex-shrink:0"></div>
+      <span style="flex:1;color:var(--muted)">${s.icon} ${s.label}</span>
+      <span style="font-family:var(--mono);font-weight:700;color:var(--text)">${INRs(s.val)}</span>
+    </div>`
+  ).join('');
+}
+
+/* ── Budget vs Actual bars ── */
+function renderExpBVA(catTotals) {
+  const cont = el('exp-bva-list'); if (!cont) return;
+  const cats = _expCats.filter(c => c.id !== 'salary' && (catTotals[c.id]?.budget > 0 || catTotals[c.id]?.actual > 0));
+  if (!cats.length) { cont.innerHTML = '<div style="font-size:11px;color:var(--muted);text-align:center;padding:12px">Add expenses to see comparison</div>'; return; }
+  const maxVal = Math.max(...cats.map(c => Math.max(catTotals[c.id]?.budget||0, catTotals[c.id]?.actual||0)), 1);
+  cont.innerHTML = cats.map(cat => {
+    const e = catTotals[cat.id] || {};
+    const bPct = Math.round((e.budget||0) / maxVal * 100);
+    const aPct = Math.min(100, Math.round((e.actual||0) / maxVal * 100));
+    const over = (e.actual||0) > (e.budget||0) && (e.budget||0) > 0;
+    return `<div class="bva-row">
+      <span class="bva-label" title="${cat.name}">${cat.icon} ${cat.name}</span>
+      <div class="bva-bars">
+        <div class="bva-bar-wrap">
+          <div class="bva-bar-budget" style="width:${bPct}%"></div>
+          <div class="bva-bar-actual" style="width:${aPct}%;background:${over?'var(--red)':'var(--green)'}"></div>
+        </div>
+      </div>
+      <span class="bva-vals" style="color:${over?'var(--red)':'var(--muted)'}">${INRs(e.actual||0)} / ${INRs(e.budget||0)}</span>
+    </div>`;
+  }).join('');
+}
+
+/* ── 6-month trend chart ── */
+function renderExpTrend() {
+  const catSel = el('exp-trend-cat'); if (!catSel) return;
+  const selCat = catSel.value;
+
+  // Build 6 months back from current
+  const months = [];
+  for (let i = 5; i >= 0; i--) {
+    const d = new Date(_expMonth.getFullYear(), _expMonth.getMonth() - i, 1);
+    months.push({ key: expMonthKey(d), label: d.toLocaleString('en-IN', {month:'short'}) });
+  }
+
+  const budgets = [], actuals = [];
+  for (const m of months) {
+    let b = 0, a = 0;
+    const cats = selCat === 'all' ? _expCats.filter(c => c.id !== 'salary') : _expCats.filter(c => c.id === selCat);
+    for (const cat of cats) {
+      const e = (_expData[m.key] || {})[cat.id];
+      if (e) { b += e.budget || 0; a += e.actual || 0; }
+      else { b += cat.budget || 0; }
+    }
+    budgets.push(b); actuals.push(a);
+  }
+
+  drawLineChart('exp-chart-trend', [
+    { data: budgets, color: '#c9a84c', dash: true, width: 1.5 },
+    { data: actuals, color: '#5b8dee', width: 2, fill: 'rgba(91,141,238,0.08)' },
+  ], months.map(m => m.label), 160);
+
+  // Populate trend cat dropdown (once)
+  if (catSel.options.length <= 1) {
+    for (const cat of _expCats) {
+      const opt = document.createElement('option');
+      opt.value = cat.id; opt.textContent = cat.icon + ' ' + cat.name;
+      catSel.appendChild(opt);
+    }
+  }
+}
+
+/* ── Export CSV ── */
+function exportExpCSV() {
+  const key = expMonthKey(_expMonth);
+  const rows = ['Category,Group,Budget,Actual,Note'];
+  for (const cat of _expCats) {
+    const e = (_expData[key] || {})[cat.id] || { budget: cat.budget, actual: 0, note: '' };
+    rows.push(`"${cat.name}","${cat.group}",${e.budget},${e.actual},"${e.note}"`);
+  }
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([rows.join('\n')], { type: 'text/csv' }));
+  a.download = `expenses_${key}.csv`;
+  a.click(); showToast('Exported ✓');
+}
+
+/* ── Init expenses ── */
+function initExpenses() {
+  loadExpenses();
+  _expMonth = new Date();
+  _expMonth.setDate(1);
+  renderExpPage();
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   GMAIL INTEGRATION + BANK EMAIL PARSER
+   Supports: paste-to-parse (offline) + Gmail OAuth (GitHub Pages / HTTPS)
+═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Bank email pattern library ─────────────────────────────────────────── */
+// Each pattern: {bank, regex, amountGroup, dateGroup, typeHint}
+const BANK_PATTERNS = [
+  // SBI
+  { bank:'SBI', regex:/(?:EMI|instalment|debit|debited).*?(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
+  { bank:'SBI', regex:/Rs\.?\s*([\d,]+(?:\.\d{1,2})?).*?(?:debited|deducted|EMI)/i, amountGroup:1 },
+  // HDFC
+  { bank:'HDFC', regex:/HDFC.*?(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
+  { bank:'HDFC', regex:/(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?).*?HDFC/i, amountGroup:1 },
+  // ICICI
+  { bank:'ICICI', regex:/ICICI.*?(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
+  { bank:'ICICI', regex:/(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?).*?ICICI/i, amountGroup:1 },
+  // Axis
+  { bank:'Axis', regex:/Axis.*?(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
+  { bank:'Axis', regex:/(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?).*?Axis/i, amountGroup:1 },
+  // Kotak
+  { bank:'Kotak', regex:/Kotak.*?(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
+  // PNB
+  { bank:'PNB', regex:/PNB.*?(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
+  { bank:'PNB', regex:/PUNB.*?(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
+  // BOB
+  { bank:'BOB', regex:/(?:Bank of Baroda|BOB|BARBNP).*?(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
+  // Canara
+  { bank:'Canara', regex:/Canara.*?(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
+  // IndusInd
+  { bank:'IndusInd', regex:/IndusInd.*?(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
+  // Yes Bank
+  { bank:'Yes Bank', regex:/Yes\s*Bank.*?(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
+  // IDFC
+  { bank:'IDFC', regex:/IDFC.*?(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
+  // UCO
+  { bank:'UCO', regex:/UCO.*?(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
+  // IOB
+  { bank:'IOB', regex:/(?:Indian Overseas|IOB).*?(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
+  // Union Bank
+  { bank:'Union Bank', regex:/Union.*?Bank.*?(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
+  // Federal Bank
+  { bank:'Federal', regex:/Federal.*?(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
+  // Generic fallback: any Rs. / INR / ₹ + number pattern
+  { bank:'Auto-detect', regex:/(?:Rs\.?|INR|₹)\s*([\d,]+(?:\.\d{1,2})?)/i, amountGroup:1 },
+];
+
+// Date patterns
+const DATE_PATTERNS = [
+  /(\d{1,2})[-\/](\d{1,2})[-\/](\d{2,4})/,        // DD-MM-YYYY or DD/MM/YYYY
+  /(\d{1,2})[-\s](Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*[-\s,](\d{2,4})/i, // 5-May-2026
+  /(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+(\d{1,2}),?\s+(\d{4})/i,     // May 5, 2026
+  /(\d{4})[-\/](\d{2})[-\/](\d{2})/,              // YYYY-MM-DD
+];
+
+const MONTH_MAP = {jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,oct:10,nov:11,dec:12};
+
+// Payment type keywords
+const TYPE_HINTS = {
+  emi:    /\b(?:EMI|instalment|installment|loan repayment|emi debit)\b/i,
+  partpay:/\b(?:part payment|partial|prepayment|lump.?sum|pre.?pay)\b/i,
+  credit: /\b(?:credit|credited|salary|sal credit|received)\b/i,
+};
+
+/* ─── Core parser ─────────────────────────────────────────────────────────── */
+function parseBankText(text) {
+  if (!text || text.trim().length < 10) return null;
+
+  let amount = null, bank = 'Unknown', dateStr = null, type = 'emi';
+
+  // Detect bank + amount
+  for (const pat of BANK_PATTERNS) {
+    const m = text.match(pat.regex);
+    if (m && m[pat.amountGroup]) {
+      const raw = m[pat.amountGroup].replace(/,/g, '');
+      const num = parseFloat(raw);
+      if (num > 0) {
+        amount = num;
+        bank   = pat.bank;
+        break;
+      }
+    }
+  }
+  if (!amount) return null;
+
+  // Detect date
+  for (const dp of DATE_PATTERNS) {
+    const m = text.match(dp);
+    if (m) {
+      try {
+        if (dp === DATE_PATTERNS[0]) {
+          // DD-MM-YYYY
+          const d = parseInt(m[1]), mo = parseInt(m[2]), y = parseInt(m[3]);
+          const yr = y < 100 ? 2000 + y : y;
+          dateStr = `${yr}-${String(mo).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        } else if (dp === DATE_PATTERNS[1]) {
+          const d = parseInt(m[1]), mo = MONTH_MAP[m[2].toLowerCase().slice(0,3)], y = parseInt(m[3]);
+          const yr = y < 100 ? 2000 + y : y;
+          dateStr = `${yr}-${String(mo).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        } else if (dp === DATE_PATTERNS[2]) {
+          const mo = MONTH_MAP[m[1].toLowerCase().slice(0,3)], d = parseInt(m[2]), y = parseInt(m[3]);
+          dateStr = `${y}-${String(mo).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+        } else if (dp === DATE_PATTERNS[3]) {
+          dateStr = `${m[1]}-${m[2]}-${m[3]}`;
+        }
+        if (dateStr) break;
+      } catch(e) {}
+    }
+  }
+  if (!dateStr) dateStr = new Date().toISOString().split('T')[0];
+
+  // Detect type
+  for (const [t, re] of Object.entries(TYPE_HINTS)) {
+    if (re.test(text)) { type = t === 'credit' ? 'emi' : t; break; }
+  }
+
+  // Detect bank name from text if still auto-detect
+  if (bank === 'Auto-detect') {
+    const bankNames = ['SBI','HDFC','ICICI','Axis','Kotak','PNB','BOB','Canara','IndusInd','Yes Bank','IDFC','UCO','IOB','Federal','Union Bank','Citibank'];
+    for (const b of bankNames) {
+      if (text.toLowerCase().includes(b.toLowerCase())) { bank = b; break; }
+    }
+  }
+
+  return { amount, bank, date: dateStr, type,
+    note: `Auto-parsed · ${bank}` };
+}
+
+/* ─── Paste & Parse modal ─────────────────────────────────────────────────── */
+let _parsedResult = null;
+
+function openPasteModal() {
+  _parsedResult = null;
+  el('paste-input').value = '';
+  el('parse-results').style.display = 'none';
+  // Populate loan selector
+  const sel = el('parse-loan-sel');
+  sel.innerHTML = '<option value="">— Select loan —</option>' +
+    _loans.map(l => `<option value="${l.id}">${l.name}</option>`).join('');
+  openModal('paste-modal');
+}
+
+function parseEmailText() {
+  const text = el('paste-input').value;
+  const result = parseBankText(text);
+  if (!result) {
+    showToast('Could not parse amount from text. Check format.');
+    return;
+  }
+  _parsedResult = result;
+
+  el('parse-result-rows').innerHTML = `<div class="parse-result-row matched">
+    <div class="pr-bank">${result.bank}</div>
+    <div class="pr-type">${result.type === 'emi' ? 'Regular EMI' : result.type === 'partpay' ? 'Part Payment' : 'Prepayment'}</div>
+    <div class="pr-amount">${INR(result.amount)}</div>
+    <div class="pr-date">📅 ${result.date}</div>
+  </div>`;
+
+  el('parse-type-sel').value = result.type;
+  el('parse-note').value = result.note;
+  el('parse-results').style.display = '';
+
+  // Auto-select loan by matching EMI amount
+  const matchedLoan = _loans.find(l => Math.abs((l.emi||0) - result.amount) < 500);
+  if (matchedLoan) el('parse-loan-sel').value = matchedLoan.id;
+}
+
+function logParsedPayment() {
+  if (!_parsedResult) { showToast('Nothing to log'); return; }
+  const loanIdRaw = el('parse-loan-sel').value;
+  if (!loanIdRaw) { showToast('Select a loan first'); return; }
+  // IDs are stored as numbers (Date.now()), selects return strings — coerce correctly
+  const loanId = _loans.find(l => String(l.id) === String(loanIdRaw))?.id;
+  if (!loanId) { showToast('Loan not found'); return; }
+
+  _activeLoanId = loanId;
+  el('log-date').value   = _parsedResult.date;
+  el('log-type').value   = el('parse-type-sel').value;
+  el('log-amount').value = _parsedResult.amount;
+  el('log-note').value   = el('parse-note').value;
+
+  addPaymentLog();
+  closeModal('paste-modal');
+  // Ensure My Loans page is active before opening detail panel
+  if (!el('page-myloans').classList.contains('active')) {
+    showPage('myloans', document.querySelectorAll('.page-tab')[1]);
+  }
+  openLoanDetail(loanId);
+  showToast('₹' + _parsedResult.amount.toLocaleString('en-IN') + ' logged from ' + _parsedResult.bank + ' ✓');
+}
+
+/* ─── Gmail OAuth ─────────────────────────────────────────────────────────── */
+const GMAIL_SCOPES   = 'https://www.googleapis.com/auth/gmail.readonly';
+const GMAIL_LS_KEY   = 'loaniq_gmail_token';
+const GMAIL_CID_KEY  = 'loaniq_gmail_cid';
+
+let _gmailToken    = null;
+let _gmailClientId = localStorage.getItem(GMAIL_CID_KEY) || '';
+
+function gmailConnect() {
+  // Show current origin so user knows exactly what to put in Google Cloud Console
+  setTimeout(() => {
+    const originEl = el('gmail-current-origin');
+    if (originEl) originEl.textContent = location.origin;
+  }, 50);
+  // Check if HTTPS (required for OAuth)
+  const isHttps = location.protocol === 'https:' || location.hostname === 'localhost';
+  const gmailHostedWarn = el('gmail-hosted-warning');
+
+  if (el('gmail-client-id')) el('gmail-client-id').value = _gmailClientId;
+  if (gmailHostedWarn) gmailHostedWarn.style.display = isHttps ? 'none' : '';
+  openModal('gmail-modal');
+}
+
+function gmailAuthorize() {
+  const cid = (el('gmail-client-id')?.value || '').trim();
+  if (!cid) { showToast('Enter your Google OAuth Client ID first'); return; }
+  _gmailClientId = cid;
+  localStorage.setItem(GMAIL_CID_KEY, cid);
+
+  const isHttps = location.protocol === 'https:' || location.hostname === 'localhost';
+  if (!isHttps) {
+    // Running locally — save CID and inform user
+    showToast('Client ID saved. OAuth works on GitHub Pages (HTTPS). Use Paste & Parse locally.');
+    closeModal('gmail-modal');
+    return;
+  }
+
+  // Load Google Identity Services library on demand
+  const loadAndAuth = () => {
+    if (!window.google?.accounts?.oauth2) {
+      const script = document.createElement('script');
+      script.src = 'https://accounts.google.com/gsi/client';
+      script.async = true;
+      script.defer = true;
+      script.onload = () => { setTimeout(() => _gmailStartOAuth(cid), 300); };
+      script.onerror = () => showToast('Could not load Google auth. Check internet connection.');
+      document.head.appendChild(script);
+    } else {
+      _gmailStartOAuth(cid);
+    }
+  };
+  loadAndAuth();
+}
+
+function _gmailStartOAuth(cid) {
+  if (!window.google?.accounts?.oauth2) {
+    showToast('Google auth library not loaded yet. Try again in 2 seconds.');
+    return;
+  }
+  try {
+    const client = google.accounts.oauth2.initTokenClient({
+      client_id: cid,
+      scope: GMAIL_SCOPES,
+      error_callback: (err) => {
+        console.error('GIS error:', err);
+        if (err.type === 'popup_blocked_by_browser') {
+          showToast('Popup blocked — please allow popups for this page and try again.');
+        } else if (err.type === 'popup_closed') {
+          showToast('Auth cancelled — popup was closed.');
+        } else {
+          showToast('Auth error: ' + (err.message || err.type || JSON.stringify(err)));
+        }
+      },
+      callback: (tokenResp) => {
+        if (tokenResp.error) {
+          const msg = {
+            'access_denied':    'Access denied — please approve the Gmail permission.',
+            'invalid_client':   'Invalid Client ID — check it matches your Google Cloud project.',
+            'redirect_uri_mismatch': 'Redirect URI mismatch — add this page URL to Authorized JavaScript Origins in Google Cloud.',
+          }[tokenResp.error] || ('Auth failed: ' + tokenResp.error);
+          showToast(msg);
+          return;
+        }
+        _gmailToken = tokenResp.access_token;
+        localStorage.setItem(GMAIL_LS_KEY, JSON.stringify({
+          token: _gmailToken,
+          expiry: Date.now() + (tokenResp.expires_in || 3600) * 1000,
+        }));
+        closeModal('gmail-modal');
+        gmailUpdateBar(true);
+        gmailFetchEmails();
+        showToast('Gmail connected ✓');
+      },
+    });
+    client.requestAccessToken({ prompt: 'consent' });
+  } catch(e) {
+    console.error('OAuth exception:', e);
+    showToast('OAuth error: ' + (e.message || String(e)));
+  }
+}
+
+function gmailRestoreToken() {
+  try {
+    const stored = JSON.parse(localStorage.getItem(GMAIL_LS_KEY) || 'null');
+    if (stored && stored.expiry > Date.now()) {
+      _gmailToken = stored.token;
+      return true;
+    }
+  } catch(e) {}
+  return false;
+}
+
+function gmailDisconnect() {
+  _gmailToken = null;
+  localStorage.removeItem(GMAIL_LS_KEY);
+  gmailUpdateBar(false);
+  const ep = el('gmail-emails-panel');
+  if (ep) ep.style.display = 'none';
+  showToast('Gmail disconnected');
+}
+
+function gmailUpdateBar(connected) {
+  const bar  = el('gmail-bar');
+  const dot  = el('gmail-dot');
+  const txt  = el('gmail-bar-text');
+  const fetchBtn = el('gmail-fetch-btn');
+  const connectBtn = el('gmail-connect-btn');
+  if (!bar) return;
+  bar.style.display = '';
+  dot.className = 'gmail-status-dot ' + (connected ? 'connected' : '');
+  txt.innerHTML  = connected
+    ? '<strong>Gmail connected</strong> — EMI debit alerts will be fetched automatically'
+    : '<strong>Gmail not connected</strong> — Use Paste &amp; Parse for offline mode';
+  if (fetchBtn) fetchBtn.style.display = connected ? '' : 'none';
+  if (connectBtn) connectBtn.textContent = connected ? '📧 Gmail ✓' : '📧 Connect Gmail';
+}
+
+/* ─── Fetch EMI emails from Gmail ─────────────────────────────────────────── */
+async function gmailFetchEmails() {
+  if (!_gmailToken) { showToast('Connect Gmail first'); return; }
+  const dot = el('gmail-dot');
+  if (dot) dot.className = 'gmail-status-dot pending';
+  set('gmail-bar-text', 'Fetching EMI emails…');
+
+  try {
+    // Search query — targets EMI debit and loan payment alerts
+    const q = encodeURIComponent('subject:(EMI OR debit OR "loan repayment" OR "loan instalment" OR "ECS debit") -category:promotions');
+    const listRes = await fetch(
+      `https://gmail.googleapis.com/gmail/v1/users/me/messages?q=${q}&maxResults=20`,
+      { headers: { Authorization: 'Bearer ' + _gmailToken } }
+    );
+    if (!listRes.ok) throw new Error('Gmail API ' + listRes.status);
+    const listData = await listRes.json();
+    const messages = listData.messages || [];
+
+    if (!messages.length) {
+      set('gmail-bar-text', 'No EMI emails found in inbox');
+      const dot2 = el('gmail-dot');
+      if (dot2) dot2.className = 'gmail-status-dot connected';
+      return;
+    }
+
+    // Fetch snippets for each message
+    const emailList = el('gmail-email-list');
+    const panel     = el('gmail-emails-panel');
+    if (emailList) emailList.innerHTML = '<div style="padding:14px;color:var(--muted);font-size:11px">Loading…</div>';
+    if (panel) panel.style.display = '';
+
+    const details = await Promise.all(
+      messages.slice(0, 15).map(m =>
+        fetch(`https://gmail.googleapis.com/gmail/v1/users/me/messages/${m.id}?format=minimal`,
+          { headers: { Authorization: 'Bearer ' + _gmailToken } }
+        ).then(r => r.json())
+      )
+    );
+
+    // Render email rows
+    const rows = details.map(msg => {
+      const headers  = msg.payload?.headers || [];
+      const subject  = headers.find(h => h.name === 'Subject')?.value || '(No subject)';
+      const dateHdr  = headers.find(h => h.name === 'Date')?.value || '';
+      const snippet  = msg.snippet || '';
+      const parsed   = parseBankText(subject + ' ' + snippet);
+      return { id: msg.id, subject, dateHdr, snippet, parsed };
+    });
+
+    if (emailList) {
+      emailList.innerHTML = rows.map((r, i) => `
+        <div class="gmail-email-row" onclick="gmailSelectEmail(${i})" id="gm-row-${i}" data-idx="${i}">
+          <div style="flex:1;min-width:0">
+            <div class="gm-subject">${r.subject}</div>
+            <div class="gm-snippet">${r.snippet.slice(0, 120)}</div>
+          </div>
+          <div style="flex-shrink:0;text-align:right">
+            ${r.parsed ? `<span class="badge ba" style="font-size:9px;margin-bottom:3px">${INRs(r.parsed.amount)}</span><br>` : ''}
+            <span class="gm-date">${new Date(r.dateHdr).toLocaleDateString('en-IN',{day:'numeric',month:'short'})}</span>
+          </div>
+        </div>
+      `).join('');
+      // Store rows for selection
+      window._gmailRows = rows;
+    }
+
+    set('gmail-email-count', rows.length + ' emails');
+    gmailUpdateBar(true);
+  } catch(e) {
+    if (e.message.includes('401')) {
+      gmailDisconnect();
+      showToast('Session expired — please reconnect Gmail');
+    } else {
+      showToast('Error: ' + e.message);
+      gmailUpdateBar(true);
+    }
+  }
+}
+
+function gmailSelectEmail(idx) {
+  const row = (window._gmailRows || [])[idx];
+  if (!row) { showToast("Email data not loaded"); return; }
+
+  // Highlight selected
+  document.querySelectorAll('.gmail-email-row').forEach(r => r.classList.remove('selected'));
+  const el2 = document.getElementById('gm-row-' + idx);
+  if (el2) el2.classList.add('selected');
+
+  if (row.parsed) {
+    // Pre-fill paste modal with parsed data
+    el('paste-input').value = row.subject + '\n\n' + row.snippet;
+    _parsedResult = row.parsed;
+    el('parse-result-rows').innerHTML = `<div class="parse-result-row matched">
+      <div class="pr-bank">${row.parsed.bank}</div>
+      <div class="pr-type">${row.parsed.type}</div>
+      <div class="pr-amount">${INR(row.parsed.amount)}</div>
+      <div class="pr-date">📅 ${row.parsed.date}</div>
+    </div>`;
+    el('parse-type-sel').value = row.parsed.type;
+    el('parse-note').value = row.parsed.note;
+    const sel = el('parse-loan-sel');
+    sel.innerHTML = '<option value="">— Select loan —</option>' +
+      _loans.map(l => `<option value="${l.id}">${l.name}</option>`).join('');
+    const matchedLoan = _loans.find(l => Math.abs((l.emi||0) - row.parsed.amount) < 500);
+    if (matchedLoan) sel.value = matchedLoan.id;
+    el('parse-results').style.display = '';
+    openModal('paste-modal');
+  } else {
+    // No amount found — open paste modal for manual correction
+    el('paste-input').value = row.subject + '\n\n' + row.snippet;
+    el('parse-results').style.display = 'none';
+    openModal('paste-modal');
+    showToast('Amount not auto-detected — check & parse manually');
+  }
+}
+
+/* ─── Init Gmail on My Loans page load ───────────────────────────────────── */
+function initGmail() {
+  if (gmailRestoreToken()) {
+    gmailUpdateBar(true);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', init);
 </script>
+
+<!-- PAGE 3: EXPENSE TRACKER -->
+<div class="page" id="page-expenses">
+
+<div class="exp-header">
+  <div class="exp-header-inner">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+      <div>
+        <div class="ml-title">💸 Monthly Expense Tracker</div>
+        <div class="ml-sub">Track spending across all categories · Set budgets · View trends</div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn-outline" onclick="openExpCatModal()">＋ Add Category</button>
+        <button class="btn-gold" style="padding:9px 16px" onclick="exportExpCSV()">⬇ Export CSV</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="exp-wrap">
+
+  <!-- Month navigator -->
+  <div class="exp-month-nav">
+    <button class="exp-month-btn" onclick="expChangeMonth(-1)">◀</button>
+    <div class="exp-month-label" id="exp-month-label">—</div>
+    <button class="exp-month-btn" onclick="expChangeMonth(1)">▶</button>
+    <div style="font-size:10px;color:var(--muted);margin-left:6px">Navigate months to enter or review expenses</div>
+    <div style="margin-left:auto;display:flex;gap:6px">
+      <button onclick="expCopyLastMonth()" class="btn-outline" style="font-size:11px;padding:5px 11px">📋 Copy last month's budget</button>
+    </div>
+  </div>
+
+  <!-- Salary quick-entry bar -->
+  <div style="background:linear-gradient(90deg,rgba(62,207,142,.07),rgba(201,168,76,.05));border:1px solid rgba(62,207,142,.2);border-radius:var(--r);padding:12px 16px;margin-bottom:14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+    <div style="font-size:20px">💰</div>
+    <div style="flex:1;min-width:0">
+      <div style="font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:3px">Salary Received This Month</div>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:6px;background:var(--s2);border:1.5px solid rgba(62,207,142,.25);border-radius:var(--rsm);padding:6px 11px;flex:1;max-width:260px">
+          <span style="font-size:15px;font-weight:800;color:var(--green)">₹</span>
+          <input type="number" id="exp-salary-input" placeholder="Enter salary credited" style="background:none;border:none;outline:none;font-size:16px;font-weight:800;font-family:var(--mono);color:var(--text);width:100%;-moz-appearance:textfield" oninput="onSalaryInput()">
+        </div>
+        <div style="font-size:11px;color:var(--muted)">Enter the amount credited to your account this month</div>
+      </div>
+    </div>
+    <div style="text-align:right;flex-shrink:0">
+      <div style="font-size:9px;color:var(--muted);margin-bottom:2px">In-hand salary</div>
+      <div style="font-size:18px;font-weight:800;font-family:var(--mono);color:var(--green)" id="exp-salary-display">—</div>
+    </div>
+  </div>
+
+  <!-- Summary strip -->
+  <div class="exp-summary" style="grid-template-columns:repeat(4,1fr)">
+    <div class="exp-sum-card" style="--mc:var(--blue)">
+      <div class="exp-sum-lbl">Total Spent</div>
+      <div class="exp-sum-val" id="exp-total-spent" style="color:var(--blue)">₹0</div>
+      <div class="exp-sum-sub" id="exp-spent-sub">variable expenses</div>
+    </div>
+    <div class="exp-sum-card" style="--mc:var(--red)">
+      <div class="exp-sum-lbl">Fixed Deductions</div>
+      <div class="exp-sum-val" id="exp-fixed-total" style="color:var(--red)">₹0</div>
+      <div class="exp-sum-sub" id="exp-fixed-sub">EMIs + rent + utilities</div>
+    </div>
+    <div class="exp-sum-card" style="--mc:var(--gold)">
+      <div class="exp-sum-lbl">Total Outflow</div>
+      <div class="exp-sum-val" id="exp-total-budget" style="color:var(--gold)">₹0</div>
+      <div class="exp-sum-sub">fixed + variable</div>
+    </div>
+    <div class="exp-sum-card" style="--mc:var(--green);border-color:rgba(62,207,142,.25)">
+      <div class="exp-sum-lbl">Savings Rate</div>
+      <div class="exp-sum-val" id="exp-savings-rate" style="color:var(--text)">—</div>
+      <div class="exp-sum-sub">of income saved</div>
+    </div>
+  </div>
+
+  <!-- Account balance breakdown — the key card -->
+  <div id="exp-balance-card" style="margin-bottom:16px">
+    <div class="card card-gold">
+      <div class="card-hd-gold">
+        <span class="card-title">💳 Account Balance After All Deductions</span>
+        <span class="card-sub" id="exp-balance-month-label">—</span>
+      </div>
+      <div class="card-body">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px">
+          <!-- Salary -->
+          <div style="background:var(--s2);border:1px solid rgba(62,207,142,.2);border-radius:var(--r);padding:13px">
+            <div style="font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);margin-bottom:5px">Salary In</div>
+            <div style="font-size:20px;font-weight:800;font-family:var(--mono);color:var(--green)" id="bal-salary">—</div>
+            <div style="font-size:9px;color:var(--muted);margin-top:3px">credited this month</div>
+          </div>
+          <!-- Fixed deductions breakdown -->
+          <div style="background:var(--s2);border:1px solid rgba(224,85,85,.15);border-radius:var(--r);padding:13px">
+            <div style="font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-bottom:8px">Fixed Deductions</div>
+            <div style="display:flex;flex-direction:column;gap:4px" id="bal-fixed-rows">
+              <div style="display:flex;justify-content:space-between;font-size:10px"><span style="color:var(--muted)">Loading…</span></div>
+            </div>
+            <div style="height:1px;background:var(--border);margin:7px 0"></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:700">
+              <span style="color:var(--muted)">Total Fixed</span>
+              <span style="font-family:var(--mono);color:var(--red)" id="bal-fixed-total">—</span>
+            </div>
+          </div>
+          <!-- Net balance -->
+          <div style="background:var(--s2);border:1.5px solid var(--gold-border);border-radius:var(--r);padding:13px;position:relative;overflow:hidden">
+            <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.05),transparent);pointer-events:none"></div>
+            <div style="font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);margin-bottom:5px">Remaining Balance</div>
+            <div style="font-size:22px;font-weight:800;font-family:var(--mono);letter-spacing:-.04em" id="bal-net">—</div>
+            <div style="font-size:9px;color:var(--muted);margin-top:3px" id="bal-net-sub">after all deductions</div>
+          </div>
+        </div>
+
+        <!-- Full deduction breakdown table -->
+        <div style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px">Full Deduction Breakdown</div>
+        <div style="background:var(--s2);border-radius:var(--rsm);overflow:hidden;border:1px solid var(--border)">
+          <!-- Header -->
+          <div style="display:grid;grid-template-columns:1fr 90px 90px;gap:0;padding:7px 12px;background:var(--s3);font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)">
+            <span>Item</span><span style="text-align:right">Category</span><span style="text-align:right">Amount</span>
+          </div>
+          <div id="bal-breakdown-rows"></div>
+          <!-- Totals -->
+          <div style="padding:10px 12px;border-top:1.5px solid var(--border);background:var(--s3)">
+            <div style="display:grid;grid-template-columns:1fr 90px 90px;font-size:12px;font-weight:700;margin-bottom:5px">
+              <span style="color:var(--muted)">Total Outflow</span>
+              <span></span>
+              <span style="text-align:right;font-family:var(--mono);color:var(--red)" id="bal-total-outflow">—</span>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 90px 90px;font-size:14px;font-weight:800">
+              <span style="color:var(--gold)">Net in Account</span>
+              <span></span>
+              <span style="text-align:right;font-family:var(--mono)" id="bal-net-table">—</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual bar -->
+        <div style="margin-top:12px">
+          <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:5px">
+            <span>Spending breakdown of salary</span>
+            <span id="bal-bar-pct">—</span>
+          </div>
+          <div style="height:10px;border-radius:5px;background:var(--s4);overflow:hidden;display:flex">
+            <div id="bal-bar-fixed" style="height:100%;background:var(--red);transition:width .4s;border-radius:5px 0 0 5px"></div>
+            <div id="bal-bar-variable" style="height:100%;background:var(--blue);transition:width .4s"></div>
+            <div id="bal-bar-savings" style="height:100%;background:var(--green);transition:width .4s;border-radius:0 5px 5px 0"></div>
+          </div>
+          <div style="display:flex;gap:12px;margin-top:6px;flex-wrap:wrap">
+            <div style="display:flex;align-items:center;gap:4px;font-size:9px;color:var(--muted)"><div style="width:8px;height:8px;border-radius:2px;background:var(--red)"></div>Fixed (<span id="bal-fixed-pct">0</span>%)</div>
+            <div style="display:flex;align-items:center;gap:4px;font-size:9px;color:var(--muted)"><div style="width:8px;height:8px;border-radius:2px;background:var(--blue)"></div>Variable (<span id="bal-variable-pct">0</span>%)</div>
+            <div style="display:flex;align-items:center;gap:4px;font-size:9px;color:var(--muted)"><div style="width:8px;height:8px;border-radius:2px;background:var(--green)"></div>Savings (<span id="bal-savings-pct">0</span>%)</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="exp-grid">
+
+    <!-- LEFT: Category expense rows -->
+    <div id="exp-categories-wrap"></div>
+
+    <!-- RIGHT: Charts + quick stats sidebar -->
+    <div style="display:flex;flex-direction:column;gap:14px">
+
+      <!-- Donut breakdown -->
+      <div class="card">
+        <div class="card-hd"><span class="card-title">Spending Breakdown</span><span class="card-sub" id="exp-donut-sub">this month</span></div>
+        <div class="card-body" style="padding:12px">
+          <div class="exp-donut-wrap" style="height:190px">
+            <canvas id="exp-chart-donut" width="190" height="190"></canvas>
+          </div>
+          <div id="exp-donut-legend" style="display:flex;flex-direction:column;gap:6px;margin-top:10px"></div>
+        </div>
+      </div>
+
+      <!-- Budget vs Actual -->
+      <div class="card">
+        <div class="card-hd"><span class="card-title">Budget vs Actual</span></div>
+        <div class="card-body" style="padding:12px">
+          <div style="display:flex;justify-content:space-between;font-size:9px;color:var(--muted);margin-bottom:8px;font-weight:700;letter-spacing:.05em;text-transform:uppercase">
+            <span>Category</span><span>Budget / Actual</span>
+          </div>
+          <div id="exp-bva-list"></div>
+        </div>
+      </div>
+
+      <!-- Monthly trend chart -->
+      <div class="card">
+        <div class="card-hd">
+          <span class="card-title">6-Month Trend</span>
+          <select id="exp-trend-cat" onchange="renderExpTrend()" style="font-size:11px;width:130px;padding:4px 7px">
+            <option value="all">All categories</option>
+          </select>
+        </div>
+        <div class="card-body" style="padding:12px">
+          <div class="exp-history-wrap">
+            <canvas id="exp-chart-trend" style="width:100%;height:160px;display:block"></canvas>
+          </div>
+          <div class="chart-legend" style="margin-top:8px">
+            <div class="legend-item"><div class="legend-dot" style="background:var(--gold)"></div>Budget</div>
+            <div class="legend-item"><div class="legend-dot" style="background:var(--blue)"></div>Actual</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</div><!-- /page-expenses -->
+
+<!-- Add/Edit Category Modal -->
+<div class="modal-overlay" id="exp-cat-modal">
+  <div class="modal exp-modal">
+    <h3 id="exp-cat-modal-title">Add Category</h3>
+    <p>Categories group your expenses. Choose an icon and group.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
+      <div class="field"><label>Category Name</label><input id="exp-cat-name" placeholder="e.g. Groceries"></div>
+      <div class="field"><label>Icon (emoji)</label><input id="exp-cat-icon" placeholder="🛒" style="font-size:18px"></div>
+      <div class="field"><label>Group</label>
+        <select id="exp-cat-group-sel">
+          <option value="house">🏠 House &amp; Living</option>
+          <option value="personal">👤 Personal</option>
+          <option value="investment">📈 Investments</option>
+          <option value="custom">⚡ Custom</option>
+        </select>
+      </div>
+      <div class="field"><label>Monthly Budget (₹)</label><input type="number" id="exp-cat-budget" placeholder="0"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-outline" onclick="closeModal('exp-cat-modal')">Cancel</button>
+      <button class="btn-gold" onclick="saveExpCategory()" style="padding:9px 20px">Save Category</button>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Expense Entry Modal -->
+<div class="modal-overlay" id="exp-entry-modal">
+  <div class="modal exp-modal">
+    <h3>Edit Expense</h3>
+    <p id="exp-entry-modal-sub">Update the budget or actual amount</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
+      <div class="field"><label>Budget (₹)</label><input type="number" id="exp-edit-budget" placeholder="0"></div>
+      <div class="field"><label>Actual Spent (₹)</label><input type="number" id="exp-edit-actual" placeholder="0"></div>
+      <div class="field" style="grid-column:1/-1"><label>Note</label><input type="text" id="exp-edit-note" placeholder="Optional note"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-outline" onclick="closeModal('exp-entry-modal')">Cancel</button>
+      <button class="btn-gold" onclick="saveExpEntry()" style="padding:9px 20px">Save</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- PASTE & PARSE MODAL -->
+<div class="modal-overlay" id="paste-modal">
+  <div class="modal" style="width:560px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px"><h3 style="margin:0">📋 Paste Bank Email or SMS</h3><button onclick="closeModal('paste-modal')" style="background:transparent;border:1px solid var(--border2);border-radius:var(--rsm);padding:4px 11px;font-size:12px;color:var(--muted);cursor:pointer">✕ Close</button></div>
+    <p>Copy any EMI debit or payment alert from your bank and paste below. The parser extracts amount, date and bank automatically.</p>
+    <div style="margin-bottom:10px">
+      <label style="font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px">Email / SMS text</label>
+      <textarea id="paste-input" rows="7" style="width:100%;background:var(--s3);border:1.5px solid var(--border2);border-radius:var(--rsm);padding:10px 12px;color:var(--text);font-family:var(--mono);font-size:11px;resize:vertical;outline:none;line-height:1.6;color-scheme:dark" placeholder="Paste your bank email or SMS text here…&#10;&#10;Example:&#10;Dear Customer, your EMI of Rs.46,384 has been debited from your a/c XX1234 on 05-May-2026 towards loan a/c XXXXXXXXXX. — SBIINB"></textarea>
+    </div>
+    <div style="display:flex;gap:8px;margin-bottom:14px">
+      <button onclick="parseEmailText()" class="btn-gold" style="padding:9px 16px">🔍 Parse</button>
+      <button onclick="el('paste-input').value=''" class="btn-outline" style="padding:9px 12px">Clear</button>
+      <div style="font-size:10px;color:var(--muted);align-self:center;flex:1">Supports SBI, HDFC, ICICI, Axis, Kotak, PNB, BOB, Canara, IndusInd, Yes Bank + 20 more</div>
+    </div>
+    <!-- Parse results -->
+    <div id="parse-results" style="display:none">
+      <div style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px">Parsed Result</div>
+      <div id="parse-result-rows"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px">
+        <div>
+          <label style="font-size:9px;color:var(--muted);display:block;margin-bottom:3px">Match to loan</label>
+          <select id="parse-loan-sel" style="font-size:12px"></select>
+        </div>
+        <div>
+          <label style="font-size:9px;color:var(--muted);display:block;margin-bottom:3px">Payment type</label>
+          <select id="parse-type-sel" style="font-size:12px">
+            <option value="emi">Regular EMI</option>
+            <option value="partpay">Part Payment</option>
+            <option value="prepay">Prepayment</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:9px;color:var(--muted);display:block;margin-bottom:3px">Note</label>
+          <input type="text" id="parse-note" placeholder="Auto-filled" style="font-size:12px">
+        </div>
+      </div>
+      <div style="margin-top:12px;display:flex;gap:8px">
+        <button onclick="logParsedPayment()" class="btn-gold" style="flex:1;padding:10px">✓ Log This Payment</button>
+        <button onclick="closeModal('paste-modal')" class="btn-outline" style="padding:10px 14px">Cancel</button>
+      </div>
+    </div>
+    <div style="margin-top:10px">
+      <div style="font-size:9px;font-weight:700;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px">Supported formats include</div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px">
+        <span style="background:var(--s3);border:1px solid var(--border2);border-radius:4px;padding:2px 7px;font-size:9px;color:var(--muted)">SBI</span>
+        <span style="background:var(--s3);border:1px solid var(--border2);border-radius:4px;padding:2px 7px;font-size:9px;color:var(--muted)">HDFC</span>
+        <span style="background:var(--s3);border:1px solid var(--border2);border-radius:4px;padding:2px 7px;font-size:9px;color:var(--muted)">ICICI</span>
+        <span style="background:var(--s3);border:1px solid var(--border2);border-radius:4px;padding:2px 7px;font-size:9px;color:var(--muted)">Axis</span>
+        <span style="background:var(--s3);border:1px solid var(--border2);border-radius:4px;padding:2px 7px;font-size:9px;color:var(--muted)">Kotak</span>
+        <span style="background:var(--s3);border:1px solid var(--border2);border-radius:4px;padding:2px 7px;font-size:9px;color:var(--muted)">PNB</span>
+        <span style="background:var(--s3);border:1px solid var(--border2);border-radius:4px;padding:2px 7px;font-size:9px;color:var(--muted)">BOB</span>
+        <span style="background:var(--s3);border:1px solid var(--border2);border-radius:4px;padding:2px 7px;font-size:9px;color:var(--muted)">Canara</span>
+        <span style="background:var(--s3);border:1px solid var(--border2);border-radius:4px;padding:2px 7px;font-size:9px;color:var(--muted)">IndusInd</span>
+        <span style="background:var(--s3);border:1px solid var(--border2);border-radius:4px;padding:2px 7px;font-size:9px;color:var(--muted)">Yes Bank</span>
+        <span style="background:var(--s3);border:1px solid var(--border2);border-radius:4px;padding:2px 7px;font-size:9px;color:var(--muted)">IDFC</span>
+        <span style="background:var(--s3);border:1px solid var(--border2);border-radius:4px;padding:2px 7px;font-size:9px;color:var(--muted)">+ more</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GMAIL OAUTH MODAL -->
+<div class="modal-overlay" id="gmail-modal">
+  <div class="modal" style="width:480px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px"><h3 style="margin:0">📧 Connect Gmail</h3><button onclick="closeModal('gmail-modal')" style="background:transparent;border:1px solid var(--border2);border-radius:var(--rsm);padding:4px 11px;font-size:12px;color:var(--muted);cursor:pointer">✕ Close</button></div>
+    <p>Automatically fetch EMI debit alerts from your Gmail inbox and log payments with one click.</p>
+
+    <!-- Step 1: Client ID setup -->
+    <div id="gmail-setup-step1" style="margin-bottom:14px">
+      <div style="background:var(--s2);border:1px solid var(--gold-border);border-radius:var(--rsm);padding:12px;margin-bottom:12px">
+        <div style="font-size:10px;font-weight:700;color:var(--gold);letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px">One-time Setup Required</div>
+        <div style="font-size:11px;color:var(--muted);line-height:1.8">
+          1. Go to <a href="https://console.cloud.google.com" target="_blank" style="color:var(--gold)">console.cloud.google.com</a><br>
+          2. Create project → Enable <strong style="color:var(--text)">Gmail API</strong><br>
+          3. OAuth consent screen → External → Add your email as test user<br>
+          4. Credentials → OAuth 2.0 Client ID → Web application<br>
+          5. Add your site URL to <strong style="color:var(--text)">Authorized JavaScript origins</strong><br>
+          &nbsp;&nbsp;&nbsp;<code style="background:var(--s3);padding:1px 5px;border-radius:3px;font-size:10px" id="gmail-current-origin">detecting…</code><br>
+          6. Copy the <strong style="color:var(--text)">Client ID</strong> and paste below
+        </div>
+      </div>
+      <label style="font-size:9px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:5px">Google OAuth Client ID</label>
+      <input type="text" id="gmail-client-id" placeholder="xxxxxxxxxx-xxxxxxxx.apps.googleusercontent.com" style="font-size:12px;font-family:var(--mono);margin-bottom:8px">
+      <div style="font-size:9px;color:var(--muted)">Stored only in your browser's localStorage. Never sent to any server.</div>
+    </div>
+
+    <div style="background:var(--s2);border:1px solid var(--border);border-radius:var(--rsm);padding:10px 13px;margin-bottom:14px">
+      <div style="font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px">What we access</div>
+      <div style="font-size:11px;color:var(--muted);line-height:1.7">
+        ✅ Read-only access to emails matching <code style="background:var(--s3);padding:1px 4px;border-radius:2px;font-size:10px">EMI OR debit OR loan repayment</code><br>
+        ✅ We never store your emails — only the parsed amount/date<br>
+        ❌ We cannot send emails, modify your inbox, or access other data
+      </div>
+    </div>
+
+    <div id="gmail-hosted-warning" style="display:none;background:var(--red-l);border:1px solid rgba(224,85,85,.3);border-radius:var(--rsm);padding:10px 13px;margin-bottom:14px">
+      <div style="font-size:11px;color:var(--red);line-height:1.6">
+        ⚠️ Gmail OAuth only works when the app is served over HTTPS (GitHub Pages, Netlify, etc.). Running locally? Use the <strong>Paste &amp; Parse</strong> option instead.
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-outline" onclick="closeModal('gmail-modal')">Cancel</button>
+      <button class="btn-gold" onclick="gmailAuthorize()" style="padding:9px 20px">🔐 Authorize with Google</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
